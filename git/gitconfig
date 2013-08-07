@@ -26,6 +26,8 @@
 
     # Custom pretty log
     logp = log --pretty=nice --date-order
+    l = log --graph --pretty='format:%C(yellow)%h %Creset- %s %C(cyan)<%an>%C(magenta)%d'
+    hist = log --graph --pretty='format:%C(yellow)%h %Creset- %s %C(cyan)<%an>%C(magenta)%d'
 
     # Diffstat log
     logst = log --stat
