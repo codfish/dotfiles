@@ -97,11 +97,11 @@ set encoding=utf-8 nobomb
 " Use line wrapping
 set wrap
 " Use 4 spaces for indentation
-set shiftwidth=4
+set shiftwidth=2
 " Use 4 spaces for soft tab
-set softtabstop=4
+set softtabstop=2
 " Use 4 spaces for tab
-set tabstop=4
+set tabstop=2
 " Expand tab to spaces
 set expandtab
 " Enable line numbers
@@ -109,7 +109,7 @@ set number
 " Highlight current line
 set cursorline
 " Increase default number of lines
-set lines=40
+set lines=50
 " Start scrolling three lines before the horizontal window border
 set scrolloff=3
 " Don’t reset cursor to start of line when moving around.
