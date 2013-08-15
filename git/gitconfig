@@ -1,6 +1,15 @@
 [alias]
     # https://git.wiki.kernel.org/articles/a/l/i/Aliases.html
 
+    # helpers
+    s = status
+    stauts = status
+
+    # Remove all deleted files
+    rmd = rm $(git ls-files --deleted)
+    # Remove all cached files (you'll need to re-add everything and commit, but this will rid the repo of files that shouldn't be there)
+    rmc = rm -r --cached .
+
     # `git remote prune origin`: remove remote-tracking branches that were deleted from the remote repo
     # `git gc`: cleanup unnecessary files and optimize the local repository
     # `git clean -df`: remove untracked files and directories from the working tree
