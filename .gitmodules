@@ -32,3 +32,6 @@
 [submodule "vim/bundle/vim-javascript"]
 	path = vim/bundle/vim-javascript
 	url = https://github.com/pangloss/vim-javascript.git
+[submodule "bash/cheat"]
+	path = bash/cheat
+	url = git@github.com:chrisallenlane/cheat.git
