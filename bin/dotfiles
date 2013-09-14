@@ -154,3 +154,14 @@ if is_confirmed; then
 else
     printf "Skipped OS X settings update.\n"
 fi
+
+# Ask before updating symbolic link for cheat 
+seek_confirmation "Warning: This step may overwrite existing symlink to cheat."
+
+if is_confirmed; then
+    ln -fs ${DOTFILES_DIRECTORY}/bash/cheat/cheat ${DOTFILES_DIRECTORY}/bin
+else
+    printf "Skipped symlinking cheat\n"
+    exit 1
+fi
+
