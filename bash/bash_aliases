@@ -18,9 +18,9 @@ alias l="ls -oG"
 # Order by last modified, long form no user group, color
 alias lt="ls -toG"
 # List all except . and ..., color, mark file types, long form no user group, file size
-alias ll="ls -AGFoh"
+alias ll="ls -AGlFoh"
 # List all except . and ..., color, mark file types, long form no use group, order by last modified, file size
-alias lat="ls -AGFoth"
+alias lat="ls -AGlFoth"
 
 # Concatenate and print content of files (add line numbers)
 alias catn="cat -n"
