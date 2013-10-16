@@ -22,6 +22,8 @@ run_brew() {
             'git'
             'ack'
             'bash-completion'
+            'brew-cask'
+            'composer'
             'jpeg'
             'macvim --override-system-vim'
             'node'
