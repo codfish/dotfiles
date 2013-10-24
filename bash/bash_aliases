@@ -17,8 +17,8 @@ alias -- -="cd -"
 alias l="ls -oG"
 # Order by last modified, long form no user group, color
 alias lt="ls -toG"
-# List all except . and ..., color, mark file types, long form no user group, file size
-alias ll="ls -AGlFoh"
+# List all including . & .., color, mark file types, long form no user group, file size
+alias ll="ls -aGlFh"
 # List all except . and ..., color, mark file types, long form no use group, order by last modified, file size
 alias lat="ls -AGlFoth"
 
