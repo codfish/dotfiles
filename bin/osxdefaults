@@ -6,6 +6,12 @@
 # General UI/UX
 # ----------------------------------------------------------------------
 
+# Set computer name (as done via System Preferences → Sharing)
+sudo scutil --set ComputerName "Chris MacBook Pro"
+sudo scutil --set HostName "chris-macbook-pro"
+sudo scutil --set LocalHostName "chris-macbook-pro"
+sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "chris-macbook-pro"
+
 # Disable Menu bar transparency
 defaults write NSGlobalDomain AppleEnableMenuBarTransparency -bool false
 
