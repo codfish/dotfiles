@@ -68,6 +68,12 @@ if ! type_exists 'git'; then
   brew install git
 fi
 
+# Check for RVM
+if ! type_exists 'rvm'; then
+  e_header "Installing RVM..."
+  \curl -sSL https://get.rvm.io | bash -s stable
+fi
+
 # Initialize the git repository if it's missing
 if ! is_git_repo; then
   e_header "Initializing git repository..."
