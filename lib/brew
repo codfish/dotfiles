@@ -23,7 +23,6 @@ run_brew() {
             'ack'
             'bash'
             'bash-completion'
-            'brew-cask'
             'composer'
             'ffmpeg'
             'graphicsmagick'
