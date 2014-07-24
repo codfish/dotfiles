@@ -4,34 +4,27 @@ run_list() {
 
 cat <<EOT
 
-OS X dotfiles - Nicolas Gallagher - http://nicolasgallagher.com/
+OS X dotfiles - Chris O'Donnell - http://codfi.sh/
 
 Additional software to install
 
 Browsers:
-    Firefox
-    Google Chrome
-    Opera
+  Firefox
+  Google Chrome
 
 Development:
-    Filezilla
-    iTerm 2
-    ImageAlpha
-    ImageOptim
-    VirtualBox
-    XAMPP
+  iTerm 2
+  Tramsmit
+  VirtualBox
+  MAMP
 
 Other:
-    Alfred
-    Divvy
-    Dropbox
-    Flux
-    KeePassX
-    LimeChat
-    Network Connect
-    Skype
-    uTorrent
-    VLC
+  Alfred
+  Dropbox
+  Google Drive
+  Rdio
+  uTorrent
+  VLC
 EOT
 
 }

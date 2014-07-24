@@ -1,84 +1,84 @@
 [alias]
-    # https://git.wiki.kernel.org/articles/a/l/i/Aliases.html
+  # https://git.wiki.kernel.org/articles/a/l/i/Aliases.html
 
-    # helpers
-    s = status
-    stauts = status
+  # helpers
+  s = status
+  stauts = status
 
-    # Remove all deleted files
-    rmd = rm $(git ls-files --deleted)
-    # Remove all cached files (you'll need to re-add everything and commit, but this will rid the repo of files that shouldn't be there)
-    rmc = rm -r --cached .
+  # Remove all deleted files
+  rmd = rm $(git ls-files --deleted)
+  # Remove all cached files (you'll need to re-add everything and commit, but this will rid the repo of files that shouldn't be there)
+  rmc = rm -r --cached .
 
-    # `git remote prune origin`: remove remote-tracking branches that were deleted from the remote repo
-    # `git gc`: cleanup unnecessary files and optimize the local repository
-    # `git clean -df`: remove untracked files and directories from the working tree
-    # `git stash clear`: remove all stashed states
-    trim = !git remote prune origin && git gc
-    cleanup = !git clean -df && git stash clear
+  # `git remote prune origin`: remove remote-tracking branches that were deleted from the remote repo
+  # `git gc`: cleanup unnecessary files and optimize the local repository
+  # `git clean -df`: remove untracked files and directories from the working tree
+  # `git stash clear`: remove all stashed states
+  trim = !git remote prune origin && git gc
+  cleanup = !git clean -df && git stash clear
 
-    # Add untracked, remove deleted, and show status
-    adda = !git add -A && git status
+  # Add untracked, remove deleted, and show status
+  adda = !git add -A && git status
 
-    # Fetch a repository ($1) and checkout its ref ($2) HEAD
-    # Use: `git browse https://github.com/necolas/dotfiles <commit-ish>`
-    browse = !bash -c 'git fetch $1 ${2:-HEAD} && git checkout FETCH_HEAD' -
+  # Fetch a repository ($1) and checkout its ref ($2) HEAD
+  # Use: `git browse https://github.com/necolas/dotfiles <commit-ish>`
+  browse = !bash -c 'git fetch $1 ${2:-HEAD} && git checkout FETCH_HEAD' -
 
-    # Diff what is staged for the next commit
-    diffc = diff --cached
-    # Diff overview
-    diffst = diff --stat
+  # Diff what is staged for the next commit
+  diffc = diff --cached
+  # Diff overview
+  diffst = diff --stat
 
-    # Custom graph log (append any tree-ish)
-    graph = log --pretty=nice --date-order --graph
-    # Custom graph log for all branches
-    grapha = log --pretty=nice --date-order --graph --all
+  # Custom graph log (append any tree-ish)
+  graph = log --pretty=nice --date-order --graph
+  # Custom graph log for all branches
+  grapha = log --pretty=nice --date-order --graph --all
 
-    # Custom pretty log
-    logp = log --pretty=nice --date-order
-    l = log --graph --pretty='format:%C(yellow)%h %Creset- %s %C(cyan)<%an>%C(magenta)%d'
-    hist = log --graph --pretty='format:%C(yellow)%h %Creset- %s %C(cyan)<%an>%C(magenta)%d'
+  # Custom pretty log
+  logp = log --pretty=nice --date-order
+  l = log --graph --pretty='format:%C(yellow)%h %Creset- %s %C(cyan)<%an>%C(magenta)%d'
+  hist = log --graph --pretty='format:%C(yellow)%h %Creset- %s %C(cyan)<%an>%C(magenta)%d'
 
-    # Diffstat log
-    logst = log --stat
-    # Short format diffstat log
-    logsf = log --stat --format=oneline --abbrev-commit
+  # Diffstat log
+  logst = log --stat
+  # Short format diffstat log
+  logsf = log --stat --format=oneline --abbrev-commit
 
-    # Fetch and checkout a GitHub Pull Request from a remote (defaults to `origin`)
-    # Use: `git gh-pr 123` or `git gh-pr 123 upstream`
-    gh-pr = !bash -c 'git fetch -fu ${2:-origin} refs/pull/$1/head:gh-pr/$1 && git checkout gh-pr/$1' -
+  # Fetch and checkout a GitHub Pull Request from a remote (defaults to `origin`)
+  # Use: `git gh-pr 123` or `git gh-pr 123 upstream`
+  gh-pr = !bash -c 'git fetch -fu ${2:-origin} refs/pull/$1/head:gh-pr/$1 && git checkout gh-pr/$1' -
 
-    # Find out who is currently active on the repository
-    # Displays committers in descending order of number of commits
-    who = shortlog --numbered --summary --email --no-merges --since="3 months"
+  # Find out who is currently active on the repository
+  # Displays committers in descending order of number of commits
+  who = shortlog --numbered --summary --email --no-merges --since="3 months"
 
 [color]
-    # color opts: normal, black, red, green, yellow, blue, magenta, cyan, or white
-    ui = auto
-    interactive = auto
+  # color opts: normal, black, red, green, yellow, blue, magenta, cyan, or white
+  ui = auto
+  interactive = auto
 
 [core]
-    # Use custom `.gitignore` and `.gitattributes`
-    excludesfile = ~/.gitignore
-    attributesfile = ~/.gitattributes
+  # Use custom `.gitignore` and `.gitattributes`
+  excludesfile = ~/.gitignore
+  attributesfile = ~/.gitattributes
 
 [credential]
-    helper = osxkeychain
+  helper = osxkeychain
 
 [diff]
-    tool = mvimdiff
+  tool = mvimdiff
 
 [difftool]
-    prompt = false
+  prompt = false
 
 [merge]
-    tool = diffmerge
+  tool = diffmerge
 
 [pretty]
-    # tut: http://gitimmersion.com/lab_10.html
-    # ref: http://linux.die.net/man/1/git-log
-    # Result: <short-sha> <commit-message> (<pointer-names>) -- <commit-author-name>; <relative-time>
-    nice = "%C(yellow)%h%C(reset) %C(white)%s%C(cyan)%d%C(reset) -- %an; %ar"
+  # tut: http://gitimmersion.com/lab_10.html
+  # ref: http://linux.die.net/man/1/git-log
+  # Result: <short-sha> <commit-message> (<pointer-names>) -- <commit-author-name>; <relative-time>
+  nice = "%C(yellow)%h%C(reset) %C(white)%s%C(cyan)%d%C(reset) -- %an; %ar"
 
 [push]
-    default = simple
+  default = simple
