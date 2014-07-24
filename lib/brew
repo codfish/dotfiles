@@ -46,6 +46,8 @@ run_brew() {
       'bash-completion'
       'php55'
       'composer'
+      'mysql'
+      'nginx'
       'ffmpeg'
       'graphicsmagick'
       'jpeg'
