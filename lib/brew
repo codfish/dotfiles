@@ -48,6 +48,7 @@ run_brew() {
       'composer'
       'mysql'
       'nginx'
+      'mongodb'
       'ffmpeg'
       'graphicsmagick'
       'jpeg'
