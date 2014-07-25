@@ -68,10 +68,11 @@ if ! type_exists 'git'; then
   brew install git
 fi
 
-# Check for RVM
-if ! type_exists 'rvm'; then
-  e_header "Installing RVM..."
-  \curl -sSL https://get.rvm.io | bash -s stable
+# Check for ndenv
+if ! type_exists 'ndenv'; then
+  e_header "Installing ndenv..."
+  git clone https://github.com/riywo/ndenv ~/.ndenv 1> /dev/null 2> /dev/null
+  git clone https://github.com/riywo/node-build.git ~/.ndenv/plugins/node-build 1> /dev/null 2> /dev/null
 fi
 
 # Initialize the git repository if it's missing
