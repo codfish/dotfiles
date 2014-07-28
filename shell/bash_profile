@@ -36,7 +36,14 @@ load_dotfiles() {
   done
 }
 
+# initialize rbenv, pyenv and ndenv
+init_env() {
+  if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+  if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+  if which ndenv > /dev/null; then eval "$(ndenv init -)"; fi
+  if pyenv commands | grep -x virtualenv > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
+}
+
 load_dotfiles
-unset load_dotfiles
-export PATH="$PATH:$HOME/.ndenv/bin"
-eval "$(ndenv init -)"
+init_env
+unset load_dotfiles init_env

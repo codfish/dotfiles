@@ -129,15 +129,15 @@ mirrorfiles() {
   # Create the necessary symbolic links between the `.dotfiles` and `HOME`
   # directory. The `bash_profile` sources other files directly from the
   # `.dotfiles` repository.
-  link "shell/bashrc"     ".bashrc"
+  link "shell/bashrc"       ".bashrc"
   link "shell/bash_profile" ".bash_profile"
-  link "shell/curlrc"     ".curlrc"
-  link "shell/inputrc"    ".inputrc"
+  link "shell/curlrc"       ".curlrc"
+  link "shell/inputrc"      ".inputrc"
   link "git/gitattributes"  ".gitattributes"
-  link "git/gitignore"    ".gitignore"
-  link "vim"        ".vim"
-  link "vim/gvimrc"     ".gvimrc"
-  link "vim/vimrc"      ".vimrc"
+  link "git/gitignore"      ".gitignore"
+  link "vim"                ".vim"
+  link "vim/gvimrc"         ".gvimrc"
+  link "vim/vimrc"          ".vimrc"
 
   e_success "Dotfiles update complete!"
 }
