@@ -62,6 +62,7 @@ run_brew() {
       'phantomjs'
       'tree'
       'wget'
+      'wp-cli'
     )
 
     for index in ${!desired_formulae[*]}
