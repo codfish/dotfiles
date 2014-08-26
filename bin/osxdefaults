@@ -280,8 +280,8 @@ defaults write com.apple.finder FXInfoPanesExpanded -dict \
 # Dock, dashboard & hot corners
 # ----------------------------------------------------------------------
 
-# position the Dock on the left
-defaults write com.apple.dock orientation left
+# position the Dock on the left (left, right, bottom)
+defaults write com.apple.dock orientation right
 
 # pin the dock in the middle
 defaults write com.apple.dock pinning -string middle
