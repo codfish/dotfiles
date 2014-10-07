@@ -10,6 +10,7 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ~="cd ~"
 alias -- -="cd -"
+alias home="cd ~"
 
 # List dir contents aliases
 # ref: http://ss64.com/osx/ls.html
