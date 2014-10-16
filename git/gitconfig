@@ -52,6 +52,12 @@
   # Displays committers in descending order of number of commits
   who = shortlog --numbered --summary --email --no-merges --since="3 months"
 
+  # get origin && update && libraries
+  update = !git submodule foreach git pull --rebase && git fetch --all && git rebase -p origin/master
+
+  # rebase and merge recent commits
+  fixup = !git add -A && git commit --amend -C head && echo '\n\n' && git changed
+
 [color]
   # color opts: normal, black, red, green, yellow, blue, magenta, cyan, or white
   ui = auto
