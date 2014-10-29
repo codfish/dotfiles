@@ -133,6 +133,7 @@ mirrorfiles() {
   link "shell/bash_profile" ".bash_profile"
   link "shell/curlrc"       ".curlrc"
   link "shell/inputrc"      ".inputrc"
+  link "shell/gemrc"        ".gemrc"
   link "git/gitattributes"  ".gitattributes"
   link "git/gitignore"      ".gitignore"
   link "vim"                ".vim"
