@@ -30,5 +30,8 @@ export PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 
 # set prompt colors
 export CLICOLOR=1
-export GREP_OPTIONS='--color=auto'
+export GREP_OPTIONS="--color=auto"
 export LSCOLORS=gxfxcxdxbxegedabagacad # Dark lscolor scheme
+
+# Link Homebrew casks in `/Applications` rather than `~/Applications`
+export HOMEBREW_CASK_OPTS="--appdir=/Applications"
