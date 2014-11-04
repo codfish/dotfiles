@@ -1,30 +1,57 @@
 #!/bin/bash
 
+# Test whether a Homebrew formula is already installed
+# $1 - formula name (may include options)
+formula_exists() {
+  if $(brew list $1 >/dev/null); then
+    printf "%s already installed.\n" "$1"
+    return 0
+  fi
+
+  e_warning "Missing formula: $1"
+  return 1
+}
+
 brew_tap() {
   if brew tap | grep $1 &> /dev/null
   then
-    echo "already tapped $1"
+    echo "already tapped - $1"
     false
   else
-    e_header "Tapping  $1"
+    e_header "Tapping $1"
     brew tap $1
+  fi
+}
+
+brew_cask() {
+  if brew cask list | grep $1 &> /dev/null
+  then
+    echo "cask already installed - $1"
+    false
+  else
+    e_header "Cask installing $1"
+    brew cask install $1
   fi
 }
 
 run_brew() {
   # Check for Homebrew
   if type_exists 'brew'; then
-    e_header "Updating Homebrew..."
     # Use the latest version of Homebrew
+    e_header "Updating Homebrew..."
     brew update
     [[ $? ]] && e_success "Done"
 
-    e_header "Updating any existing Homebrew formulae..."
     # Upgrade any already-installed formulae
+    e_header "Updating any existing Homebrew formulae..."
     brew upgrade
     [[ $? ]] && e_success "Done"
 
+    # Add necessary brew taps
+    e_header "Adding brew taps..."
     local -a desired_taps=(
+      'caskroom/cask'
+      'homebrew/completions'
       'homebrew/dupes'
       'homebrew/versions'
       'homebrew/homebrew-php'
@@ -35,15 +62,19 @@ run_brew() {
       brew_tap ${desired_taps[$index]}
     done
 
+    # update or install desired formulae
     e_header "Checking status of desired Homebrew formulae..."
     local list_formulae
     local -a missing_formulae
+
+    # ** array items can include options for package **
     local -a desired_formulae=(
       'coreutils' # GNU core utilities (those that come with OS X are outdated)
       'git'
       'ack'
       'bash'
       'bash-completion'
+      'brew-cask'
       'mysql'
       'nginx'
       'mongodb'
@@ -61,6 +92,7 @@ run_brew() {
       'optipng'
       'phantomjs'
       'tree'
+      'vagrant-completion'
       'wget'
       'wp-cli'
     )
@@ -83,6 +115,51 @@ run_brew() {
 
       [[ $? ]] && e_success "Done"
     fi
+
+    # update or install desired brew cask applications
+    e_header "Installing brew casks..."
+    local -a desired_casks=(
+      'alfred'
+      'appcleaner'
+      'calibre'
+      'ccleaner'
+      'crashplan'
+      'dropbox'
+      'evernote'
+      'firefox'
+      'google-chrome'
+      'google-drive'
+      'handbrake'
+      'hipchat'
+      'iterm2'
+      'mamp'
+      'music-manager'
+      'pgadmin3'
+      'picasa'
+      'rdio'
+      'robomongo'
+      'sequel-pro'
+      'sublime-text'
+      'todoist'
+      'transmit'
+      'utorrent'
+      'vagrant'
+      'vlc'
+      'virtualbox'
+    )
+
+    for index in ${!desired_casks[*]}
+    do
+      brew_cask ${desired_casks[$index]}
+    done
+
+    # modify Alfred's scope to include the Caskroom
+    brew cask alfred
+
+    # Cleanup brew cask
+    e_header "Cleaning brew casks..."
+    brew cleanup --outdated
+    [[ $? ]] && e_success "Done"
 
     # use latest rsync rather than out-dated OS X rsync
     # install separately from the main formulae list to fix gh-19

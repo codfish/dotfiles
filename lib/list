@@ -4,7 +4,7 @@ run_list() {
 
 cat <<EOT
 
-OS X dotfiles - Chris O'Donnell - http://codfi.sh/
+OS X dotfiles - Chris O'Donnell - http://codfish.io/ (forked from necolas)
 
 Additional software to install
 
@@ -22,16 +22,19 @@ Development:
 
 Other:
   Alfred
-  Airmail
   CrashPlan
+  Dash (Mac Store)
   Dropbox
   Evernote
   Google Drive
-  Growl
+  Google Music Manager
+  Growl (Mac Store)
+  Kindle
+  Picasa
   Pocket
   Rdio
-  TotalFinder
-  TotalSpaces
+  TotalFinder (Mac Store)
+  TotalSpaces (Mac Store)
   uTorrent
   VLC
 EOT
