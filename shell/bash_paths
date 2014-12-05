@@ -18,6 +18,7 @@ declare -a dirs_to_append=(
   "$(brew --prefix)/share/npm/bin" # Add npm-installed package bin
   "./node_modules/.bin" # add nvm node_modules bin
   "$HOME/.ndenv/bin"
+  "$HOME/.composer/vendor/bin"
 )
 
 # Prepend directories to PATH
