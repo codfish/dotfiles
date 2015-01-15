@@ -1,7 +1,6 @@
 #!/bin/bash
 
 run_npm() {
-
   # Check for npm
   if type_exists 'npm'; then
     e_header "Installing Node.js packages..."
@@ -19,5 +18,4 @@ run_npm() {
     printf "Aborting...\n"
     exit
   fi
-
 }

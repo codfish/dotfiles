@@ -5,18 +5,12 @@
 [submodule "vim/bundle/vim-colors-solarized"]
 	path = vim/bundle/vim-colors-solarized
 	url = git://github.com/altercation/vim-colors-solarized.git
-[submodule "vim/bundle/vim-less"]
-	path = vim/bundle/vim-less
-	url = git://github.com/groenewege/vim-less.git
 [submodule "vim/bundle/vim-markdown"]
 	path = vim/bundle/vim-markdown
 	url = git://github.com/tpope/vim-markdown.git
-[submodule "vim/bundle/vim-haml"]
-	path = vim/bundle/vim-haml
-	url = git://github.com/tpope/vim-haml.git
 [submodule "vim/bundle/mustache"]
 	path = vim/bundle/mustache
-	url = git://github.com/juvenn/mustache.vim.git
+	url = git://github.com/mustache/vim-mustache-handlebars.git
 [submodule "vim/bundle/html5"]
 	path = vim/bundle/html5
 	url = git://github.com/othree/html5.vim.git
@@ -25,10 +19,10 @@
 	url = git://github.com/tpope/vim-git.git
 [submodule "vim/bundle/syntastic"]
 	path = vim/bundle/syntastic
-	url = https://github.com/scrooloose/syntastic.git
+	url = git://github.com/scrooloose/syntastic.git
 [submodule "vim/bundle/ctrlp.vim"]
 	path = vim/bundle/ctrlp.vim
 	url = git://github.com/kien/ctrlp.vim.git
 [submodule "vim/bundle/vim-javascript"]
 	path = vim/bundle/vim-javascript
-	url = https://github.com/pangloss/vim-javascript.git
+	url = git://github.com/pangloss/vim-javascript.git

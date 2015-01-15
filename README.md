@@ -78,25 +78,20 @@ Homebrew formulae:
 
 Node packages:
 
-* [bower](http://bower.io/)
 * [gify](https://github.com/visionmedia/node-gify)
-* [grunt-cli](http://gruntjs.com/)
 * [jshint](http://www.jshint.com/)
-* [karma](http://karma-runner.github.io/)
 * [yo](http://yeoman.io/)
 
 Vim plugins:
 
 * [ctrlp.vim](https://github.com/kien/ctrlp.vim)
 * [html5.vim](https://github.com/othree/html5.vim)
-* [mustache.vim](https://github.com/juvenn/mustache.vim)
 * [syntastic](https://github.com/scrooloose/syntastic)
 * [vim-colors-solarized](https://github.com/altercation/vim-colors-solarized)
 * [vim-git](https://github.com/tpope/vim-git)
-* [vim-haml](https://github.com/tpope/vim-haml)
 * [vim-javascript](https://github.com/pangloss/vim-javascript)
-* [vim-less](https://github.com/groenewege/vim-less)
 * [vim-markdown](https://github.com/tpope/vim-markdown)
+* [vim-mustache-handlebars](https://github.com/mustache/vim-mustache-handlebars)
 * [vim-pathogen](https://github.com/tpope/vim-pathogen)
 
 ### Custom OS X defaults
@@ -110,7 +105,7 @@ $ osxdefaults
 
 ### Bootable backup-drive script
 
-These dotfiles include a script that uses `rync` to incrementally back up your
+These dotfiles include a script that uses `rsync` to incrementally back up your
 data to an external, bootable clone of your computer's internal drive. First,
 make sure that the value of `DST` in the `bin/backup` script matches the name
 of your backup-drive. Then run the following command:
