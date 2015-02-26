@@ -32,3 +32,6 @@ export LSCOLORS=gxfxcxdxbxegedabagacad # Dark lscolor scheme
 
 # Link Homebrew casks in `/Applications` rather than `~/Applications`
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+
+# pyenv directory
+export PYENV_ROOT=/usr/local/opt/pyenv
