@@ -89,6 +89,7 @@ run_brew() {
       'jpeg'
       'macvim --override-system-vim' # needs XCode to be installed first
       'rbenv'
+      'rsync'
       'ruby-build'
       'pyenv'
       'pyenv-virtualenv'
@@ -161,10 +162,6 @@ run_brew() {
     e_header "Cleaning brew casks..."
     brew cleanup --outdated
     [[ $? ]] && e_success "Done"
-
-    # use latest rsync rather than out-dated OS X rsync
-    # install separately from the main formulae list to fix gh-19
-    brew install https://raw.github.com/Homebrew/homebrew-dupes/master/rsync.rb
 
     # Remove outdated versions from the Cellar
     brew cleanup
