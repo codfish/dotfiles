@@ -68,13 +68,6 @@ if ! type_exists 'git'; then
   brew install git
 fi
 
-# Check for ndenv
-if ! type_exists 'ndenv'; then
-  e_header "Installing ndenv..."
-  git clone https://github.com/riywo/ndenv ~/.ndenv 1> /dev/null 2> /dev/null
-  git clone https://github.com/riywo/node-build.git ~/.ndenv/plugins/node-build 1> /dev/null 2> /dev/null
-fi
-
 # Initialize the git repository if it's missing
 if ! is_git_repo; then
   e_header "Initializing git repository..."
@@ -104,9 +97,13 @@ if [[ $no_packages ]]; then
   printf "Skipped package installations.\n"
 else
   printf "Updating packages...\n"
+
   # Install Homebrew formulae
   run_brew
-  # Install Node packages
+
+  # Install ndenv, node & packages
+  install_ndenv
+  install_node
   run_npm
 fi
 
