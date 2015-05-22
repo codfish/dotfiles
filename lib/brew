@@ -54,7 +54,7 @@ run_brew() {
       'homebrew/completions'
       'homebrew/dupes'
       'homebrew/versions'
-      'homebrew/homebrew-php'
+      'homebrew/php'
     )
 
     for index in ${!desired_taps[*]}
