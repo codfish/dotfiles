@@ -84,8 +84,6 @@ run_brew() {
       'php55-mcrypt'
       'php55-mongo'
       'composer'
-      'ffmpeg'
-      'graphicsmagick'
       'jpeg'
       'macvim --override-system-vim' # needs XCode to be installed first
       'rbenv'
@@ -93,7 +91,6 @@ run_brew() {
       'ruby-build'
       'pyenv'
       'pyenv-virtualenv'
-      'optipng'
       'phantomjs'
       'tree'
       'vagrant-completion'
