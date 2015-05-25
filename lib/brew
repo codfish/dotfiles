@@ -140,6 +140,8 @@ run_brew() {
       'sequel-pro'
       'sublime-text'
       'todoist'
+      'totalfinder'
+      'totalspaces'
       'transmit'
       'utorrent'
       'vagrant'
