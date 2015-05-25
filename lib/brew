@@ -39,12 +39,12 @@ run_brew() {
   if type_exists 'brew'; then
     # Use the latest version of Homebrew
     e_header "Updating Homebrew..."
-    brew update --all
+    brew update
     [[ $? ]] && e_success "Done"
 
     # Upgrade any already-installed formulae
     e_header "Updating any existing Homebrew formulae..."
-    brew upgrade
+    brew upgrade --all
     [[ $? ]] && e_success "Done"
 
     # Add necessary brew taps
