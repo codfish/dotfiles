@@ -151,7 +151,7 @@ run_brew() {
 
     for index in ${!desired_casks[*]}
     do
-      brew_cask ${desired_casks[$index]}
+      brew_cask ${desired_casks[$index]} --appdir=/Applications
     done
 
     # modify Alfred's scope to include the Caskroom
