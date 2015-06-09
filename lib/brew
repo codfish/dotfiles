@@ -51,6 +51,7 @@ run_brew() {
     e_header "Adding brew taps..."
     local -a desired_taps=(
       'caskroom/cask'
+      'caskroom/versions'
       'homebrew/completions'
       'homebrew/dupes'
       'homebrew/versions'
@@ -138,7 +139,7 @@ run_brew() {
       'rdio'
       'robomongo'
       'sequel-pro'
-      'sublime-text'
+      'sublime-text3'
       'todoist'
       'totalfinder'
       'totalspaces'
