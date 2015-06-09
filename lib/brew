@@ -142,7 +142,6 @@ run_brew() {
       'sublime-text3'
       'todoist'
       'totalfinder'
-      'totalspaces'
       'transmit'
       'utorrent'
       'vagrant'
