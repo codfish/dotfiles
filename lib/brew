@@ -154,9 +154,6 @@ run_brew() {
       brew_cask ${desired_casks[$index]} --appdir=/Applications
     done
 
-    # modify Alfred's scope to include the Caskroom
-    brew cask alfred
-
     # Cleanup brew cask
     e_header "Cleaning brew casks..."
     brew cleanup --outdated
