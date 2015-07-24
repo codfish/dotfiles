@@ -436,17 +436,13 @@ defaults write com.googlecode.iterm2 PromptOnQuit -bool false
 # change Screen Shot file save location to ~/Downloads/
 defaults write com.apple.screencapture location ~/Downloads/
 
-for app in "Dashboard" "Dock" "Finder" "SystemUIServer" "Terminal" "iTunes"; do
-  killall "$app" > /dev/null 2>&1
-done
-
-
 # Kill affected applications
 # ----------------------------------------------------------------------
 
 for app in "Activity Monitor" "Calendar" "Contacts" "cfprefsd" \
-  "Dock" "Finder" "Mail" "Safari" "SystemUIServer" \
-  "Terminal" "iTerm"; do
+  "Dashboard" "Dock" "Finder" "Mail" "Safari" "SystemUIServer" \
+  "Terminal" "iTerm" "iTunes"; do
   killall "${app}" > /dev/null 2>&1
 done
+
 echo "Done. Note that some of these changes require a logout/restart to take effect."
