@@ -152,3 +152,6 @@ endif
 " fix crontab error on mac 'temp file must be edited in place'
 " http://drawohara.com/post/6344279/crontab-temp-file-must-be-edited-in-place
 au FileType crontab set nobackup nowritebackup
+
+" Allow saving of files as sudo when I forgot to start vim using sudo.
+cmap w!! w !sudo tee > /dev/null %
