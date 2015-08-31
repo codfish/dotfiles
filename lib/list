@@ -4,35 +4,28 @@ run_list() {
 
 cat <<EOT
 
-OS X dotfiles - Chris O'Donnell - http://codfish.io/ (forked from necolas)
+OS X dotfiles - Chris O'Donnell - http://chrisodonnell.io/ (based off of necolas' dotfiles)
 
 Additional software to install
 
-Browsers:
-  Firefox
-  Google Chrome
-
-Development:
-  iTerm 2
-  MAMP
-  Robomongo
-  Sequal Pro
-  Tramsmit
-  VirtualBox
-
 Other:
   Alfred
+  Calibre
+  CCleaner
   CrashPlan
   Dash (Mac Store)
   Dropbox
   Evernote
   Google Drive
   Google Music Manager
+  Google Photos
   Growl (Mac Store)
+  Handbrake
   Kindle
   Picasa
   Pocket
   Rdio
+  Todoist
   TotalFinder (Mac Store)
   TotalSpaces (Mac Store)
   uTorrent (check out transmission instead?)
