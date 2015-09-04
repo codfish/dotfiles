@@ -36,7 +36,7 @@ run_npm() {
     e_header "Installing Node.js packages..."
 
     # List of npm packages
-    local packages="bower gulp grunt-cli jshint karma yo uglify-js"
+    local packages="bower gulp grunt-cli node-sass jshint karma yo uglify-js"
 
     # Install packages globally and quietly
     npm install $packages --global --quiet
