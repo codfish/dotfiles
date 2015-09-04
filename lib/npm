@@ -26,8 +26,8 @@ install_node() {
   local latest_node_version=$(ndenv install --list | sed 's/^ *//;s/ *$//' | grep "^v" | tail -n1)
   [ ! -d "$HOME/.ndenv/versions/${latest_node_version}" ] && ndenv install $latest_node_version
 
-  # set node to use latest version in current shell session
-  ndenv shell $latest_node_version
+  # set node to use latest version globally
+  ndenv global $latest_node_version
 }
 
 run_npm() {
