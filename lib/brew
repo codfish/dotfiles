@@ -84,7 +84,7 @@ run_brew() {
       'tree'
       'vagrant-completion'
       'wget'
-      'wp-cli'
+      'wp-cli --ignore-dependencies'
     )
 
     for index in ${!desired_formulae[*]}
