@@ -86,7 +86,6 @@ run_brew() {
       'php55-mongo'
       'composer'
       'jpeg'
-      'macvim --override-system-vim' # needs XCode to be installed first
       'rbenv'
       'rsync'
       'ruby-build'
