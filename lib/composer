@@ -1,0 +1,13 @@
+#!/bin/bash
+
+install_composer() {
+  e_header "Installing composer..."
+
+  # Check for composer
+  if type_exists 'composer'; then
+    printf "Composer already installed.\n"
+  else
+    curl -sS https://getcomposer.org/installer | php
+    mv composer.phar /usr/local/bin/composer
+  fi
+}

@@ -98,6 +98,9 @@ if [[ $no_packages ]]; then
 else
   printf "Updating packages...\n"
 
+  # Install composer
+  install_composer
+
   # Install Homebrew formulae
   run_brew
 

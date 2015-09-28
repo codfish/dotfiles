@@ -73,7 +73,6 @@ run_brew() {
       'php55-intl'
       'php55-mcrypt'
       'php55-mongo'
-      'composer'
       'jpeg'
       'rbenv'
       'rsync'
