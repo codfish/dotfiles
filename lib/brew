@@ -23,16 +23,6 @@ brew_tap() {
   fi
 }
 
-brew_cask() {
-  if brew cask list | grep $1 &> /dev/null; then
-    echo "cask already installed - $1"
-    false
-  else
-    e_header "Cask installing $1"
-    brew cask install $1
-  fi
-}
-
 run_brew() {
   # Check for Homebrew
   if type_exists 'brew'; then
@@ -114,38 +104,11 @@ run_brew() {
       done
     fi
 
-    # update or install desired brew cask applications
-    e_header "Installing brew casks..."
-    local -a desired_casks=(
-      'alfred'
-      'appcleaner'
-      'dropbox'
-      'evernote'
-      'firefox'
-      'google-chrome'
-      'google-drive'
-      'hipchat'
-      'iterm2'
-      'robomongo'
-      'sequel-pro'
-      'sublime-text3'
-      'transmit'
-      'vagrant'
-      'virtualbox'
-    )
-
-    for index in ${!desired_casks[*]}
-    do
-      brew_cask ${desired_casks[$index]} --appdir=/Applications
-    done
-
-    # Cleanup brew cask
-    e_header "Cleaning brew casks..."
+    # Cleanup brew
+    e_header "Cleaning brew..."
     brew cleanup --outdated
-    [[ $? ]] && e_success "Done"
-
-    # Remove outdated versions from the Cellar
     brew cleanup
+    [[ $? ]] && e_success "Done"
   else
     printf "\n"
     e_error "Error: Homebrew not found."
