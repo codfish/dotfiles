@@ -24,8 +24,7 @@ brew_tap() {
 }
 
 brew_cask() {
-  if brew cask list | grep $1 &> /dev/null
-  then
+  if brew cask list | grep $1 &> /dev/null; then
     echo "cask already installed - $1"
     false
   else
@@ -107,14 +106,12 @@ run_brew() {
     done
 
     if [[ "$missing_formulae" ]]; then
-      # Convert the array of missing formula into a list of space-separate strings
-      list_formulae=$( printf "%s " "${missing_formulae[@]}" )
-
       e_header "Installing missing Homebrew formulae..."
-      # Install all missing formulae
-      brew install $list_formulae
 
-      [[ $? ]] && e_success "Done"
+      for index in ${!desired_formulae[*]}
+      do
+        brew install ${desired_formulae[$index]}
+      done
     fi
 
     # update or install desired brew cask applications
