@@ -91,6 +91,7 @@ Vim plugins:
 * [vim-git](https://github.com/tpope/vim-git)
 * [vim-javascript](https://github.com/pangloss/vim-javascript)
 * [vim-markdown](https://github.com/tpope/vim-markdown)
+* [vim-mustache-handlebars](https://github.com/mustache/vim-mustache-handlebars)
 * [vim-pathogen](https://github.com/tpope/vim-pathogen)
 
 ### Custom OS X defaults
@@ -101,8 +102,6 @@ also be applied independently by running the following command:
 ```bash
 $ osxdefaults
 ```
-
-**Note:** There's a setting change in this script that changes the Screen Shot file save location (http://goo.gl/B2PDo) to ~/Downloads/. This is my personal preference because I don't like to clutter my Desktop.
 
 ### Bootable backup-drive script
 

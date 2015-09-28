@@ -433,8 +433,6 @@ defaults write com.apple.terminal StringEncodings -array 4
 # Don’t display the annoying prompt when quitting iTerm
 defaults write com.googlecode.iterm2 PromptOnQuit -bool false
 
-# change Screen Shot file save location to ~/Downloads/
-defaults write com.apple.screencapture location ~/Downloads/
 
 # Kill affected applications
 # ----------------------------------------------------------------------
