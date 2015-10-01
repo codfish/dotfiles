@@ -74,6 +74,7 @@ run_brew() {
       'php55-mcrypt'
       'php55-mongo'
       'jpeg'
+      'jq'
       'rbenv'
       'rsync'
       'ruby-build'
