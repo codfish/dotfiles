@@ -36,7 +36,7 @@ load_dotfiles() {
   done
 }
 
-# initialize rbenv, pyenv and ndenv
+# initialize environment
 init_env() {
   if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
   if which ndenv > /dev/null; then eval "$(ndenv init -)"; fi

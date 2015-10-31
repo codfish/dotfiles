@@ -3,3 +3,6 @@
 # bashrc
 
 [ -n "$PS1" ] && source ~/.bash_profile
+
+# bootstrap travis CI, if it's found
+[ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh
