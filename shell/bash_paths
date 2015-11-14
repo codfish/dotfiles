@@ -3,11 +3,13 @@
 # bash_paths
 
 # Directories to be prepended to PATH
-brew_php_version=$(brew list | grep -e ^php[0-9][0-9] | grep -v - | head -n 1)
 declare -a dirs_to_prepend=(
-  "/usr/local/bin" # Ensure that this bin always takes precedence over `/usr/bin`
-  "/usr/local/sbin" # Mountain Lion comes with php-fpm pre-installed, to ensure you are using the brew version you need to make sure /usr/local/sbin is before /usr/sbin
-  "$(brew --prefix homebrew/php/${brew_php_version})/bin"
+  # Ensure that this bin always takes precedence over `/usr/bin`
+  "/usr/local/bin"
+
+  # Mountain Lion comes with php-fpm pre-installed, to ensure you are using the
+  #   brew version you need to make sure /usr/local/sbin is before /usr/sbin
+  "/usr/local/sbin"
 )
 
 # Directories to be appended to PATH
