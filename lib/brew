@@ -78,8 +78,6 @@ run_brew() {
       'rbenv'
       'rsync'
       'ruby-build'
-      'pyenv'
-      'pyenv-virtualenv'
       'phantomjs'
       'tree'
       'vagrant-completion'

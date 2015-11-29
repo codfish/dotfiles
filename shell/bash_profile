@@ -40,13 +40,6 @@ load_dotfiles() {
 init_env() {
   if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
   if which ndenv > /dev/null; then eval "$(ndenv init -)"; fi
-  if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
-  if which pyenv-virtualenv-init > /dev/null; then
-    eval "$(pyenv virtualenv-init -)"
-  fi
-  if which pyenv-virtualenv-auto > /dev/null; then
-    eval "$(pyenv-virtualenv-auto init)"
-  fi
 }
 
 load_dotfiles
