@@ -8,25 +8,24 @@ OS X dotfiles - Chris O'Donnell - http://codfish.io/
 
 Additional software to install
 
-  Alfred
-  AppCleaner
-  CCleaner
-  CrashPlan
-  Dropbox
-  Evernote
-  Firefox
-  Google Chrome
-  Google Drive
-  Google Photos
-  iTerm2
-  Kindle
-  Pocket
-  Sequel Pro
-  Solarized Dark
-  Sublime Text
-  Todoist
-  Virtualbox
-  VLC
+  Alfred - https://www.alfredapp.com/
+  AppCleaner - https://freemacsoft.net/appcleaner/
+  CrashPlan - http://www.code42.com/crashplan/download/
+  Dropbox - https://www.dropbox.com/downloading?os=mac
+  Evernote - https://evernote.com/download/
+  Firefox - https://www.mozilla.org/en-US/firefox/new/
+  Google Chrome - https://www.google.com/chrome/browser/desktop/index.html
+  Google Drive - https://www.google.com/drive/download/
+  Google Photos - https://photos.google.com/apps
+  iTerm2 - https://www.iterm2.com/downloads.html
+  Kindle - http://www.amazon.com/gp/kindle/mac/download
+  Pocket - https://getpocket.com/mac/?a=mac
+  Sequel Pro - http://www.sequelpro.com/download
+  Solarized Dark - http://ethanschoonover.com/solarized
+  Sublime Text - https://www.sublimetext.com/3
+  Todoist - https://todoist.com/mac
+  Virtualbox - https://www.virtualbox.org/wiki/Downloads
+  VLC - http://www.videolan.org/vlc/download-macosx.html
 EOT
 
 }
