@@ -8,35 +8,22 @@ OS X dotfiles - Chris O'Donnell - http://codfish.io/
 
 Additional software to install
 
-Other:
   Alfred
   AppCleaner
-  Calibre
   CCleaner
   CrashPlan
-  Dash (Mac Store)
   Dropbox
   Evernote
   Firefox
   Google Chrome
   Google Drive
-  Google Music Manager
   Google Photos
-  Growl (Mac Store)
-  Handbrake
-  Iterm2
+  iTerm2
   Kindle
-  Picasa
   Pocket
-  Rdio
-  Robomongo
   Sequel Pro
-  Sublime Text 3
+  Sublime Text
   Todoist
-  TotalFinder (Mac Store)
-  Transmit
-  uTorrent (check out transmission instead?)
-  Vagrant
   Virtualbox
   VLC
 EOT
