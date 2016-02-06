@@ -39,8 +39,6 @@ run_brew() {
     # Add necessary brew taps
     e_header "Adding brew taps..."
     local -a desired_taps=(
-      'caskroom/cask'
-      'caskroom/versions'
       'homebrew/completions'
       'homebrew/dupes'
       'homebrew/versions'
@@ -64,7 +62,6 @@ run_brew() {
       'ack'
       'bash'
       'bash-completion'
-      'caskroom/cask/brew-cask'
       'mysql'
       'nginx'
       'mongodb'
