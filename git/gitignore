@@ -19,3 +19,5 @@ sftp-config.json
 *.sass-cache
 *.sw?
 *.vi
+*.sublime-project
+*.sublime-workspace
