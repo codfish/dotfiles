@@ -5,7 +5,8 @@ install_composer() {
 
   # Check for composer
   if type_exists 'composer'; then
-    printf "Composer already installed.\n"
+    printf "Composer already installed. Upgrading to latest version...\n"
+    composer self-update
   else
     curl -sS https://getcomposer.org/installer | php
     mv composer.phar /usr/local/bin/composer
