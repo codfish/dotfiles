@@ -1,33 +1,17 @@
 #!/bin/bash
 
-install_ndenv() {
-  if ! type_exists 'ndenv'; then
-    e_header "Installing ndenv..."
-    git clone https://github.com/riywo/ndenv ~/.ndenv 1> /dev/null 2> /dev/null
-    git clone https://github.com/riywo/node-build.git ~/.ndenv/plugins/node-build 1> /dev/null 2> /dev/null
-  fi
+update_npm() {
+  # Check for npm
+  if type_exists 'npm'; then
+    e_header "Updating npm to the latest version..."
 
-  # temporarily add ndenv to PATH to make it easier to install node
-  export PATH="${PATH}:${HOME}/.ndenv/bin"
-
-  # initialize ndenv in current session to expose node & npm to PATH as well
-  eval "$(ndenv init -)"
-}
-
-install_node() {
-  if ! type_exists 'ndenv'; then
+    npm install npm@latest -g
+  else
     printf "\n"
-    e_error "Error: use ndenv to install node. ndenv is not installed"
+    e_error "Error: npm not found."
     printf "Aborting...\n"
     exit
   fi
-
-  # install latest version
-  local latest_node_version=$(ndenv install --list | sed 's/^ *//;s/ *$//' | grep "^v" | tail -n1)
-  [ ! -d "$HOME/.ndenv/versions/${latest_node_version}" ] && ndenv install $latest_node_version
-
-  # set node to use latest version globally
-  ndenv global $latest_node_version
 }
 
 run_npm() {

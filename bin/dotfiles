@@ -106,9 +106,8 @@ else
   # Install Homebrew formulae
   run_brew
 
-  # Install ndenv, node & packages
-  install_ndenv
-  install_node
+  # Update npm & install global node packages
+  update_npm
   run_npm
 fi
 

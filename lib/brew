@@ -63,6 +63,7 @@ run_brew() {
       'bash'
       'bash-completion'
       'mysql'
+      'node'
       'nginx'
       'mongodb'
       'php56'

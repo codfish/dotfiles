@@ -18,7 +18,6 @@ declare -a dirs_to_append=(
   "$HOME/bin"
   "$HOME/.dotfiles/bin"
   "$(brew --prefix coreutils)/libexec/gnubin" # Add brew-installed GNU core utilities bin
-  "$HOME/.ndenv/bin"
   "$HOME/.composer/vendor/bin"
 )
 
