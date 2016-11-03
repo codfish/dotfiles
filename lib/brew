@@ -33,7 +33,7 @@ run_brew() {
 
     # Upgrade any already-installed formulae
     e_header "Updating any existing Homebrew formulae..."
-    brew upgrade --all
+    brew upgrade
     [[ $? ]] && e_success "Done"
 
     # Add necessary brew taps
