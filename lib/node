@@ -1,5 +1,29 @@
 #!/bin/bash
 
+init_nvm() {
+  if $(brew list nvm >/dev/null); then
+    export NVM_DIR="$HOME/.nvm"
+    source "$(brew --prefix nvm)/nvm.sh"
+  fi
+}
+
+install_latest_node() {
+  # Check for nvm
+  if $(brew list nvm >/dev/null); then
+    e_header "Installing latest Node.js version..."
+
+    # Use nvm to install latest node version
+    nvm install node
+
+    [[ $? ]] && e_success "Done"
+  else
+    printf "\n"
+    e_error "Error: nvm not found."
+    printf "Aborting...\n"
+    exit
+  fi
+}
+
 update_npm() {
   # Check for npm
   if type_exists 'npm'; then

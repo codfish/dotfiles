@@ -38,7 +38,13 @@ load_dotfiles() {
 
 # initialize environment
 init_env() {
+  # init rbenv installed via brew
   if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+  # init nvm installed via brew
+  export NVM_DIR="$HOME/.nvm"
+  source "$(brew --prefix nvm)/nvm.sh"
+  [[ -r "$(brew --prefix nvm)/etc/bash_completion.d/nvm" ]] && . "$(brew --prefix nvm)/etc/bash_completion.d/nvm"
 }
 
 load_dotfiles

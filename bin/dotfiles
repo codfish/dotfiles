@@ -22,7 +22,7 @@ source ./lib/help
 source ./lib/list
 source ./lib/utils
 source ./lib/brew
-source ./lib/npm
+source ./lib/node
 source ./lib/composer
 
 # Help text
@@ -106,8 +106,16 @@ else
   # Install Homebrew formulae
   run_brew
 
-  # Update npm & install global node packages
+  # initialize nvm
+  init_nvm
+
+  # Install latest node version
+  install_latest_node
+
+  # Update npm
   update_npm
+
+  # Install common npm packages
   run_npm
 fi
 
