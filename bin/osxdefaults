@@ -408,6 +408,9 @@ hash tmutil &> /dev/null && tmutil disablelocal
 # defaults write com.apple.frameworks.diskimages skip-verify-locked -bool true
 # defaults write com.apple.frameworks.diskimages skip-verify-remote -bool true
 
+# Enable FileVault
+fdesetup enable 2> /dev/null
+
 
 # iTunes
 # ----------------------------------------------------------------------
