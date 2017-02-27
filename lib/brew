@@ -57,25 +57,25 @@ run_brew() {
 
     # ** array items can include options for package **
     local -a desired_formulae=(
-      'coreutils' # GNU core utilities (those that come with OS X are outdated)
-      'git'
       'ack'
       'bash'
       'bash-completion'
+      'coreutils' # GNU core utilities (those that come with OS X are outdated)
+      'git'
+      'jq'
+      'mongodb'
       'mysql'
       'nginx'
       'nvm'
-      'mongodb'
       'php70'
       'php70-apcu'
       'php70-mcrypt'
       'php70-xdebug'
-      'jq'
       'rbenv'
       'rsync'
       'ruby-build'
+      'tmux'
       'tree'
-      'vagrant-completion'
       'wget'
       'wp-cli --ignore-dependencies'
     )
