@@ -41,7 +41,6 @@ run_brew() {
     local -a desired_taps=(
       'homebrew/completions'
       'homebrew/dupes'
-      'homebrew/versions'
       'homebrew/php'
     )
 
