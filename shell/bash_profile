@@ -9,6 +9,8 @@ elif infocmp xterm-256color >/dev/null 2>&1; then
   export TERM=xterm-256color
 fi
 
+export BREW_PREFIX=$(brew --prefix)
+
 # Up-front dotfiles configuration
 # Not part of `load_dotfiles` because it must be sourced before anything else
 # to be sure that commands like `brew` (when installed in a custom location)
@@ -23,7 +25,7 @@ load_dotfiles() {
     $HOME/.dotfiles/shell/functions/* # Functions
     $HOME/.dotfiles/shell/bash_prompt # Custom bash prompt
     $HOME/.dotfiles/shell/bash_paths # Path modifications
-    $(brew --prefix)/etc/bash_completion # Bash completion (installed via Homebrew)
+    $BREW_PREFIX/etc/bash_completion # Bash completion (installed via Homebrew)
     $HOME/.bash_profile.local # Local and private settings not under version control (e.g. git credentials)
   )
 
@@ -41,10 +43,11 @@ init_env() {
   # init rbenv installed via brew
   if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
-  # init nvm installed via brew
+  # load nvm which is installed via brew
   export NVM_DIR="$HOME/.nvm"
-  source "$(brew --prefix nvm)/nvm.sh"
-  [[ -r "$(brew --prefix nvm)/etc/bash_completion.d/nvm" ]] && . "$(brew --prefix nvm)/etc/bash_completion.d/nvm"
+  # Use --no-use flag to load nvm quicker
+  # https://github.com/creationix/nvm/issues/539#issuecomment-245791291
+  [ -s "$BREW_PREFIX/opt/nvm/nvm.sh" ] && . "$BREW_PREFIX/opt/nvm/nvm.sh" --no-use
 }
 
 load_dotfiles

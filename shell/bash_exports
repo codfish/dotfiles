@@ -19,7 +19,7 @@ export MANPAGER="less -X"
 
 # Export PhantomJS bin location (be explicit in case Homebrew is not installed
 # in the default location)
-export PHANTOMJS_BIN="$(brew --prefix)/bin/phantomjs"
+export PHANTOMJS_BIN="$BREW_PREFIX/bin/phantomjs"
 
 # Make new shells get the history lines from all previous
 # shells instead of the default "last window closed" history

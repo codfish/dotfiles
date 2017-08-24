@@ -74,3 +74,8 @@ alias localprofile='vim ~/.bash_profile.local; source ~/.bash_profile'
 
 # typos
 alias gits='git s'
+
+# node + nvm hack for speed
+# https://github.com/creationix/nvm/issues/539#issuecomment-245791291
+alias node='unalias node ; unalias npm ; nvm use default ; node $@'
+alias npm='unalias node ; unalias npm ; nvm use default ; npm $@'
