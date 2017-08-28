@@ -79,3 +79,6 @@ alias gits='git s'
 # https://github.com/creationix/nvm/issues/539#issuecomment-245791291
 alias node='unalias node ; unalias npm ; nvm use default ; node $@'
 alias npm='unalias node ; unalias npm ; nvm use default ; npm $@'
+
+# git remove merged branches
+alias gremovemerged='git branch --merged | grep -v "\*" | grep -v master | grep -v dev | xargs -n 1 git branch -d'
