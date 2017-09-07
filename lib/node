@@ -44,7 +44,7 @@ run_npm() {
     e_header "Installing Node.js packages..."
 
     # List of npm packages
-    local packages="gulp eslint yo create-react-app vue-cli yarn"
+    local packages="gulp eslint yo create-react-app vue-cli yarn now"
 
     # Install packages globally and quietly
     npm install $packages --global --quiet
