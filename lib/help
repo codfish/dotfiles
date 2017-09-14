@@ -3,7 +3,7 @@
 run_help() {
 
 cat <<EOT
-OS X dotfiles - Chris O'Donnell - http://codfish.io/ (forked from necolas)
+macOS dotfiles - Chris O'Donnell - http://codfish.io/ (forked from necolas)
 
 Usage: $(basename "$0") [options]
 

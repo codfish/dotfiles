@@ -59,7 +59,7 @@ run_brew() {
       'ack'
       'bash'
       'bash-completion'
-      'coreutils' # GNU core utilities (those that come with OS X are outdated)
+      'coreutils' # GNU core utilities (those that come with macOS are outdated)
       'git'
       'jq'
       'mongodb'

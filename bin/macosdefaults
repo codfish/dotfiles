@@ -1,12 +1,12 @@
 #!/bin/bash
 
-# Set custom OS X defaults
+# Set custom macOS defaults
 # See: github.com/mathiasbynens/dotfiles
 
 # Ask for the administrator password upfront
 sudo -v
 
-# Keep-alive: update existing `sudo` time stamp until `.osx` has finished
+# Keep-alive: update existing `sudo` time stamp until `.macos` has finished
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 # General UI/UX
@@ -150,9 +150,6 @@ systemsetup -settimezone "America/New_York" > /dev/null
 # Require password immediately after sleep or screen saver begins
 defaults write com.apple.screensaver askForPassword -int 1
 defaults write com.apple.screensaver askForPasswordDelay -int 0
-
-# set screensaver idle time to 10 min
-defaults -currentHost write com.apple.screensaver idleTime 10
 
 # Save screenshots to the desktop
 defaults write com.apple.screencapture location -string "${HOME}/Desktop"

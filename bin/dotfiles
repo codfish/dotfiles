@@ -43,7 +43,7 @@ do
   case $opt in
     --no-packages) no_packages=true ;;
     --no-sync) no_sync=true ;;
-    --no-osx) no_osx=true ;;
+    --no-macos) no_macos=true ;;
     -*|--*) e_warning "Warning: invalid option $opt" ;;
   esac
 done
@@ -163,16 +163,16 @@ else
   exit 1
 fi
 
-# Ask before potentially overwriting OS X defaults
-if [[ $no_osx ]]; then
-  printf "Skipped OS X settings update.\n"
+# Ask before potentially overwriting macOS defaults
+if [[ $no_macos ]]; then
+  printf "Skipped macOS settings update.\n"
 else
-  seek_confirmation "Warning: This step may modify your OS X system defaults."
+  seek_confirmation "Warning: This step may modify your macOS system defaults."
 
   if is_confirmed; then
-    bash ./bin/osxdefaults
-    e_success "OS X settings updated! You may need to restart."
+    bash ./bin/macosdefaults
+    e_success "macOS settings updated! You may need to restart."
   else
-    printf "Skipped OS X settings update.\n"
+    printf "Skipped macOS settings update.\n"
   fi
 fi

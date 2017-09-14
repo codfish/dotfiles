@@ -4,7 +4,7 @@ run_list() {
 
 cat <<EOT
 
-OS X dotfiles - Chris O'Donnell - http://codfish.io/
+macOS dotfiles - Chris O'Donnell - http://codfish.io/
 
 Additional software to install
 

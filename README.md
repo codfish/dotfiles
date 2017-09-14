@@ -1,6 +1,6 @@
 # Dotfiles
 
-My OS X dotfiles. Based off of [Nicolas Gallagher's dotfiles](https://github.com/necolas/dotfiles).
+My macOS dotfiles. Based on [Nicolas Gallagher's dotfiles](https://github.com/necolas/dotfiles). (FYI I've added quite a bit though, but the foundation is still there).
 
 
 ## How to install
@@ -72,7 +72,7 @@ Homebrew formulae:
 * [node](http://nodejs.org/)
 * [optipng](http://optipng.sourceforge.net/)
 * [phantomjs](http://phantomjs.org/)
-* [rsync](https://rsync.samba.org/) (latest version, rather than the out-dated OS X installation)
+* [rsync](https://rsync.samba.org/) (latest version, rather than the out-dated macOS installation)
 * [tree](http://mama.indstate.edu/users/ice/tree/)
 * [wget](http://www.gnu.org/software/wget/)
 
@@ -94,13 +94,13 @@ Vim plugins:
 * [vim-mustache-handlebars](https://github.com/mustache/vim-mustache-handlebars)
 * [vim-pathogen](https://github.com/tpope/vim-pathogen)
 
-### Custom OS X defaults
+### Custom macOS defaults
 
-Custom OS X settings can be applied during the `dotfiles` process. They can
+Custom macOS settings can be applied during the `dotfiles` process. They can
 also be applied independently by running the following command:
 
 ```bash
-$ osxdefaults
+$ macosdefaults
 ```
 
 ### Bootable backup-drive script
