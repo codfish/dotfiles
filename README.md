@@ -61,25 +61,32 @@ Options:
 Homebrew formulae:
 
 * GNU core utilities
-* [git](http://git-scm.com/)
 * [ack](http://betterthangrep.com/)
 * bash (latest version)
 * [bash-completion](http://bash-completion.alioth.debian.org/)
-* [ffmpeg](http://ffmpeg.org/)
-* [graphicsmagick](http://www.graphicsmagick.org/)
-* [jpeg](https://en.wikipedia.org/wiki/Libjpeg)
+* [git](http://git-scm.com/)
+* [jq](https://stedolan.github.io/jq/)
 * [macvim](http://code.google.com/p/macvim/)
-* [node](http://nodejs.org/)
-* [optipng](http://optipng.sourceforge.net/)
-* [phantomjs](http://phantomjs.org/)
+* MongoDB
+* MySQL
+* [nginx](https://www.nginx.com/)
+* [nvm](https://github.com/creationix/nvm)
+* [php70](http://phantomjs.org/) (and some php extentions)
+* [rbenv](https://github.com/rbenv/rbenv) (and [ruby-build](https://github.com/rbenv/ruby-build))
 * [rsync](https://rsync.samba.org/) (latest version, rather than the out-dated macOS installation)
+* [tmux](https://github.com/tmux/tmux/wiki)
 * [tree](http://mama.indstate.edu/users/ice/tree/)
 * [wget](http://www.gnu.org/software/wget/)
+* [wp-cli](http://wp-cli.org/)
 
 Node packages:
 
-* [gify](https://github.com/visionmedia/node-gify)
-* [jshint](http://www.jshint.com/)
+* [create-react-app](https://facebook.github.io/react/blog/2016/07/22/create-apps-with-no-configuration.html)
+* [eslint](https://eslint.org/)
+* [gulp](https://gulpjs.com/)
+* [now](https://zeit.co/now)
+* [vue-cli](https://vuejs.org/v2/guide/installation.html#CLI)
+* [yarn](https://yarnpkg.com)
 * [yo](http://yeoman.io/)
 
 Vim plugins:
@@ -91,7 +98,6 @@ Vim plugins:
 * [vim-git](https://github.com/tpope/vim-git)
 * [vim-javascript](https://github.com/pangloss/vim-javascript)
 * [vim-markdown](https://github.com/tpope/vim-markdown)
-* [vim-mustache-handlebars](https://github.com/mustache/vim-mustache-handlebars)
 * [vim-pathogen](https://github.com/tpope/vim-pathogen)
 
 ### Custom macOS defaults
@@ -102,21 +108,6 @@ also be applied independently by running the following command:
 ```bash
 $ macosdefaults
 ```
-
-### Bootable backup-drive script
-
-These dotfiles include a script that uses `rsync` to incrementally back up your
-data to an external, bootable clone of your computer's internal drive. First,
-make sure that the value of `DST` in the `bin/backup` script matches the name
-of your backup-drive. Then run the following command:
-
-```bash
-$ backup
-```
-
-For more information on how to setup your backup-drive, please read the
-preparatory steps in this post on creating a [Mac OS X bootable backup
-drive](http://nicolasgallagher.com/mac-osx-bootable-backup-drive-with-rsync/).
 
 ### Custom bash prompt
 
@@ -149,7 +140,7 @@ following way:
     </tr>
 </table>
 
-Further details are in the `bash_prompt` file.
+Further details are in the `shell/bash_prompt` file.
 
 Screenshot:
 
@@ -176,8 +167,8 @@ export PATH
 # Git credentials
 # Not under version control to prevent people from
 # accidentally committing with your details
-GIT_AUTHOR_NAME="Nicolas Gallagher"
-GIT_AUTHOR_EMAIL="nicolas@example.com"
+GIT_AUTHOR_NAME="Chris O'Donnell"
+GIT_AUTHOR_EMAIL="chris@example.com"
 GIT_COMMITTER_NAME="$GIT_AUTHOR_NAME"
 GIT_COMMITTER_EMAIL="$GIT_AUTHOR_EMAIL"
 # Set the credentials (modifies ~/.gitconfig)
@@ -185,7 +176,7 @@ git config --global user.name "$GIT_AUTHOR_NAME"
 git config --global user.email "$GIT_AUTHOR_EMAIL"
 
 # Aliases
-alias code="cd ~/Code"
+alias code="cd ~/Sites"
 ```
 
 N.B. Because the `git/gitconfig` file is copied to `~/.gitconfig`, any private
