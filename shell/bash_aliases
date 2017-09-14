@@ -77,9 +77,9 @@ alias gits='git s'
 
 # node + nvm hack for speed
 # https://github.com/creationix/nvm/issues/539#issuecomment-245791291
-alias node='unalias node; unalias npm; unalias yarn; nvm use default; node $@'
-alias npm='unalias node; unalias npm; unalias yarn; nvm use default; npm $@'
-alias yarn='unalias node; unalias npm; unalias yarn; nvm use default; yarn $@'
+alias node='unalias node npm yarn; nvm use default; node $@'
+alias npm='unalias node npm yarn; nvm use default; npm $@'
+alias yarn='unalias node npm yarn; nvm use default; yarn $@'
 
 # git remove merged branches
 alias gremovemerged='git branch --merged | grep -v "\*" | grep -v master | grep -v dev | xargs -n 1 git branch -d'
