@@ -317,6 +317,9 @@ defaults write com.apple.dock expose-animation-duration -float 0.1
 # (i.e. use the old Exposé behavior instead)
 defaults write com.apple.dock expose-group-by-app -bool false
 
+# Disable Dashboard
+defaults write com.apple.dashboard mcx-disabled -bool true
+
 # Don’t show Dashboard as a Space
 defaults write com.apple.dock dashboard-in-overlay -bool true
 
@@ -341,8 +344,8 @@ defaults write com.apple.dock wvous-tl-modifier -int 0
 # Top right screen corner → Mission Control
 defaults write com.apple.dock wvous-tr-corner -int 2
 defaults write com.apple.dock wvous-tr-modifier -int 0
-# Bottom left screen corner → Dashboard
-defaults write com.apple.dock wvous-bl-corner -int 7
+# Bottom left screen corner → Notification Center
+defaults write com.apple.dock wvous-bl-corner -int 12
 defaults write com.apple.dock wvous-bl-modifier -int 0
 # Top right screen corner → Desktop
 defaults write com.apple.dock wvous-br-corner -int 4
@@ -438,7 +441,7 @@ defaults write com.googlecode.iterm2 PromptOnQuit -bool false
 # ----------------------------------------------------------------------
 
 for app in "Activity Monitor" "Calendar" "Contacts" "cfprefsd" \
-  "Dashboard" "Dock" "Finder" "Mail" "Safari" "SystemUIServer" \
+  "Dashboard" "NotificationCenter" "Dock" "Finder" "Mail" "Safari" "SystemUIServer" \
   "Terminal" "iTerm" "iTunes"; do
   killall "${app}" > /dev/null 2>&1
 done
