@@ -65,6 +65,7 @@ Homebrew formulae:
 * bash (latest version)
 * [bash-completion](http://bash-completion.alioth.debian.org/)
 * [git](http://git-scm.com/)
+* [heroku](https://devcenter.heroku.com/articles/heroku-cli)
 * [jq](https://stedolan.github.io/jq/)
 * [macvim](http://code.google.com/p/macvim/)
 * MongoDB
