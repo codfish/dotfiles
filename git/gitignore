@@ -4,6 +4,9 @@
 Thumbs.db
 sftp-config.json
 .idea
+.vscode
+*.sublime-project
+*.sublime-workspace
 
 # Files that might appear on external disks
 .Spotlight-V100
@@ -20,5 +23,3 @@ sftp-config.json
 *.sass-cache
 *.sw?
 *.vi
-*.sublime-project
-*.sublime-workspace
