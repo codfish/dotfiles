@@ -7,13 +7,13 @@ init_nvm() {
   fi
 }
 
-install_latest_node() {
+install_latest_lts_node() {
   # Check for nvm
   if $(brew list nvm >/dev/null); then
     e_header "Installing latest Node.js version..."
 
-    # Use nvm to install latest node version
-    nvm install node
+    # Use nvm to install latest lts node version
+    nvm install --lts
 
     [[ $? ]] && e_success "Done"
   else

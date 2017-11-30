@@ -110,7 +110,7 @@ else
   init_nvm
 
   # Install latest node version
-  install_latest_node
+  install_latest_lts_node
 
   # Update npm
   update_npm
