@@ -47,6 +47,9 @@ defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
 # Set sidebar icon size to small
 defaults write NSGlobalDomain NSTableViewDefaultSizeMode -int 1
 
+# Click in the scroll bar: Jump to the spot that's clicked
+defaults write NSGlobalDomain AppleScrollerPagingBehavior -int 1
+
 # Save to disk (not to iCloud) by default
 defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 
