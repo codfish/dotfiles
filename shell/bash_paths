@@ -10,6 +10,9 @@ declare -a dirs_to_prepend=(
   # Mountain Lion comes with php-fpm pre-installed, to ensure you are using the
   #   brew version you need to make sure /usr/local/sbin is before /usr/sbin
   "/usr/local/sbin"
+
+  # Use brew python instead of shipped version
+  "/usr/local/opt/python/libexec/bin"
 )
 
 # Directories to be appended to PATH
