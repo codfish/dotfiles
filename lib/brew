@@ -71,6 +71,8 @@ run_brew() {
       'php71-apcu'
       'php71-mcrypt'
       'php71-xdebug'
+      'python'
+      'python3'
       'rbenv'
       'rsync'
       'ruby-build'
