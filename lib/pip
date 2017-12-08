@@ -1,0 +1,7 @@
+#!/bin/bash
+
+install_aws() {
+  e_header "Installing AWS cli..."
+
+  pip install --upgrade awscli
+}
