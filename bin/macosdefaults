@@ -50,6 +50,9 @@ defaults write NSGlobalDomain NSTableViewDefaultSizeMode -int 1
 # Click in the scroll bar: Jump to the spot that's clicked
 defaults write NSGlobalDomain AppleScrollerPagingBehavior -int 1
 
+# Double-Click in the title bar: Maximize window
+defaults write NSGlobalDomain AppleActionOnDoubleClick -string "Maximize"
+
 # Save to disk (not to iCloud) by default
 defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 
