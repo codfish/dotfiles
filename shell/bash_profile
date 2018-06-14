@@ -17,6 +17,8 @@ export BREW_PREFIX=$(brew --prefix)
 # are already added to the PATH.
 [ -r $HOME/.dotfilesrc ] && source $HOME/.dotfilesrc;
 
+[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
+
 load_dotfiles() {
   declare -a files=(
     $HOME/.dotfiles/shell/bash_options # Options
@@ -25,7 +27,6 @@ load_dotfiles() {
     $HOME/.dotfiles/shell/functions/* # Functions
     $HOME/.dotfiles/shell/bash_prompt # Custom bash prompt
     $HOME/.dotfiles/shell/bash_paths # Path modifications
-    $BREW_PREFIX/etc/bash_completion # Bash completion (installed via Homebrew)
     $HOME/.bash_profile.local # Local and private settings not under version control (e.g. git credentials)
   )
 
