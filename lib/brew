@@ -41,7 +41,6 @@ run_brew() {
     local -a desired_taps=(
       'homebrew/completions'
       'homebrew/dupes'
-      'homebrew/php'
     )
 
     for index in ${!desired_taps[*]}
@@ -66,10 +65,7 @@ run_brew() {
       'mysql'
       'nginx'
       'nvm'
-      'php72'
-      'php72-apcu'
-      'php72-mcrypt'
-      'php72-xdebug'
+      'php'
       'python'
       'python3'
       'rbenv'
