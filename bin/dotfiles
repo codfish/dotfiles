@@ -155,13 +155,13 @@ else
   init_nvm
 
   # Install latest node version
-  install_latest_lts_node
+  install_latest_node
 
   # Update npm
   update_npm
 
   # Install common npm packages
-  run_npm
+  install_npm_packages
 
   # install aws cli
   install_aws

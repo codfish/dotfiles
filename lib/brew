@@ -62,24 +62,22 @@ run_brew() {
       'coreutils' # GNU core utilities (those that come with macOS are outdated)
       'git'
       'heroku/brew/heroku'
-      'jq'
       'mongodb'
       'mysql'
       'nginx'
       'nvm'
-      'php71'
-      'php71-apcu'
-      'php71-mcrypt'
-      'php71-xdebug'
+      'php72'
+      'php72-apcu'
+      'php72-mcrypt'
+      'php72-xdebug'
       'python'
       'python3'
       'rbenv'
       'rsync'
       'ruby-build'
       'tmux'
-      'tree'
       'wget'
-      'wp-cli --ignore-dependencies'
+      'yarn' # use to install global node packages
     )
 
     for index in ${!desired_formulae[*]}
