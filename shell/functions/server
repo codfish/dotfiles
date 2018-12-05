@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Start an HTTP server from a directory, optionally specifying the language & port
 server() {
