@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 DOTFILES_DIRECTORY="${HOME}/.dotfiles"
 DOTFILES_TARBALL_PATH="https://github.com/codfish/dotfiles/tarball/master"
@@ -45,6 +45,7 @@ do
     --no-packages) no_packages=true ;;
     --no-sync) no_sync=true ;;
     --no-macos) no_macos=true ;;
+    --with-apps) with_apps=true ;;
     -*|--*) e_warning "Warning: invalid option $opt" ;;
   esac
 done
@@ -136,7 +137,6 @@ if is_confirmed; then
   source ${HOME}/.bash_profile
 else
   printf "Aborting...\n"
-  exit 1
 fi
 
 # Install and update packages
@@ -179,4 +179,19 @@ else
   else
     printf "Skipped macOS settings update.\n"
   fi
+fi
+
+# Conditionally install macOS applications
+if [[ $with_apps ]]; then
+  # Ask before installing apps
+  seek_confirmation "Warning: This step will attempt to install macOS GUI applications."
+
+  if is_confirmed; then
+    # Install applications through Homebrew Cask
+    run_brew_cask
+  else
+    printf "Skipped macOS app installations.\n"
+  fi
+else
+  printf "Skipped macOS app installations.\n"
 fi
