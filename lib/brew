@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Test whether a Homebrew formula is already installed
 # $1 - formula name (may include options)
@@ -9,6 +9,28 @@ formula_exists() {
   fi
 
   e_warning "Missing formula: $1"
+  return 1
+}
+
+# Test whether a Homebrew cask app is already installed
+# $1 - app name (may include options)
+app_exists() {
+  if $(brew cask list $1 &>/dev/null); then
+    printf "%s already installed.\n" "$1"
+    return 0
+  fi
+
+  if [ -d "${HOME}/Applications/${2}.app" ]; then
+    printf "%s already installed.\n" "$2"
+    return 0
+  fi
+
+  if [ -d "/Applications/${2}.app" ]; then
+    printf "%s already installed.\n" "$2"
+    return 0
+  fi
+
+  e_warning "Missing app: $1"
   return 1
 }
 
@@ -98,6 +120,41 @@ run_brew() {
     brew cleanup --outdated
     brew cleanup
     [[ $? ]] && e_success "Done"
+  else
+    printf "\n"
+    e_error "Error: Homebrew not found."
+    printf "Aborting...\n"
+    exit
+  fi
+}
+
+run_brew_cask() {
+  if type_exists 'brew'; then
+    # update or install desired formulae
+    e_header "Checking status of desired Homebrew casks..."
+
+    local -a missing_apps
+    declare -A desired_apps=(
+      [visual-studio-code]='Visual Studio Code'
+      [ticktick]='TickTick'
+    )
+
+    for cask in "${!desired_apps[@]}";
+    do
+      if ! app_exists $cask "${desired_apps[$cask]}"; then
+        # Store the name (and options) of every missing app
+        missing_apps=("${missing_apps[@]}" "${cask}")
+      fi
+    done
+
+    if [[ "$missing_apps" ]]; then
+      e_header "Installing missing macOS applications..."
+
+      for i in "${!missing_apps[@]}"
+      do
+        brew cask install ${missing_apps[$i]}
+      done
+    fi
   else
     printf "\n"
     e_error "Error: Homebrew not found."
