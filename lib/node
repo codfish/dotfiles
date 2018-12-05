@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 init_nvm() {
   if $(brew list nvm >/dev/null); then
