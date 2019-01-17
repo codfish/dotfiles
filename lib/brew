@@ -134,9 +134,11 @@ run_brew_cask() {
     e_header "Checking status of desired Homebrew casks..."
 
     local -a missing_apps
+    # mapping of [<cask-name>]='<Applications-directory-name>'
     declare -A desired_apps=(
       [visual-studio-code]='Visual Studio Code'
       [ticktick]='TickTick'
+      [zoomus]='zoom.us'
     )
 
     for cask in "${!desired_apps[@]}";
