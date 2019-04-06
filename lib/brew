@@ -58,18 +58,6 @@ run_brew() {
     brew upgrade
     [[ $? ]] && e_success "Done"
 
-    # Add necessary brew taps
-    e_header "Adding brew taps..."
-    local -a desired_taps=(
-      'homebrew/completions'
-      'homebrew/dupes'
-    )
-
-    for index in ${!desired_taps[*]}
-    do
-      brew_tap ${desired_taps[$index]}
-    done
-
     # update or install desired formulae
     e_header "Checking status of desired Homebrew formulae..."
     local list_formulae
@@ -117,8 +105,7 @@ run_brew() {
 
     # Cleanup brew
     e_header "Cleaning brew..."
-    brew cleanup --outdated
-    brew cleanup
+    brew cleanup -s
     [[ $? ]] && e_success "Done"
   else
     printf "\n"
