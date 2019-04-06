@@ -105,8 +105,7 @@ run_brew() {
 
     # Cleanup brew
     e_header "Cleaning brew..."
-    brew cleanup --outdated
-    brew cleanup
+    brew cleanup -s
     [[ $? ]] && e_success "Done"
   else
     printf "\n"
