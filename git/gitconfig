@@ -58,6 +58,9 @@
   # rebase and merge recent commits
   fixup = !git add -A && git commit --amend -C head && echo '\n\n' && git changed
 
+  # set upstream to master branch on local master
+  sm = branch --set-upstream-to=origin/master master
+
 [color]
   # color opts: normal, black, red, green, yellow, blue, magenta, cyan, or white
   ui = auto
