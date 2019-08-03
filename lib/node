@@ -50,7 +50,7 @@ install_npm_packages() {
     e_header "Installing Node.js packages..."
 
     # List of npm packages
-    local packages="eslint yo now renamer"
+    local packages="yo now renamer npm-check"
 
     # Install packages globally
     yarn global add $packages
