@@ -63,3 +63,7 @@ install_npm_packages() {
     exit
   fi
 }
+
+npm_config() {
+  npm config set init-module ~/.npm-init.js
+}

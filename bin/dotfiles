@@ -22,9 +22,9 @@ source ./lib/help
 source ./lib/list
 source ./lib/utils
 source ./lib/brew
-source ./lib/node
 source ./lib/pip
 source ./lib/composer
+source ./node/setup
 
 # Help text
 if [[ "$1" == "-h" || "$1" == "--help" ]]; then
@@ -125,6 +125,7 @@ mirrorfiles() {
   link "vim"                ".vim"
   link "vim/gvimrc"         ".gvimrc"
   link "vim/vimrc"          ".vimrc"
+  link "node/npm-init.js"   ".npm-init.js"
 
   e_success "Dotfiles update complete!"
 }
@@ -159,6 +160,9 @@ else
 
   # Update npm
   update_npm
+
+  # Configure npm
+  npm_config
 
   # Install common npm packages
   install_npm_packages
