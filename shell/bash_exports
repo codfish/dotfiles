@@ -32,3 +32,10 @@ export LSCOLORS=gxfxcxdxbxegedabagacad # Dark lscolor scheme
 
 # Link Homebrew casks in `/Applications` rather than `~/Applications`
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+
+# For compilers to find libpq (postgres) you may need to set:
+export LDFLAGS="-L/usr/local/opt/libpq/lib"
+export CPPFLAGS="-I/usr/local/opt/libpq/include"
+
+# For pkg-config to find libpq (postgres) you may need to set:
+export PKG_CONFIG_PATH="/usr/local/opt/libpq/lib/pkgconfig"

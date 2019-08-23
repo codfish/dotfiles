@@ -13,6 +13,9 @@ declare -a dirs_to_prepend=(
 
   # Use brew python instead of shipped version
   "/usr/local/opt/python/libexec/bin"
+
+  # postgres libpq
+  "/usr/local/opt/libpq/bin"
 )
 
 # Directories to be appended to PATH
