@@ -35,3 +35,6 @@ export CPPFLAGS="-I/usr/local/opt/libpq/include"
 
 # For pkg-config to find libpq (postgres) you may need to set:
 export PKG_CONFIG_PATH="/usr/local/opt/libpq/lib/pkgconfig"
+
+# Disable automatic brew cleanup. Unexpected cleanups when trying to install something
+export HOMEBREW_NO_INSTALL_CLEANUP=1
