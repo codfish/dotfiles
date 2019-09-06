@@ -72,7 +72,7 @@ Homebrew formulae:
 * MySQL
 * [nginx](https://www.nginx.com/)
 * [nvm](https://github.com/creationix/nvm)
-* [php71](https://github.com/Homebrew/homebrew-php) (and some php extentions)
+* [php](https://formulae.brew.sh/formula/php)
 * [rbenv](https://github.com/rbenv/rbenv) (and [ruby-build](https://github.com/rbenv/ruby-build))
 * [rsync](https://rsync.samba.org/) (latest version, rather than the out-dated macOS installation)
 * [tmux](https://github.com/tmux/tmux/wiki)
