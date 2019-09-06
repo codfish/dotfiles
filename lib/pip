@@ -5,3 +5,9 @@ install_aws() {
 
   pip install --upgrade awscli
 }
+
+install_termcolor() {
+  e_header "Installing termcolor..."
+
+  pip install termcolor
+}

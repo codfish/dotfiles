@@ -163,8 +163,9 @@ else
   # Install common npm packages
   install_npm_packages
 
-  # install aws cli
+  # install pip packages
   install_aws
+  install_termcolor
 fi
 
 # Ask before potentially overwriting macOS defaults
