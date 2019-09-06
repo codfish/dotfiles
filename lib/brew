@@ -81,7 +81,6 @@ run_brew() {
       'python3'
       'rbenv'
       'rsync'
-      'ruby-build'
       'tmux'
       'wget'
       'yarn' # use to install global node packages
