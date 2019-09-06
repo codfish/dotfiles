@@ -70,6 +70,7 @@ run_brew() {
       'bash-completion'
       'coreutils' # GNU core utilities (those that come with macOS are outdated)
       'git'
+      'go'
       'heroku/brew/heroku'
       'mongodb'
       'mysql'
