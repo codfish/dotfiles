@@ -79,7 +79,6 @@ run_brew() {
       'nvm'
       'php'
       'python'
-      'python3'
       'rbenv'
       'rsync'
       'tmux'
