@@ -136,7 +136,6 @@ run_brew_cask() {
       [postman]='Postman'
       [slack]='Slack'
       [spotify]='Spotify'
-      [todoist]='Todoist'
       [visual-studio-code]='Visual Studio Code'
       [zoomus]='zoom.us'
     )
