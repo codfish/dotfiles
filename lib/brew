@@ -123,8 +123,21 @@ run_brew_cask() {
     local -a missing_apps
     # mapping of [<cask-name>]='<Applications-directory-name>'
     declare -A desired_apps=(
+      [alfred]='Alfred 4'
+      [appcleaner]='AppCleaner'
+      [brave-browser]='Brave Browser'
+      [cloudapp]='CloudApp'
+      [docker]='Docker'
+      [google-backup-and-sync]='Backup and Sync from Google'
+      [google-chrome]='Google Chrome'
+      [evernote]='Evernote'
+      [iterm2]='iTerm'
+      [lastpass]='LastPass'
+      [postman]='Postman'
+      [slack]='Slack'
+      [spotify]='Spotify'
+      [todoist]='Todoist'
       [visual-studio-code]='Visual Studio Code'
-      [ticktick]='TickTick'
       [zoomus]='zoom.us'
     )
 
