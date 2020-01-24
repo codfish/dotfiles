@@ -68,7 +68,6 @@ run_brew() {
       'ack'
       'bash'
       'bash-completion'
-      'cheat'
       'coreutils' # GNU core utilities (those that come with macOS are outdated)
       'git'
       'go'
