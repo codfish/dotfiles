@@ -72,7 +72,7 @@ run_brew() {
       'git'
       'go'
       'heroku/brew/heroku'
-      'mongodb'
+      'mongodb/brew/mongodb-community'
       'mysql'
       'nginx'
       'nvm'
