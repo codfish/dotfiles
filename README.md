@@ -82,12 +82,7 @@ Homebrew formulae:
 
 Node packages:
 
-* [create-react-app](https://facebook.github.io/react/blog/2016/07/22/create-apps-with-no-configuration.html)
-* [eslint](https://eslint.org/)
-* [gulp](https://gulpjs.com/)
 * [now](https://zeit.co/now)
-* [vue-cli](https://vuejs.org/v2/guide/installation.html#CLI)
-* [yarn](https://yarnpkg.com)
 * [yo](http://yeoman.io/)
 
 Vim plugins:

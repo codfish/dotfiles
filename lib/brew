@@ -82,7 +82,6 @@ run_brew() {
       'rsync'
       'tmux'
       'wget'
-      'yarn' # use to install global node packages
     )
 
     for index in ${!desired_formulae[*]}

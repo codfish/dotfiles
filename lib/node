@@ -25,22 +25,18 @@ install_latest_node() {
   fi
 }
 
-# because node version manager (nvm) sets the node path dynamically based on the
-# node version you're using, when you jump around between node versions, you
-# might lose access to a global package you installed in another node version.
-# That's annoying, so let's use yarn to install global packages. `npx` is great
-# for most things, but some things I prefer to have in the global scope so I can
-# run them directly without thinking twice.
+# `npx` is great for most things, but some things I prefer to have in the global
+# scope so I can run them directly without thinking twice.
 install_npm_packages() {
   # Check for npm
-  if type_exists 'yarn'; then
+  if type_exists 'npm'; then
     e_header "Installing Node.js packages..."
 
     # List of npm packages
     local packages="yo generator-codfish now renamer npm-check"
 
     # Install packages globally
-    yarn global add $packages
+    npm install -g $packages
 
     [[ $? ]] && e_success "Done"
   else
