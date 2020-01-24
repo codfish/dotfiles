@@ -157,9 +157,6 @@ else
   # Install latest node version
   install_latest_node
 
-  # Update npm
-  update_npm
-
   # Install common npm packages
   install_npm_packages
 

@@ -7,32 +7,19 @@ init_nvm() {
   fi
 }
 
-# Use nvm to install latest node version
+# Use nvm to install latest node version, and install latest npm version too
 install_latest_node() {
   # Check for nvm
   if $(brew list nvm >/dev/null); then
     e_header "Installing latest Node.js version..."
 
-    nvm install node
+    # https://github.com/nvm-sh/nvm#migrating-global-packages-while-installing
+    nvm install node --reinstall-packages-from=default --latest-npm
 
     [[ $? ]] && e_success "Done"
   else
     printf "\n"
     e_error "Error: nvm not found."
-    printf "Aborting...\n"
-    exit
-  fi
-}
-
-update_npm() {
-  # Check for npm
-  if type_exists 'npm'; then
-    e_header "Updating npm to the latest version..."
-
-    npm install npm@latest -g
-  else
-    printf "\n"
-    e_error "Error: npm not found."
     printf "Aborting...\n"
     exit
   fi
