@@ -23,3 +23,7 @@ sftp-config.json
 *.sass-cache
 *.sw?
 *.vi
+
+# Other
+
+.now
