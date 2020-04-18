@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+# Copy latest version of html5 boilerplate index.html to clipboard
+
+curl -sL https://raw.githubusercontent.com/h5bp/html5-boilerplate/master/src/index.html | pbcopy
+
+if [ $? -eq 0 ]
+then
+  echo "Successfully copied html5boilerplate/index.html to clipboard"
+fi
