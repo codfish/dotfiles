@@ -46,9 +46,7 @@ init_env() {
 
   # load nvm which is installed via brew
   export NVM_DIR="$HOME/.nvm"
-  # Use --no-use flag to load nvm quicker
-  # https://github.com/creationix/nvm/issues/539#issuecomment-245791291
-  [ -s "$BREW_PREFIX/opt/nvm/nvm.sh" ] && . "$BREW_PREFIX/opt/nvm/nvm.sh" --no-use
+  [ -s "$BREW_PREFIX/opt/nvm/nvm.sh" ] && . "$BREW_PREFIX/opt/nvm/nvm.sh"
 }
 
 load_dotfiles
