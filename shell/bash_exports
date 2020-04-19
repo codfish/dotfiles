@@ -38,3 +38,6 @@ export PKG_CONFIG_PATH="/usr/local/opt/libpq/lib/pkgconfig"
 
 # Disable automatic brew cleanup. Unexpected cleanups when trying to install something
 export HOMEBREW_NO_INSTALL_CLEANUP=1
+
+# Turn off homebrew analytics
+export HOMEBREW_NO_ANALYTICS=1
