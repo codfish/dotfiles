@@ -87,19 +87,9 @@ run_brew() {
     for index in ${!desired_formulae[*]}
     do
       if ! formula_exists ${desired_formulae[$index]}; then
-        # Store the name (and options) of every missing formula
-        missing_formulae=("${missing_formulae[@]}" "${desired_formulae[$index]}")
+        brew install ${desired_formulae[$index]}
       fi
     done
-
-    if [[ "$missing_formulae" ]]; then
-      e_header "Installing missing Homebrew formulae..."
-
-      for index in ${!desired_formulae[*]}
-      do
-        brew install ${desired_formulae[$index]}
-      done
-    fi
 
     # Cleanup brew
     e_header "Cleaning brew..."
