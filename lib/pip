@@ -1,13 +1,7 @@
-#!/usr/bin/env bash
-
-install_aws() {
-  e_header "Installing AWS cli..."
-
-  pip install --upgrade awscli
-}
+#!/usr/bin/env zsh
 
 install_termcolor() {
   e_header "Installing termcolor..."
 
-  pip install termcolor
+  pip3 install termcolor
 }

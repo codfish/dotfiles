@@ -4,7 +4,7 @@ install_composer() {
   e_header "Installing composer..."
 
   # Check for composer
-  if type_exists 'composer'; then
+  if type 'composer' &> /dev/null; then
     printf "Composer already installed. Upgrading to latest version...\n"
     composer self-update
   else

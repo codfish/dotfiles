@@ -1,4 +1,4 @@
-Copyright (c) Nicolas Gallagher
+Copyright (c) Chris O'Donnell
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in

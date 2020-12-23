@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
 # Test whether a Homebrew formula is already installed
 # $1 - formula name (may include options)
@@ -47,7 +47,7 @@ brew_tap() {
 
 run_brew() {
   # Check for Homebrew
-  if type_exists 'brew'; then
+  if type 'brew' &> /dev/null; then
     # Use the latest version of Homebrew
     e_header "Updating Homebrew..."
     brew update
@@ -66,12 +66,12 @@ run_brew() {
     # ** array items can include options for package **
     local -a desired_formulae=(
       'ack'
-      'bash'
-      'bash-completion'
+      'awscli'
       'coreutils' # GNU core utilities (those that come with macOS are outdated)
       'git'
       'go'
       'heroku/brew/heroku'
+      'jq'
       'mongodb/brew/mongodb-community'
       'mysql'
       'nginx'
@@ -84,10 +84,10 @@ run_brew() {
       'wget'
     )
 
-    for index in ${!desired_formulae[*]}
+    for index in ${desired_formulae[@]}
     do
-      if ! formula_exists ${desired_formulae[$index]}; then
-        brew install ${desired_formulae[$index]}
+      if ! formula_exists $index; then
+        brew install $index
       fi
     done
 
@@ -104,7 +104,7 @@ run_brew() {
 }
 
 run_brew_cask() {
-  if type_exists 'brew'; then
+  if type 'brew' &> /dev/null; then
     # update or install desired formulae
     e_header "Checking status of desired Homebrew casks..."
 
@@ -118,9 +118,9 @@ run_brew_cask() {
       [docker]='Docker'
       [google-backup-and-sync]='Backup and Sync from Google'
       [google-chrome]='Google Chrome'
-      [evernote]='Evernote'
       [iterm2]='iTerm'
       [lastpass]='LastPass'
+      [notion]='Notion'
       [postman]='Postman'
       [slack]='Slack'
       [spotify]='Spotify'
@@ -128,7 +128,7 @@ run_brew_cask() {
       [zoomus]='zoom.us'
     )
 
-    for cask in "${!desired_apps[@]}";
+    for cask in "${desired_apps[@]}";
     do
       if ! app_exists $cask "${desired_apps[$cask]}"; then
         # Store the name (and options) of every missing app
@@ -139,9 +139,9 @@ run_brew_cask() {
     if [[ "$missing_apps" ]]; then
       e_header "Installing missing macOS applications..."
 
-      for i in "${!missing_apps[@]}"
+      for i in "${missing_apps[@]}"
       do
-        brew cask install ${missing_apps[$i]}
+        brew cask install $i
       done
     fi
   else

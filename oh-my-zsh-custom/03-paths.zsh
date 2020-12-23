@@ -1,7 +1,3 @@
-#!/usr/bin/env bash
-
-# bash_paths
-
 # Directories to be prepended to PATH
 declare -a dirs_to_prepend=(
   # Ensure that this bin always takes precedence over `/usr/bin`
@@ -28,22 +24,24 @@ declare -a dirs_to_append=(
 )
 
 # Prepend directories to PATH
-for index in ${!dirs_to_prepend[*]}
+for index in ${dirs_to_prepend[@]}
 do
-  if [ -d ${dirs_to_prepend[$index]} ]; then
+  if [ -d $index ]; then
     # If these directories exist, then prepend them to existing PATH
-    PATH="${dirs_to_prepend[$index]}:$PATH"
+    PATH="${index}:$PATH"
   fi
 done
 
 # Append directories to PATH
-for index in ${!dirs_to_append[*]}
+for index in ${dirs_to_append[@]}
 do
-  if [ -d ${dirs_to_append[$index]} ]; then
+  if [ -d $index ]; then
     # If these bins exist, then append them to existing PATH
-    PATH="$PATH:${dirs_to_append[$index]}"
+    PATH="$PATH:${index}"
   fi
 done
+
+fpath=($DOTFILES/functions $fpath)
 
 unset dirs_to_prepend dirs_to_append
 
