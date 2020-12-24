@@ -69,4 +69,6 @@ if [[ ! -d ${ZSH} ]]; then
 fi
 
 # run the dotfiles for the first time
-zsh -l bin/dotfiles
+zsh bin/dotfiles
+
+zsh -l
