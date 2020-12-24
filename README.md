@@ -4,7 +4,8 @@
 
 ## Features
 
-Note: Installation of `Oh My Zsh` is  Every time you run the `dotfiles` you will be asked before any
+**Note:** Installation of `Oh My Zsh` is not optional. Everything else listed
+below can be opted-out of.
 
 - Installs Oh My Zsh with custom [exports](oh-my-zsh-custom/01-exports.zsh), [aliases](oh-my-zsh-custom/02-aliases.zsh), and [paths](oh-my-zsh-custom/02-aliases.zsh).
 - Loads a [selection of omz plugins](dotfiles/zshrc#L66) and [custom functions](functions).
