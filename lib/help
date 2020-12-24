@@ -3,7 +3,7 @@
 run_help() {
 
 cat <<EOT
-macOS dotfiles - Chris O'Donnell - http://codfish.io/ (forked from necolas)
+macOS dotfiles - Chris O'Donnell - http://codfish.io/
 
 Usage: $(basename "$0") [options]
 
@@ -13,9 +13,9 @@ Options:
     --no-packages   Suppress package updates
     --no-sync       Suppress pulling from the remote repository
 
-Documentation can be found at https://github.com/necolas/dotfiles/
+Documentation can be found at https://github.com/codfish/dotfiles/
 
-Copyright (c) Nicolas Gallagher
+Copyright (c) Chris O'Donnell
 Licensed under the MIT license.
 EOT
 

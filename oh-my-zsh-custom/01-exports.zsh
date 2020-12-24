@@ -1,4 +1,9 @@
-#!/usr/bin/env bash
+# set 256 color profile where possible
+if [[ $COLORTERM == gnome-* && $TERM == xterm ]] && infocmp gnome-256color >/dev/null 2>&1; then
+  export TERM=gnome-256color
+elif infocmp xterm-256color >/dev/null 2>&1; then
+  export TERM=xterm-256color
+fi
 
 # Make vim the default editor
 export EDITOR="vim"
@@ -41,3 +46,7 @@ export HOMEBREW_NO_INSTALL_CLEANUP=1
 
 # Turn off homebrew analytics
 export HOMEBREW_NO_ANALYTICS=1
+
+# Set brew prefix once for reuse later so we don't need to keep re-running
+# `brew --prefix`, which can be slow in certain environments
+export BREW_PREFIX=$(brew --prefix)

@@ -1,7 +1,3 @@
-#!/usr/bin/env bash
-
-# bash_aliases
-
 # Allow aliases to be with sudo
 alias sudo="sudo "
 
@@ -69,8 +65,8 @@ alias ogc='open -a Google\ Chrome --args --disable-extensions'
 alias update="sudo softwareupdate -i -a; brew update; brew upgrade --all; brew cleanup; npm update npm -g; npm update -g; sudo gem update"
 
 # edit your profile and reload it easily
-alias profile='vim ~/.bash_profile; source ~/.bash_profile'
-alias localprofile='vim ~/.bash_profile.local; source ~/.bash_profile'
+alias rc='vim ~/.zshrc; source ~/.zshrc'
+alias localrc='vim ~/.zshrc.local; source ~/.zshrc'
 
 # typos
 alias gits='git s'

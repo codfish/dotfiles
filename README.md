@@ -1,36 +1,57 @@
 # Dotfiles
 
-My macOS dotfiles. Based on [Nicolas Gallagher's dotfiles](https://github.com/necolas/dotfiles). (FYI I've added quite a bit though, but the foundation is still there).
+> My macOS dotfiles for Zsh.
 
+## Features
 
-## How to install
+Note: Installation of `Oh My Zsh` is  Every time you run the `dotfiles` you will be asked before any
+
+- Installs Oh My Zsh with custom [exports](oh-my-zsh-custom/01-exports.zsh), [aliases](oh-my-zsh-custom/02-aliases.zsh), and [paths](oh-my-zsh-custom/02-aliases.zsh).
+- Loads a [selection of omz plugins](dotfiles/zshrc#L66) and [custom functions](functions).
+- Installs custom "dotfiles":
+  - [`.curlrc`](dotfiles/curlrc)
+  - [`.gemrc`](dotfiles/gemrc)
+  - [`.gitattributes`](dotfiles/gitattributes)
+  - [`.gitconfig`](dotfiles/gitconfig)
+  - [`.gitignore`](dotfiles/gitignore)
+  - [`.zshrc`](dotfiles/zshrc)
+- Installs Homebrew, nvm & latest version of node, composer & latest version of php
+- Installs selection of brew formulae & node packages
+- Runs `brew update`, `brew upgrade` and `brew cleanup`
+- Sets custom [macOS defaults](bin/macosdefaults)
+- Installs Applications via `brew cask`
+
+## Installation
 
 The installation step requires the [XCode Command Line
 Tools](https://developer.apple.com/downloads) and may overwrite existing
 dotfiles in your HOME and `.vim` directories.
 
-```bash
-$ bash -c "$(curl -fsSL raw.github.com/codfish/dotfiles/master/bin/dotfiles)"
+```sh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/codfish/dotfiles/master/install.sh)"
 ```
 
-N.B. If you wish to fork this project and maintain your own dotfiles, you must
-substitute my username for your own in the above command and the 2 variables
-found at the top of the `bin/dotfiles` script.
+If you wish to fork this project and maintain your own dotfiles, fork it and
+run the following:
 
-## How to update
+```sh
+DOTFILES_REPO=yourhandle/dotfiles sh -c "$(curl -fsSL https://raw.githubusercontent.com/yourhandle/dotfiles/master/install.sh)"
+```
 
-You should run the update when:
-
-* You make a change to `~/.dotfiles/git/gitconfig` (the only file that is
-  copied rather than symlinked).
-* You want to pull changes from the remote repository.
-* You want to update Homebrew formulae and Node packages.
+## Usage
 
 Run the dotfiles command:
 
-```bash
-$ dotfiles
+```sh
+dotfiles
 ```
+
+You should run the update when:
+
+- You make a change to `~/.dotfiles/git/gitconfig` (the only file that is
+  copied rather than symlinked).
+- You want to pull changes from the remote repository.
+- You want to update Homebrew formulae and Node packages.
 
 Options:
 
@@ -45,117 +66,104 @@ Options:
     </tr>
     <tr>
         <td><code>--no-packages</code></td>
-        <td>Suppress package updates</td>
+        <td>Skip package (brew/node/etc) updates</td>
     </tr>
     <tr>
         <td><code>--no-sync</code></td>
-        <td>Suppress pulling from the remote repository</td>
+        <td>Skip pulling from the remote repository</td>
+    </tr>
+    <tr>
+        <td><code>--no-macos</code></td>
+        <td>Skip macOS settings update</td>
+    </tr>
+    <tr>
+        <td><code>--with-apps</code></td>
+        <td>Opt-in to install mac apps via brew cask (won't install/update if it's already present)</td>
     </tr>
 </table>
 
+## Oh My Zsh
 
-## Features
+These dotfiles essentially wrap [Oh My Zsh](https://ohmyz.sh/). When you install the dotfiles, Oh My Zsh will also get installed for you directly into the `~/.dotfiles` directory.
 
-### Automatic software installation
+- `$ZSH` will be `~/.dotfiles/oh-my-zsh`
+- `$ZSH_CUSTOM` will be `~/.dotfiles/oh-my-zsh-custom`
+- Opinionated set of plugins are loaded
 
-Homebrew formulae:
+### Oh My Zsh Plugins
 
-* GNU core utilities
-* [ack](http://betterthangrep.com/)
-* bash (latest version)
-* [bash-completion](http://bash-completion.alioth.debian.org/)
-* [git](http://git-scm.com/)
-* [heroku](https://devcenter.heroku.com/articles/heroku-cli)
-* [jq](https://stedolan.github.io/jq/)
-* [macvim](http://code.google.com/p/macvim/)
-* MongoDB
-* MySQL
-* [nginx](https://www.nginx.com/)
-* [nvm](https://github.com/creationix/nvm)
-* [php](https://formulae.brew.sh/formula/php)
-* [rbenv](https://github.com/rbenv/rbenv) (and [ruby-build](https://github.com/rbenv/ruby-build))
-* [rsync](https://rsync.samba.org/) (latest version, rather than the out-dated macOS installation)
-* [tmux](https://github.com/tmux/tmux/wiki)
-* [tree](http://mama.indstate.edu/users/ice/tree/)
-* [wget](http://www.gnu.org/software/wget/)
-* [wp-cli](http://wp-cli.org/)
+- aws
+- git
+- iterm2
+- history-substring-search
+- nvm
+- z
 
-Node packages:
+## Homebrew formulae
 
-* [now](https://zeit.co/now)
-* [yo](http://yeoman.io/)
+- GNU core utilities
+- [ack](http://betterthangrep.com/)
+- awscli
+- [git](http://git-scm.com/)
+- go
+- [heroku](https://devcenter.heroku.com/articles/heroku-cli)
+- [jq](https://stedolan.github.io/jq/)
+- MongoDB
+- MySQL
+- [nginx](https://www.nginx.com/)
+- [nvm](https://github.com/creationix/nvm)
+- [php](https://formulae.brew.sh/formula/php)
+- [rbenv](https://github.com/rbenv/rbenv) (and [ruby-build](https://github.com/rbenv/ruby-build))
+- [rsync](https://rsync.samba.org/) (latest version, rather than the out-dated macOS installation)
+- [tmux](https://github.com/tmux/tmux/wiki)
+- [wget](http://www.gnu.org/software/wget/)
 
-Vim plugins:
+## Mac Applications Installed via Homebrew cask
 
-* [ctrlp.vim](https://github.com/kien/ctrlp.vim)
-* [html5.vim](https://github.com/othree/html5.vim)
-* [syntastic](https://github.com/scrooloose/syntastic)
-* [vim-colors-solarized](https://github.com/altercation/vim-colors-solarized)
-* [vim-git](https://github.com/tpope/vim-git)
-* [vim-javascript](https://github.com/pangloss/vim-javascript)
-* [vim-markdown](https://github.com/tpope/vim-markdown)
-* [vim-pathogen](https://github.com/tpope/vim-pathogen)
+- Alfred 4
+- AppCleaner
+- Brave Browser
+- CloudApp
+- Docker
+- Backup and Sync from Google
+- Google Chrome
+- iTerm
+- LastPass
+- Notion
+- Postman
+- Slack
+- Spotify
+- Visual Studio Code
+- zoom.us
 
-### Custom macOS defaults
+## Node packages
 
-Custom macOS settings can be applied during the `dotfiles` process. They can
-also be applied independently by running the following command:
+- [vercel](https://vercel.com/)
+- [yo](http://yeoman.io/)
+- generator-codfish
+- renamer
+- npm-check
 
-```bash
-$ macosdefaults
+## Custom macOS defaults
+
+Custom macOS settings can be applied during the `dotfiles` process. You'll be prompted before this happens so you can say no.
+
+They can also be applied independently by running the following command:
+
+```sh
+macosdefaults
 ```
 
-### Custom bash prompt
-
-I use a custom bash prompt based on the Solarized color palette and influenced
-by @gf3's and @cowboy's custom prompts. For best results, you should install
-iTerm2 and import [Solarized
-Dark.itermcolors](https://github.com/altercation/solarized/tree/master/iterm2-colors-solarized).
-
-When your current working directory is a Git repository, the prompt will
-display the checked-out branch's name (and failing that, the commit SHA that
-HEAD is pointing to). The state of the working tree is reflected in the
-following way:
-
-<table>
-    <tr>
-        <td><code>+</code></td>
-        <td>Uncommitted changes in the index</td>
-    </tr>
-    <tr>
-        <td><code>!</code></td>
-        <td>Unstaged changes</td>
-    </tr>
-    <tr>
-        <td><code>?</code></td>
-        <td>Untracked files</td>
-    </tr>
-    <tr>
-        <td><code>$</code></td>
-        <td>Stashed files</td>
-    </tr>
-</table>
-
-Further details are in the `shell/bash_prompt` file.
-
-Screenshot:
-
-![](http://i.imgur.com/DSJ1G.png)
-
-### Local/private Bash and Vim configuration
-
-Any special-case Vim directives local to a machine should be stored in a
-`~/.vimrc.local` file on that machine. The directives will then be automatically
-imported into your master `.vimrc`.
+## Local/private
 
 Any private and custom Bash commands and configuration should be placed in a
-`~/.bash_profile.local` file. This file will not be under version control or
-committed to a public repository. If `~/.bash_profile.local` exists, it will be
-sourced for inclusion in `bash_profile`.
+`~/.zshrc.local` file. This file will not be under version control or
+committed to a public repository. If `~/.zshrc.local` exists, it will be
+sourced for inclusion in `.zshrc`.
 
-Here is an example `~/.bash_profile.local`:
+Here is an example `~/.zshrc.local`:
 
-```bash
+```sh
 # PATH exports
 PATH=$PATH:~/.gem/ruby/1.8/bin
 export PATH
@@ -175,76 +183,14 @@ git config --global user.email "$GIT_AUTHOR_EMAIL"
 alias code="cd ~/Sites"
 ```
 
-N.B. Because the `git/gitconfig` file is copied to `~/.gitconfig`, any private
-git configuration specified in `~/.bash_profile.local` will not be committed to
+**Note:** Because the `dotfiles/gitconfig` file is copied to `~/.gitconfig`, any private
+git configuration specified in `~/.zshrc.local` will not be committed to
 your dotfiles repository.
-
-### Custom location for Homebrew installation
-
-If your Homebrew installation is not in `/usr/local` then you must prepend your
-custom installation's `bin` to the PATH in a file called `~/.dotfilesrc`:
-
-```bash
-# Add `brew` command's custom location to PATH
-PATH="/opt/acme/bin:$PATH"
-```
-
-
-## Adding new git submodules
-
-If you want to add more git submodules, e.g., Vim plugins to be managed by
-pathogen, then follow these steps while in the root of the superproject.
-
-```bash
-# Add the new submodule
-git submodule add https://example.com/remote/path/to/repo.git vim/bundle/one-submodule
-# Initialize and clone the submodule
-git submodule update --init
-# Stage the changes
-git add vim/bundle/one-submodule
-# Commit the changes
-git commit -m "Add a new submodule: one-submodule"
-```
-
-
-## Updating git submodules
-
-Updating individual submodules within the superproject:
-
-```bash
-# Change to the submodule directory
-cd vim/bundle/one-submodule
-# Checkout the desired branch (of the submodule)
-git checkout master
-# Pull from the tip of master (of the submodule - could be any sha or pointer)
-git pull origin master
-# Go back to main dotfiles repo root
-cd ../../..
-# Stage the submodule changes
-git add vim/bundle/one-submodule
-# Commit the submodule changes
-git commit -m "Update submodule 'one-submodule' to the latest version"
-# Push to a remote repository
-git push origin master
-```
-
-Now, if anyone updates their local repository from the remote repository, then
-using `git submodule update` will update the submodules (that have been
-initialized) in their local repository. N.B This will wipe away any local
-changes made to those submodules.
-
-
 ## Acknowledgements
 
 Inspiration and code was taken from many sources, including:
 
-* [@mathiasbynens](https://github.com/mathiasbynens) (Mathias Bynens)
+- [@necolas](https://github.com/necolas) (Nicolas Gallagher)
+  [https://github.com/tejr/dotfiles] (https://github.com/necolas/dotfiles)
+- [@mathiasbynens](https://github.com/mathiasbynens) (Mathias Bynens)
   [https://github.com/mathiasbynens/dotfiles](https://github.com/mathiasbynens/dotfiles)
-* [@tejr](https://github.com/tejr) (Tom Ryder)
-  [https://github.com/tejr/dotfiles](https://github.com/tejr/dotfiles)
-* [@gf3](https://github.com/gf3) (Gianni Chiappetta)
-  [https://github.com/gf3/dotfiles](https://github.com/gf3/dotfiles)
-* [@cowboy](https://github.com/cowboy) (Ben Alman)
-  [https://github.com/cowboy/dotfiles](https://github.com/cowboy/dotfiles)
-* [@alrra](https://github.com/alrra) (Cãtãlin Mariş)
-  [https://github.com/alrra/dotfiles](https://github.com/alrra/dotfiles)

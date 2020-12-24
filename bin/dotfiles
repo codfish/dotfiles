@@ -1,25 +1,13 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
-DOTFILES_DIRECTORY="${HOME}/.dotfiles"
+DOTFILES="${HOME}/.dotfiles"
+DOTFILES_REPO=${DOTFILES_REPO:-codfish/dotfiles}
 DOTFILES_TARBALL_PATH="https://github.com/codfish/dotfiles/tarball/master"
-DOTFILES_GIT_REMOTE="https://github.com/codfish/dotfiles"
+ZSH="$HOME/.dotfiles/oh-my-zsh"
 
-# If missing, download and extract the dotfiles repository
-if [[ ! -d ${DOTFILES_DIRECTORY} ]]; then
-  printf "$(tput setaf 7)Downloading dotfiles...\033[m\n"
-  mkdir ${DOTFILES_DIRECTORY}
-  # Get the tarball
-  curl -fsSLo ${HOME}/dotfiles.tar.gz ${DOTFILES_TARBALL_PATH}
-  # Extract to the dotfiles directory
-  tar -zxf ${HOME}/dotfiles.tar.gz --strip-components 1 -C ${DOTFILES_DIRECTORY}
-  # Remove the tarball
-  rm -rf ${HOME}/dotfiles.tar.gz
-fi
-
-cd ${DOTFILES_DIRECTORY}
+cd ${DOTFILES}
 
 source ./lib/help
-source ./lib/list
 source ./lib/utils
 source ./lib/brew
 source ./lib/node
@@ -29,12 +17,6 @@ source ./lib/composer
 # Help text
 if [[ "$1" == "-h" || "$1" == "--help" ]]; then
   run_help
-  exit
-fi
-
-# List additional software to install
-if [[ "$1" == "-l" || "$1" == "--list" ]]; then
-  run_list
   exit
 fi
 
@@ -50,81 +32,33 @@ do
   esac
 done
 
-# Before relying on Homebrew, check that packages can be compiled
-if ! type_exists 'gcc'; then
-  e_error "The XCode Command Line Tools must be installed first."
-  printf "  Download them from: https://developer.apple.com/downloads\n"
-  printf "  Then run: bash ~/.dotfiles/bin/dotfiles\n"
-  exit 1
-fi
-
-# Check for Homebrew
-if ! type_exists 'brew'; then
-  e_header "Installing Homebrew..."
-  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-fi
-
-# Check for git
-if ! type_exists 'git'; then
-  e_header "Updating Homebrew..."
-  brew update
-  e_header "Installing Git..."
-  brew install git
-fi
-
-# Initialize the git repository if it's missing
-if ! is_git_repo; then
-  e_header "Initializing git repository..."
-  git init
-  git remote add origin ${DOTFILES_GIT_REMOTE}
-  git fetch origin master
-  # Reset the index and working tree to the fetched HEAD
-  # (submodules are cloned in the subsequent sync step)
-  git reset --hard FETCH_HEAD
-  # Remove any untracked files
-  git clean -fd
-fi
-
 # Conditionally sync with the remote repository
 if [[ $no_sync ]]; then
   printf "Skipped dotfiles sync.\n"
 else
   e_header "Syncing dotfiles..."
   # Pull down the latest changes
-  git pull --rebase origin master
-  # Update submodules
-  git submodule update --recursive --init --quiet
+  # git pull --rebase origin master
 fi
 
 link() {
   # Force create/replace the symlink.
-  ln -fs "${DOTFILES_DIRECTORY}/${1}" "${HOME}/${2}"
+  ln -fs "${DOTFILES}/${1}" "${HOME}/${2}"
 }
 
 mirrorfiles() {
   # Copy `.gitconfig`.
-  # Any global git commands in `~/.bash_profile.local` will be written to
+  # Any global git commands in `~/.zshrc.local` will be written to
   # `.gitconfig`. This prevents them being committed to the repository.
-  rsync -avz --quiet ${DOTFILES_DIRECTORY}/git/gitconfig  ${HOME}/.gitconfig
-
-  # Force remove the vim directory if it's already there.
-  if [ -e "${HOME}/.vim" ]; then
-    rm -rf "${HOME}/.vim"
-  fi
+  rsync -avz --quiet ${DOTFILES}/dotfiles/gitconfig  ${HOME}/.gitconfig
 
   # Create the necessary symbolic links between the `.dotfiles` and `HOME`
-  # directory. The `bash_profile` sources other files directly from the
-  # `.dotfiles` repository.
-  link "shell/bashrc"       ".bashrc"
-  link "shell/bash_profile" ".bash_profile"
-  link "shell/curlrc"       ".curlrc"
-  link "shell/gemrc"        ".gemrc"
-  link "shell/inputrc"      ".inputrc"
-  link "git/gitattributes"  ".gitattributes"
-  link "git/gitignore"      ".gitignore"
-  link "vim"                ".vim"
-  link "vim/gvimrc"         ".gvimrc"
-  link "vim/vimrc"          ".vimrc"
+  # directory.
+  link "dotfiles/zshrc"           ".zshrc"
+  link "dotfiles/gemrc"           ".gemrc"
+  link "dotfiles/curlrc"          ".curlrc"
+  link "dotfiles/gitattributes"   ".gitattributes"
+  link "dotfiles/gitignore"       ".gitignore"
 
   e_success "Dotfiles update complete!"
 }
@@ -134,7 +68,6 @@ seek_confirmation "Warning: This step may overwrite your existing dotfiles."
 
 if is_confirmed; then
   mirrorfiles
-  source ${HOME}/.bash_profile
 else
   printf "Aborting...\n"
 fi
@@ -161,7 +94,6 @@ else
   install_npm_packages
 
   # install pip packages
-  install_aws
   install_termcolor
 fi
 
@@ -179,7 +111,7 @@ else
   fi
 fi
 
-# Conditionally install macOS applications
+# Conditionally install macOS applications using brew cask
 if [[ $with_apps ]]; then
   # Ask before installing apps
   seek_confirmation "Warning: This step will attempt to install macOS GUI applications."
