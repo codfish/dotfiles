@@ -70,6 +70,7 @@ run_brew() {
       'coreutils' # GNU core utilities (those that come with macOS are outdated)
       'git'
       'go'
+      'google-cloud-sdk'
       'heroku/brew/heroku'
       'jq'
       'mongodb/brew/mongodb-community'

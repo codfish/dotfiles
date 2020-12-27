@@ -70,6 +70,7 @@ ZSH_CUSTOM="$HOME/.dotfiles/oh-my-zsh-custom"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   aws
+  gcloud
   git
   iterm2
   history-substring-search
