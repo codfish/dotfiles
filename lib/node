@@ -20,7 +20,7 @@ install_latest_node() {
     e_header "Installing latest Node.js version..."
 
     # https://github.com/nvm-sh/nvm#migrating-global-packages-while-installing
-    nvm install node --latest-npm
+    nvm install --lts
     nvm use node
 
     [[ $? ]] && e_success "Done"
