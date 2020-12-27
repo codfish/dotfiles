@@ -77,6 +77,10 @@ plugins=(
   z
 )
 
+# untracked local rc file to update values before loading oh-my-zsh
+[ -r $HOME/.zshrc.before ] && source $HOME/.zshrc.before
+
 source $ZSH/oh-my-zsh.sh
 
-[ -r $HOME/.zshrc.local ] && source $HOME/.zshrc.local
+# untracked local rc file to update/add values after loading oh-my-zsh
+[ -r $HOME/.zshrc.after ] && source $HOME/.zshrc.after

@@ -158,11 +158,14 @@ macosdefaults
 ## Local/private
 
 Any private and custom Bash commands and configuration should be placed in a
-`~/.zshrc.local` file. This file will not be under version control or
-committed to a public repository. If `~/.zshrc.local` exists, it will be
-sourced for inclusion in `.zshrc`.
+`~/.zshrc.before` or `~/.zshrc.after` file. These files will not be under
+version control or committed to a public repository. If either or both exists,
+they will be sourced for inclusion in `.zshrc`.
 
-Here is an example `~/.zshrc.local`:
+- `~/.zshrc.before`: Sourced **before** `oh-my-zsh.sh` is loaded, therefore allowing you to effect what happens when `oh-my-zsh.sh` runs, without changing any tracked files. Some examples would be the `ZSH_THEME` or specific Oh My Zsh plugin configurations.
+- `~/.zshrc.after`: Sourced **after**  `oh-my-zsh.sh` is loaded. You can override anything that was set by `oh-my-zsh.sh`.
+
+Here is an example `~/.zshrc.before`:
 
 ```sh
 # PATH exports
@@ -174,19 +177,26 @@ export PATH
 # accidentally committing with your details
 GIT_AUTHOR_NAME="Chris O'Donnell"
 GIT_AUTHOR_EMAIL="chris@example.com"
-GIT_COMMITTER_NAME="$GIT_AUTHOR_NAME"
-GIT_COMMITTER_EMAIL="$GIT_AUTHOR_EMAIL"
 # Set the credentials (modifies ~/.gitconfig)
-git config --global user.name "$GIT_AUTHOR_NAME"
-git config --global user.email "$GIT_AUTHOR_EMAIL"
+git config --global user.name "Chris O'Donnell"
+git config --global user.email "dev@codfish.io"
 
 # Aliases
 alias code="cd ~/Sites"
+
+ZSH_THEME="amuse"
+```
+Here is an example `~/.zshrc.before`:
+
+```sh
+# override something
+alias ll="ls -aGlFh"
 ```
 
 **Note:** Because the `dotfiles/gitconfig` file is copied to `~/.gitconfig`, any private
-git configuration specified in `~/.zshrc.local` will not be committed to
+git configuration specified in `~/.zshrc.before` or `~/.zshrc.after` will not be committed to
 your dotfiles repository.
+
 ## Acknowledgements
 
 Inspiration and code was taken from many sources, including:
