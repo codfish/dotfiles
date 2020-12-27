@@ -64,6 +64,12 @@ alias ogc='open -a Google\ Chrome --args --disable-extensions'
 # Get macOS Software Updates, and update installed Ruby gems, Homebrew, npm, and their installed packages
 alias update="sudo softwareupdate -i -a; brew update; brew upgrade --all; brew cleanup; npm update npm -g; npm update -g; sudo gem update"
 
+# open dotfiles for edits
+alias editdot='cd ~/.dotfiles; code ~/.dotfiles'
+alias editdotfiles='editdot'
+alias codedot='editdot'
+alias codedotfiles='editdot'
+
 # edit your profile and reload it easily
 alias rc='vim ~/.zshrc; source ~/.zshrc'
 alias localrc='vim ~/.zshrc.local; source ~/.zshrc'
