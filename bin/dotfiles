@@ -38,7 +38,7 @@ if [[ $no_sync ]]; then
 else
   e_header "Syncing dotfiles..."
   # Pull down the latest changes
-  # git pull --rebase origin master
+  git pull --rebase origin master
 fi
 
 link() {
