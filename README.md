@@ -186,7 +186,8 @@ alias code="cd ~/Sites"
 
 ZSH_THEME="amuse"
 ```
-Here is an example `~/.zshrc.before`:
+
+Here is an example `~/.zshrc.after`:
 
 ```sh
 # override something
