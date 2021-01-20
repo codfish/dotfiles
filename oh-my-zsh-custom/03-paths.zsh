@@ -8,7 +8,7 @@ declare -a dirs_to_prepend=(
   "/usr/local/sbin"
 
   # Use brew python instead of shipped version
-  "/usr/local/opt/python/libexec/bin"
+  "/usr/local/opt/python@3/libexec/bin"
 
   # postgres libpq
   "/usr/local/opt/libpq/bin"
