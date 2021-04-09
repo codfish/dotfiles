@@ -79,6 +79,8 @@ plugins=(
 )
 
 # untracked local rc file to update values before loading oh-my-zsh
+# i.e. if you need to set any variables that affect plugin execution, you have
+# to do it in this file (and not in a $ZSH_CUSTOM loaded file)
 [ -r $HOME/.zshrc.before ] && source $HOME/.zshrc.before
 
 source $ZSH/oh-my-zsh.sh
