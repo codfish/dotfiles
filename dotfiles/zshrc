@@ -78,6 +78,11 @@ plugins=(
   z
 )
 
+# Plugin configuration
+
+# look for .nvmrc files to autoload the correct node version (nvm plugin)
+export NVM_AUTOLOAD=1
+
 # untracked local rc file to update values before loading oh-my-zsh
 # i.e. if you need to set any variables that affect plugin execution, you have
 # to do it in this file (and not in a $ZSH_CUSTOM loaded file)
