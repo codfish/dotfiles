@@ -9,6 +9,6 @@ install_composer() {
     composer self-update
   else
     curl -sS https://getcomposer.org/installer | php
-    mv composer.phar /usr/local/bin/composer
+    mv $DOTFILES/composer.phar $BREW_PREFIX/composer
   fi
 }

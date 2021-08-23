@@ -1,5 +1,9 @@
 # Directories to be prepended to PATH
 declare -a dirs_to_prepend=(
+  # Homebrew bin paths on M1 macs
+  "/opt/homebrew/bin"
+  "/opt/homebrew/opt"
+
   # Ensure that this bin always takes precedence over `/usr/bin`
   "/usr/local/bin"
 
@@ -14,15 +18,6 @@ declare -a dirs_to_prepend=(
   "/usr/local/opt/libpq/bin"
 )
 
-# Directories to be appended to PATH
-declare -a dirs_to_append=(
-  "/usr/bin"
-  "$HOME/bin"
-  "$HOME/.dotfiles/bin"
-  "$BREW_PREFIX/opt/coreutils/libexec/gnubin" # Add brew-installed GNU core utilities bin
-  "$HOME/.composer/vendor/bin"
-)
-
 # Prepend directories to PATH
 for index in ${dirs_to_prepend[@]}
 do
@@ -31,6 +26,15 @@ do
     PATH="${index}:$PATH"
   fi
 done
+
+# Directories to be appended to PATH
+declare -a dirs_to_append=(
+  "/usr/bin"
+  "$HOME/bin"
+  "$HOME/.dotfiles/bin"
+  "$(brew --prefix)/opt/coreutils/libexec/gnubin" # Add brew-installed GNU core utilities bin
+  "$HOME/.composer/vendor/bin"
+)
 
 # Append directories to PATH
 for index in ${dirs_to_append[@]}

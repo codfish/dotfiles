@@ -40,3 +40,11 @@ is_confirmed() {
 is_git_repo() {
   $(git rev-parse --is-inside-work-tree &> /dev/null)
 }
+
+# Check if we're on an M1 mac
+is_m1() {
+  if [[ `uname -m` == 'arm64' ]]; then
+    return 0
+  fi
+  return 1
+}
