@@ -121,7 +121,6 @@ run_brew_cask() {
       [google-backup-and-sync]='Backup and Sync from Google'
       [google-chrome]='Google Chrome'
       [iterm2]='iTerm'
-      [lastpass]='LastPass'
       [notion]='Notion'
       [postman]='Postman'
       [slack]='Slack'
