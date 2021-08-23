@@ -90,6 +90,7 @@ These dotfiles essentially wrap [Oh My Zsh](https://ohmyz.sh/). When you install
 - `$ZSH` will be `~/.dotfiles/oh-my-zsh`
 - `$ZSH_CUSTOM` will be `~/.dotfiles/oh-my-zsh-custom`
 - Opinionated set of plugins are loaded
+- Everything is configurable if you want to change things
 
 ### Oh My Zsh Plugins
 
@@ -105,6 +106,8 @@ These dotfiles essentially wrap [Oh My Zsh](https://ohmyz.sh/). When you install
 - GNU core utilities
 - [ack](http://betterthangrep.com/)
 - awscli
+- coreutils
+- deno
 - [git](http://git-scm.com/)
 - go
 - [heroku](https://devcenter.heroku.com/articles/heroku-cli)
@@ -114,6 +117,7 @@ These dotfiles essentially wrap [Oh My Zsh](https://ohmyz.sh/). When you install
 - [nginx](https://www.nginx.com/)
 - [nvm](https://github.com/creationix/nvm)
 - [php](https://formulae.brew.sh/formula/php)
+- python
 - [rbenv](https://github.com/rbenv/rbenv) (and [ruby-build](https://github.com/rbenv/ruby-build))
 - [rsync](https://rsync.samba.org/) (latest version, rather than the out-dated macOS installation)
 - [tmux](https://github.com/tmux/tmux/wiki)
@@ -125,11 +129,11 @@ These dotfiles essentially wrap [Oh My Zsh](https://ohmyz.sh/). When you install
 - AppCleaner
 - Brave Browser
 - CloudApp
-- Docker
-- Backup and Sync from Google
+- Docker Desktop
+- Express VPN
 - Google Chrome
-- iTerm
-- LastPass
+- Google Drive
+- iTerm2
 - Notion
 - Postman
 - Slack
