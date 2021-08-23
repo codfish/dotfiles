@@ -39,6 +39,11 @@ fi
 if ! type 'brew' &> /dev/null; then
   e_header "Installing Homebrew..."
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  
+  # make `brew` command available for M1 macs
+  if is_m1; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+  fi
 fi
 
 # Check for git

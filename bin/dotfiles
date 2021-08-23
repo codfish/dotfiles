@@ -4,6 +4,7 @@ DOTFILES="${HOME}/.dotfiles"
 DOTFILES_REPO=${DOTFILES_REPO:-codfish/dotfiles}
 DOTFILES_TARBALL_PATH="https://github.com/codfish/dotfiles/tarball/master"
 ZSH="$HOME/.dotfiles/oh-my-zsh"
+BREW_PREFIX=$(brew --prefix)
 
 cd ${DOTFILES}
 

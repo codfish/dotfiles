@@ -12,7 +12,7 @@ init_nvm() {
 # Use nvm to install latest node version, and install latest npm version too
 install_latest_node() {
   if ! type 'nvm' &> /dev/null; then
-    load_nvm
+    init_nvm
   fi
 
   # Check for nvm
@@ -20,8 +20,8 @@ install_latest_node() {
     e_header "Installing latest Node.js version..."
 
     # https://github.com/nvm-sh/nvm#migrating-global-packages-while-installing
-    nvm install --lts
-    nvm use node
+    nvm install node --reinstall-packages-from=default --latest-npm
+    nvm alias default node
 
     [[ $? ]] && e_success "Done"
   else
@@ -36,7 +36,7 @@ install_latest_node() {
 # scope so I can run them directly without thinking twice.
 install_npm_packages() {
   if ! type 'npm' &> /dev/null; then
-    load_nvm
+    init_nvm
   fi
 
   # Check for npm

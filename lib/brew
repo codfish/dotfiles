@@ -3,7 +3,7 @@
 # Test whether a Homebrew formula is already installed
 # $1 - formula name (may include options)
 formula_exists() {
-  if $(brew list $1 >/dev/null); then
+  if $(brew list $1 &>/dev/null); then
     printf "%s already installed.\n" "$1"
     return 0
   fi
@@ -13,24 +13,14 @@ formula_exists() {
 }
 
 # Test whether a Homebrew cask app is already installed
-# $1 - app name (may include options)
-app_exists() {
-  if $(brew cask list $1 &>/dev/null); then
+# $1 - formula name (may include options)
+cask_exists() {
+  if $(brew list --cask $1 &>/dev/null); then
     printf "%s already installed.\n" "$1"
     return 0
   fi
 
-  if [ -d "${HOME}/Applications/${2}.app" ]; then
-    printf "%s already installed.\n" "$2"
-    return 0
-  fi
-
-  if [ -d "/Applications/${2}.app" ]; then
-    printf "%s already installed.\n" "$2"
-    return 0
-  fi
-
-  e_warning "Missing app: $1"
+  e_warning "Missing formula: $1"
   return 1
 }
 
@@ -60,8 +50,6 @@ run_brew() {
 
     # update or install desired formulae
     e_header "Checking status of desired Homebrew formulae..."
-    local list_formulae
-    local -a missing_formulae
 
     # ** array items can include options for package **
     local -a desired_formulae=(
@@ -71,7 +59,6 @@ run_brew() {
       'deno'
       'git'
       'go'
-      'google-cloud-sdk'
       'heroku/brew/heroku'
       'jq'
       'mongodb/brew/mongodb-community'
@@ -110,41 +97,31 @@ run_brew_cask() {
     # update or install desired formulae
     e_header "Checking status of desired Homebrew casks..."
 
-    local -a missing_apps
-    # mapping of [<cask-name>]='<Applications-directory-name>'
-    declare -A desired_apps=(
-      [alfred]='Alfred 4'
-      [appcleaner]='AppCleaner'
-      [brave-browser]='Brave Browser'
-      [cloudapp]='CloudApp'
-      [docker]='Docker'
-      [google-backup-and-sync]='Backup and Sync from Google'
-      [google-chrome]='Google Chrome'
-      [iterm2]='iTerm'
-      [notion]='Notion'
-      [postman]='Postman'
-      [slack]='Slack'
-      [spotify]='Spotify'
-      [visual-studio-code]='Visual Studio Code'
-      [zoomus]='zoom.us'
+    local -a desired_apps=(
+      'alfred'
+      'appcleaner'
+      'brave-browser'
+      'cloudapp'
+      'expressvpn'
+      'docker'
+      'google-chrome'
+      'google-cloud-sdk'
+      'google-drive'
+      'iterm2'
+      'notion'
+      'postman'
+      'slack'
+      'spotify'
+      'visual-studio-code'
+      'zoom'
     )
 
-    for cask in "${desired_apps[@]}";
+    for app in ${desired_apps[@]}
     do
-      if ! app_exists $cask "${desired_apps[$cask]}"; then
-        # Store the name (and options) of every missing app
-        missing_apps=("${missing_apps[@]}" "${cask}")
+      if ! cask_exists $app; then
+        brew install --cask $app
       fi
     done
-
-    if [[ "$missing_apps" ]]; then
-      e_header "Installing missing macOS applications..."
-
-      for i in "${missing_apps[@]}"
-      do
-        brew cask install $i
-      done
-    fi
   else
     printf "\n"
     e_error "Error: Homebrew not found."
