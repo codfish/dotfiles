@@ -102,7 +102,6 @@ run_brew_cask() {
       'appcleaner'
       'brave-browser'
       'cloudapp'
-      'expressvpn'
       'docker'
       'google-chrome'
       'google-cloud-sdk'
