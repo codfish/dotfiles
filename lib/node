@@ -4,7 +4,6 @@
 # https://unix.stackexchange.com/questions/184508/nvm-command-not-available-in-bash-script
 init_nvm() {
   if $(brew list nvm > /dev/null); then
-    export NVM_DIR="$HOME/.nvm"
     source "$(brew --prefix nvm)/nvm.sh"
   fi
 }
