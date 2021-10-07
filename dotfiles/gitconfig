@@ -53,13 +53,13 @@
   who = shortlog --numbered --summary --email --no-merges --since="3 months"
 
   # get origin && update && libraries
-  update = !git submodule foreach git pull --rebase && git fetch --all && git rebase -p origin/master
+  update = !git submodule foreach git pull --rebase && git fetch --all && git rebase -p origin/main
 
   # rebase and merge recent commits
   fixup = !git add -A && git commit --amend -C head && echo '\n\n' && git changed
 
-  # set upstream to master branch on local master
-  sm = branch --set-upstream-to=origin/master master
+  # set upstream to main branch on local main
+  sm = branch --set-upstream-to=origin/main main
 
 [color]
   # color opts: normal, black, red, green, yellow, blue, magenta, cyan, or white

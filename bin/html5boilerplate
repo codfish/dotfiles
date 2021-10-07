@@ -2,7 +2,7 @@
 
 # Copy latest version of html5 boilerplate index.html to clipboard
 
-curl -sL https://raw.githubusercontent.com/h5bp/html5-boilerplate/master/src/index.html | pbcopy
+curl -sL https://raw.githubusercontent.com/h5bp/html5-boilerplate/main/src/index.html | pbcopy
 
 if [ $? -eq 0 ]
 then

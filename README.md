@@ -29,14 +29,14 @@ Tools](https://developer.apple.com/downloads) and may overwrite existing
 dotfiles in your HOME and `.vim` directories.
 
 ```sh
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/codfish/dotfiles/master/install.sh)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/codfish/dotfiles/main/install.sh)"
 ```
 
 If you wish to fork this project and maintain your own dotfiles, fork it and
 run the following:
 
 ```sh
-DOTFILES_REPO=yourhandle/dotfiles /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/yourhandle/dotfiles/master/install.sh)"
+DOTFILES_REPO=yourhandle/dotfiles /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/yourhandle/dotfiles/main/install.sh)"
 ```
 
 ## Usage

@@ -78,7 +78,7 @@ alias localrc='vim ~/.zshrc.local; source ~/.zshrc'
 alias gits='git s'
 
 # git remove merged branches
-alias gremovemerged='git branch --merged | grep -v "\*" | grep -v master | grep -v dev | xargs -n 1 git branch -d'
+alias gremovemerged='git branch --merged | grep -v "\*" | grep -v main | grep -v dev | xargs -n 1 git branch -d'
 
 # docker things
 alias docker-compose='docker compose'

@@ -9,7 +9,7 @@ ZSH_CUSTOM="${DOTFILES}/oh-my-zsh-custom"
 
 # Overridable settings
 DOTFILES_REPO=${DOTFILES_REPO:-codfish/dotfiles}
-DOTFILES_TARBALL_PATH="https://github.com/${DOTFILES_REPO}/tarball/master"
+DOTFILES_TARBALL_PATH="https://github.com/${DOTFILES_REPO}/tarball/main"
 
 # If missing, download and extract the dotfiles repository
 if [[ ! -d ${DOTFILES} ]]; then
@@ -59,8 +59,8 @@ if ! is_git_repo; then
   e_header "Initializing git repository..."
   git init
   git remote add origin https://github.com/${DOTFILES_REPO}
-  git checkout -b master
-  git fetch origin master
+  git checkout -b main
+  git fetch origin main
   # Reset the index and working tree to the fetched HEAD
   git reset --hard FETCH_HEAD
 fi
