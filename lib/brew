@@ -63,6 +63,7 @@ run_brew() {
       'jq'
       'mongodb/brew/mongodb-community'
       'mysql'
+      'node'
       'nginx'
       'nvm'
       'php'
