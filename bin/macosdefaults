@@ -450,7 +450,7 @@ defaults write com.googlecode.iterm2 PromptOnQuit -bool false
 
 for app in "Activity Monitor" "Calendar" "Contacts" "cfprefsd" \
   "Dashboard" "NotificationCenter" "Dock" "Finder" "Mail" "Safari" "SystemUIServer" \
-  "Terminal" "iTerm" "iTunes"; do
+  "iTerm" "iTunes"; do
   killall "${app}" > /dev/null 2>&1
 done
 
