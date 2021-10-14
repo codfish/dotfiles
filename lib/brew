@@ -103,7 +103,6 @@ run_brew_cask() {
       'appcleaner'
       'brave-browser'
       'cloudapp'
-      'docker'
       'google-chrome'
       'google-cloud-sdk'
       'google-drive'

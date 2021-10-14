@@ -14,6 +14,7 @@ source ./lib/brew
 source ./lib/node
 source ./lib/pip
 source ./lib/composer
+source ./lib/list_apps
 
 # Help text
 if [[ "$1" == "-h" || "$1" == "--help" ]]; then
@@ -120,6 +121,7 @@ if [[ $with_apps ]]; then
   if is_confirmed; then
     # Install applications through Homebrew Cask
     run_brew_cask
+    run_list_apps
   else
     printf "Skipped macOS app installations.\n"
   fi

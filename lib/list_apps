@@ -1,0 +1,28 @@
+#!/usr/bin/env zsh
+
+run_list() {
+
+cat <<EOT
+macOS dotfiles - Chris O'Donnell - http://codfish.io/
+
+Optional software to install
+
+  Alfred - https://www.alfredapp.com/
+  AppCleaner - https://freemacsoft.net/appcleaner/
+  Dash - https://kapeli.com/dash
+  Docker - https://docs.docker.com/desktop/mac/install/
+  Notion - https://notion.so
+  Firefox - https://www.mozilla.org/en-US/firefox/new/
+  Google Chrome - https://www.google.com/chrome/browser/desktop/index.html
+  Google Drive - https://www.google.com/drive/download/
+  iTerm2 - https://www.iterm2.com/downloads.html
+  MacDown - http://macdown.uranusjr.com/download/latest/
+  Pocket - https://getpocket.com/mac/?a=mac
+  Postico - https://eggerapps.at/postico/
+  Todoist - https://todoist.com/mac
+  Virtualbox - https://www.virtualbox.org/wiki/Downloads
+  Visual Studio Code - https://code.visualstudio.com/docs/?dv=osx
+  VLC - http://www.videolan.org/vlc/download-macosx.html
+EOT
+
+}
