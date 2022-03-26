@@ -9,9 +9,10 @@ Usage: $(basename "$0") [options]
 
 Options:
     -h, --help      Print this help text
-    -l, --list      Print a list of additional software to install
     --no-packages   Suppress package updates
     --no-sync       Suppress pulling from the remote repository
+    --no-macos      Suppress applying custom macOS system preferences
+    --with-apps     Install optional macOS GUI Applications    
 
 Documentation can be found at https://github.com/codfish/dotfiles/
 
