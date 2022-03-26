@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-run_list() {
+run_list_apps() {
 
 cat <<EOT
 macOS dotfiles - Chris O'Donnell - http://codfish.io/
