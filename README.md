@@ -162,14 +162,14 @@ macosdefaults
 ## Local/private
 
 Any private and custom Bash commands and configuration should be placed in a
-`~/.zshrc.before` or `~/.zshrc.after` file. These files will not be under
+`~/.zshrc.local` or `~/.zshrc.after` file. These files will not be under
 version control or committed to a public repository. If either or both exists,
 they will be sourced for inclusion in `.zshrc`.
 
-- `~/.zshrc.before`: Sourced **before** `oh-my-zsh.sh` is loaded, therefore allowing you to effect what happens when `oh-my-zsh.sh` runs, without changing any tracked files. Some examples would be the `ZSH_THEME` or specific Oh My Zsh plugin configurations.
+- `~/.zshrc.local`: Sourced **before** `oh-my-zsh.sh` is loaded, therefore allowing you to effect what happens when `oh-my-zsh.sh` runs, without changing any tracked files. Some examples would be the `ZSH_THEME` or specific Oh My Zsh plugin configurations.
 - `~/.zshrc.after`: Sourced **after**  `oh-my-zsh.sh` is loaded. You can override anything that was set by `oh-my-zsh.sh`.
 
-Here is an example `~/.zshrc.before`:
+Here is an example `~/.zshrc.local`:
 
 ```sh
 # PATH exports
@@ -185,8 +185,8 @@ GIT_AUTHOR_EMAIL="chris@example.com"
 git config --global user.name "Chris O'Donnell"
 git config --global user.email "dev@codfish.io"
 
-# Aliases
-alias code="cd ~/Sites"
+# Work Machine Aliases
+alias web="cd ~/Sites/company/web"
 
 ZSH_THEME="amuse"
 ```
@@ -199,7 +199,7 @@ alias ll="ls -aGlFh"
 ```
 
 **Note:** Because the `dotfiles/gitconfig` file is copied to `~/.gitconfig`, any private
-git configuration specified in `~/.zshrc.before` or `~/.zshrc.after` will not be committed to
+git configuration specified in `~/.zshrc.local` or `~/.zshrc.after` will not be committed to
 your dotfiles repository.
 
 ## Acknowledgements
