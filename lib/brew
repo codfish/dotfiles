@@ -61,7 +61,6 @@ run_brew() {
       'go'
       'heroku/brew/heroku'
       'jq'
-      'mongodb/brew/mongodb-community'
       'mysql'
       'node'
       'nginx'
