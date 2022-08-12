@@ -86,7 +86,7 @@ else
   # Install Homebrew formulae
   run_brew
 
-  # initialize nvm
+  # Initialize nvm
   init_nvm
 
   # Install latest node version

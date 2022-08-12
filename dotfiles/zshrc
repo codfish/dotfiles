@@ -1,14 +1,12 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-
-# Path to your oh-my-zsh installation.
-export ZSH=$HOME/.dotfiles/oh-my-zsh
+# Path to your dotfiles & oh-my-zsh installation.
+export DOTFILES=$HOME/.dotfiles
+export ZSH=$DOTFILES/oh-my-zsh
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="amuse"
+ZSH_THEME="" # amuse
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -95,6 +93,10 @@ export NVM_AUTOLOAD=1
 [ -r $HOME/.zshrc.local ] && source $HOME/.zshrc.local
 
 source $ZSH/oh-my-zsh.sh
+
+# https://github.com/sindresorhus/pure#getting-started
+autoload -U promptinit; promptinit
+prompt pure
 
 # untracked local rc file to update/add values after loading oh-my-zsh
 [ -r $HOME/.zshrc.after ] && source $HOME/.zshrc.after

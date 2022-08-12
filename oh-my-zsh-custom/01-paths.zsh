@@ -45,7 +45,7 @@ do
   fi
 done
 
-fpath=($DOTFILES/functions $fpath)
+fpath+=("$(brew --prefix)/share/zsh/site-functions")
 
 unset dirs_to_prepend dirs_to_append
 

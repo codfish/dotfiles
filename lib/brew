@@ -67,6 +67,7 @@ run_brew() {
       'nginx'
       'nvm'
       'php'
+      'pure'
       'python'
       'pyenv'
       'rbenv'
