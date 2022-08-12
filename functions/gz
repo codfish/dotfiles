@@ -6,13 +6,13 @@
 #   Nicolas Gallagher <https://github.com/necolas>
 #
 
-# gz() {
+gz() {
 
-local origsize=$(wc -c < "$1")
-local gzipsize=$(gzip -c "$1" | wc -c)
-local ratio=$(echo "$gzipsize * 100 / $origsize" | bc -l)
+  local origsize=$(wc -c < "$1")
+  local gzipsize=$(gzip -c "$1" | wc -c)
+  local ratio=$(echo "$gzipsize * 100 / $origsize" | bc -l)
 
-printf "orig: %d bytes\n" "$origsize"
-printf "gzip: %d bytes (%2.2f%%)\n" "$gzipsize" "$ratio"
+  printf "orig: %d bytes\n" "$origsize"
+  printf "gzip: %d bytes (%2.2f%%)\n" "$gzipsize" "$ratio"
 
-# }
+}

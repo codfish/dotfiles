@@ -7,9 +7,9 @@
 #   Nicolas Gallagher <https://github.com/necolas>
 #
 
-# cleanup() {
+cleanup() {
 
-local q="${1:-*.DS_Store}"
-find . -type f -name "$q" -ls -delete
+  local q="${1:-*.DS_Store}"
+  find . -type f -name "$q" -ls -delete
 
-# }
+}

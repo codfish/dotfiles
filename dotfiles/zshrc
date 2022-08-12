@@ -100,3 +100,7 @@ prompt pure
 
 # untracked local rc file to update/add values after loading oh-my-zsh
 [ -r $HOME/.zshrc.after ] && source $HOME/.zshrc.after
+
+for file in $DOTFILES/functions/*; do
+  source "$file"
+done
