@@ -65,7 +65,6 @@ run_brew() {
       'blendle/blendle/kns'
       'kubectx'
       'mysql'
-      'node'
       'nginx'
       'nvm'
       'php'
