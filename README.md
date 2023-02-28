@@ -7,7 +7,7 @@
 **Note:** Installation of `Oh My Zsh` is not optional. Everything else listed
 below can be opted-out of.
 
-- Installs Oh My Zsh with custom [exports](oh-my-zsh-custom/01-exports.zsh), [aliases](oh-my-zsh-custom/02-aliases.zsh), and [paths](oh-my-zsh-custom/02-aliases.zsh).
+- Installs Oh My Zsh with custom [exports](oh-my-zsh-custom/02-exports.zsh), [aliases](oh-my-zsh-custom/03-aliases.zsh), and [paths](oh-my-zsh-custom/01-paths.zsh).
 - Loads a [selection of omz plugins](dotfiles/zshrc#L66) and [custom functions](functions).
 - Installs custom "dotfiles":
   - [`.curlrc`](dotfiles/curlrc)
