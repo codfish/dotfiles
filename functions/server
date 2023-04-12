@@ -1,9 +1,6 @@
 #!/usr/bin/env zsh
 #
-# Start an HTTP server from a directory, optionally specifying the language & port
-#
-# Authors:
-#   Nicolas Gallagher <https://github.com/necolas>
+# Start an HTTP server using serve
 #
 
 server() {
