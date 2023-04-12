@@ -1,0 +1,20 @@
+#!/usr/bin/env zsh
+#
+# Create and cd into a directory
+#
+
+mkcdir ()
+{
+    mkdir -p -- "$1" &&
+       cd -P -- "$1"
+}
+
+mkdirc ()
+{
+    mkcdir $1
+}
+
+cddir ()
+{
+    mkcdir $1
+}
