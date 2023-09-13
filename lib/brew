@@ -54,6 +54,7 @@ run_brew() {
     # ** array items can include options for package **
     local -a desired_formulae=(
       'ack'
+      'adr-tools'
       'awscli'
       'coreutils' # GNU core utilities (those that come with macOS are outdated)
       'deno'
