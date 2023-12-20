@@ -6,7 +6,7 @@ export ZSH=$DOTFILES/oh-my-zsh
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="" # amuse
+ZSH_THEME="amuse"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -79,7 +79,7 @@ plugins=(
 
 # Plugin configuration
 
-# M1 workaround for nvm plugin in order to find brew nvm in new location
+# Apple chip workaround for nvm plugin in order to find brew nvm in new location
 if [[ `uname -m` == 'arm64' ]]; then
   NVM_HOMEBREW="/opt/homebrew/opt/nvm"
 fi
@@ -90,13 +90,14 @@ export NVM_AUTOLOAD=1
 # untracked local rc file to update values before loading oh-my-zsh
 # i.e. if you need to set any variables that affect plugin execution, you have
 # to do it in this file (and not in a $ZSH_CUSTOM loaded file)
-[ -r $HOME/.zshrc.local ] && source $HOME/.zshrc.local
+[ -r $HOME/.zshrc.local ] && source $HOME/.zshrc.local # just for backwards compat
+[ -r $HOME/.zshrc.before ] && source $HOME/.zshrc.before
 
 source $ZSH/oh-my-zsh.sh
 
 # https://github.com/sindresorhus/pure#getting-started
-autoload -U promptinit; promptinit
-prompt pure
+# autoload -U promptinit; promptinit
+# prompt pure
 
 # untracked local rc file to update/add values after loading oh-my-zsh
 [ -r $HOME/.zshrc.after ] && source $HOME/.zshrc.after

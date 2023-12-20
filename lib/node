@@ -19,7 +19,11 @@ install_latest_node() {
     e_header "Installing latest Node.js version..."
 
     # https://github.com/nvm-sh/nvm#migrating-global-packages-while-installing
-    nvm install node --reinstall-packages-from=default --latest-npm
+    if type 'node' &> /dev/null; then
+      nvm install --lts --reinstall-packages-from=default --latest-npm
+    else
+      nvm install --lts --latest-npm
+    fi
     nvm alias default node
 
     [[ $? ]] && e_success "Done"
@@ -43,7 +47,7 @@ install_npm_packages() {
     e_header "Installing Node.js packages..."
 
     # Install packages globally
-    npm install -g yo generator-codfish vercel renamer npm-check
+    npm install -g vercel renamer@3 npm-check
 
     [[ $? ]] && e_success "Done"
   else

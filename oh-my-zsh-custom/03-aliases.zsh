@@ -72,7 +72,7 @@ alias codedotfiles='editdot'
 
 # edit your profile and reload it easily
 alias rc='vim ~/.zshrc; source ~/.zshrc'
-alias localrc='vim ~/.zshrc.local; source ~/.zshrc'
+alias localrc='vim ~/.zshrc.before; source ~/.zshrc'
 
 # typos
 alias gits='git s'
@@ -82,3 +82,7 @@ alias gremovemerged='git branch --merged | grep -v "\*" | grep -v main | grep -v
 
 # docker things
 alias docker-compose='docker compose'
+
+# nvm things
+alias nvminstall='nvm install --reinstall-packages-from=default'
+alias nvmi='nvminstall'

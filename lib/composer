@@ -8,7 +8,7 @@ install_composer() {
     printf "Composer already installed. Upgrading to latest version...\n"
     composer self-update
   else
-    curl -sS https://getcomposer.org/installer | php
+    wget https://raw.githubusercontent.com/composer/getcomposer.org/76a7060ccb93902cd7576b67264ad91c8a2700e2/web/installer -O - -q | php -- --quiet
     mv $DOTFILES/composer.phar $BREW_PREFIX/composer
   fi
 }

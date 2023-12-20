@@ -12,15 +12,26 @@ formula_exists() {
   return 1
 }
 
-# Test whether a Homebrew cask app is already installed
-# $1 - formula name (may include options)
+# Test whether an app is already installed in /Applications or ~/Applications
+# $1 - cask name
+# $2 - app name
 cask_exists() {
   if $(brew list --cask $1 &>/dev/null); then
-    printf "%s already installed.\n" "$1"
+    printf "%s already installed.\n" "$2"
     return 0
   fi
 
-  e_warning "Missing formula: $1"
+  if [ -d "${HOME}/Applications/${2}.app" ]; then
+    printf "%s already installed.\n" "$2"
+    return 0
+  fi
+
+  if [ -d "/Applications/${2}.app" ]; then
+    printf "%s already installed.\n" "$2"
+    return 0
+  fi
+
+  e_warning "Missing app: $1"
   return 1
 }
 
@@ -37,98 +48,108 @@ brew_tap() {
 
 run_brew() {
   # Check for Homebrew
-  if type 'brew' &> /dev/null; then
-    # Use the latest version of Homebrew
-    e_header "Updating Homebrew..."
-    brew update
-    [[ $? ]] && e_success "Done"
-
-    # Upgrade any already-installed formulae
-    e_header "Updating any existing Homebrew formulae..."
-    brew upgrade
-    [[ $? ]] && e_success "Done"
-
-    # update or install desired formulae
-    e_header "Checking status of desired Homebrew formulae..."
-
-    # ** array items can include options for package **
-    local -a desired_formulae=(
-      'ack'
-      'adr-tools'
-      'awscli'
-      'coreutils' # GNU core utilities (those that come with macOS are outdated)
-      'deno'
-      'git'
-      'go'
-      'heroku/brew/heroku'
-      'jq'
-      'kubectl'
-      'blendle/blendle/kns'
-      'kubectx'
-      'mysql'
-      'nginx'
-      'nvm'
-      'php'
-      'pure'
-      'python'
-      'pyenv'
-      'rbenv'
-      'rsync'
-      'tmux'
-      'wget'
-    )
-
-    for index in ${desired_formulae[@]}
-    do
-      if ! formula_exists $index; then
-        brew install $index
-      fi
-    done
-
-    # Cleanup brew
-    e_header "Cleaning brew..."
-    brew cleanup -s
-    [[ $? ]] && e_success "Done"
-  else
+  if ! type 'brew' &> /dev/null; then
     printf "\n"
     e_error "Error: Homebrew not found."
     printf "Aborting...\n"
     exit
   fi
+
+  # Use the latest version of Homebrew
+  e_header "Updating Homebrew..."
+  brew update
+  [[ $? ]] && e_success "Done"
+
+  # Upgrade any already-installed formulae
+  e_header "Updating any existing Homebrew formulae..."
+  brew upgrade
+  [[ $? ]] && e_success "Done"
+
+  # update or install desired formulae
+  e_header "Checking status of desired Homebrew formulae..."
+
+  # ** array items can include options for package **
+  local -a desired_formulae=(
+    'ack'
+    'adr-tools'
+    'awscli'
+    'coreutils' # GNU core utilities (those that come with macOS are outdated)
+    'deno'
+    'git'
+    'go'
+    'heroku/brew/heroku'
+    'jq'
+    'kubectl'
+    'blendle/blendle/kns'
+    'kubectx'
+    'mysql'
+    'nginx'
+    'nvm'
+    'oven-sh/bun/bun'
+    'php'
+    'pure'
+    'python'
+    'pyenv'
+    'rbenv'
+    'rsync'
+    'tmux'
+    'wget'
+  )
+
+  for index in ${desired_formulae[@]}
+  do
+    if ! formula_exists $index; then
+      brew install $index
+    fi
+  done
+
+  # Cleanup brew
+  e_header "Cleaning brew..."
+  brew cleanup -s
+  [[ $? ]] && e_success "Done"
 }
 
 run_brew_cask() {
-  if type 'brew' &> /dev/null; then
-    # update or install desired formulae
-    e_header "Checking status of desired Homebrew casks..."
-
-    local -a desired_apps=(
-      'alfred'
-      'appcleaner'
-      'brave-browser'
-      'cloudapp'
-      'google-chrome'
-      'google-cloud-sdk'
-      'google-drive'
-      'iterm2'
-      'notion'
-      'postman'
-      'slack'
-      'spotify'
-      'visual-studio-code'
-      'zoom'
-    )
-
-    for app in ${desired_apps[@]}
-    do
-      if ! cask_exists $app; then
-        brew install --cask $app
-      fi
-    done
-  else
+  if ! type 'brew' &> /dev/null; then
     printf "\n"
     e_error "Error: Homebrew not found."
     printf "Aborting...\n"
     exit
   fi
+
+  # mapping of [<cask-name>]='<Applications-directory-name>'
+  declare -A desired_apps=(
+    [alfred]='Alfred 5'
+    [appcleaner]='AppCleaner'
+    [beardedspice]='BeardedSpice'
+    [brave-browser]='Brave Browser'
+    [docker]='Docker'
+    [dropbox]='Dropbox'
+    [figma]='Figma'
+    [firefox]='Firefox'
+    [google-chrome]='Google Chrome'
+    [google-drive]='Google Drive'
+    [jetbrains-toolbox]='JetBrains Toolbox'
+    [kap]='Kap'
+    [notion]='Notion'
+    [postman]='Postman'
+    [slack]='Slack'
+    [spotify]='Spotify'
+    [todoist]='Todoist'
+    [visual-studio-code]='Visual Studio Code'
+    [warp]='Warp'
+    [workflowy]='WorkFlowy'
+    [zoom]='zoom.us.app'
+  )
+
+  # check if app is installed, if not, install it
+  e_header "Installing missing macOS applications..."
+  for cask_name app_name in "${(@kv)desired_apps}"; do
+    if ! cask_exists "$cask_name" "$app_name"; then
+      brew install --cask $cask_name
+    fi
+  done
+
+  echo ""
+  e_success "Done installing macOS applications!"
 }

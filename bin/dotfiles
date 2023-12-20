@@ -50,7 +50,7 @@ link() {
 
 mirrorfiles() {
   # Copy `.gitconfig`.
-  # Any global git commands in `~/.zshrc.local` will be written to
+  # Any global git commands in `~/.zshrc.before` will be written to
   # `.gitconfig`. This prevents them being committed to the repository.
   rsync -avz --quiet ${DOTFILES}/dotfiles/gitconfig  ${HOME}/.gitconfig
 
@@ -80,11 +80,11 @@ if [[ $no_packages ]]; then
 else
   printf "Updating packages...\n"
 
-  # Install composer
-  install_composer
-
   # Install Homebrew formulae
   run_brew
+
+  # Install composer
+  install_composer
 
   # Initialize nvm
   init_nvm
