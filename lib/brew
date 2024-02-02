@@ -73,6 +73,7 @@ run_brew() {
     'ack'
     'adr-tools'
     'awscli'
+    'cheat'
     'coreutils' # GNU core utilities (those that come with macOS are outdated)
     'deno'
     'git'

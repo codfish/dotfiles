@@ -50,3 +50,7 @@ export HOMEBREW_NO_ANALYTICS=1
 # Set brew prefix once for reuse later so we don't need to keep re-running
 # `brew --prefix`, which can be slow in certain environments
 export BREW_PREFIX=$(brew --prefix)
+
+# Set the config path for the cheat cli
+# https://github.com/cheat/cheat/blob/d34177729d3369da9d74756f8cf3a762bd96604c/INSTALLING.md#confyml
+export CHEAT_CONFIG_PATH="~/.dotfiles/cheat/conf.yml"
