@@ -1,0 +1,41 @@
+---
+syntax: typescript
+tags: [ typescript, javascript, ts, development ]
+---
+// Extending an interface with an override
+// Context: "Extensions" are due payments but the payment type is always extension fee.
+export interface Extension extends Omit<Duepayment, 'payment_type'> {
+  payment_type: 'extension_fee';
+}
+
+
+// Use ReturnType<typeof f> to grab the return type of another reference.
+async handleRedirectCallback(): ReturnType<typeof auth0.handleRedirectCallback>
+
+
+// Enum with string values
+export enum Splits {
+  Funding_On_T = 'liquidity_scale_pod__funding_on_t',
+  Reverse_Factoring_Opt_In = 'payments_xp_pod__reverse_factoring_opt_in',
+  Dispute_Resolution_Enabled = 'liquidity_scale_pod__dispute_resolution',
+  Add_Direct_Payment_Invoice = 'payments_xp_pod__add_direct_payment_invoice',
+  Auto_Assignment_Enabled = 'payments_xp_pod__auto_assignment_enabled',
+}
+
+
+// Convert an enum to a string union
+type SplitsStringUnion = `${Splits}`
+
+
+// When types aren't made available to you, you can use `Parameters` to infer them
+// from a function's params.
+// This is saying our login functions options parameter, is the same type as the Auth0 plugin's `getAccessTokenSilently`
+// methods' first parameter.
+import { Auth0Plugin } from '@auth0/auth0-vue';
+async function login(options?: Parameters<Auth0Plugin['getAccessTokenSilently']>[0]): Promise<UserState | void> {
+
+
+// Specify an object type, but with a specific property set
+getAccessTokenSilently(
+  options: GetTokenSilentlyOptions & { detailedResponse: true }
+): Promise<GetTokenSilentlyVerboseResponse>;

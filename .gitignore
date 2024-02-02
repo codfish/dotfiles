@@ -3,3 +3,4 @@ vim/.viminfo
 bin/cheat
 oh-my-zsh
 oh-my-zsh-custom/00-dotfiles.zsh
+cheat/cheatsheets/community
