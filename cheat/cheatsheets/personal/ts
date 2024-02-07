@@ -2,8 +2,8 @@
 syntax: typescript
 tags: [ typescript, javascript, ts, development ]
 ---
-// Extending an interface with an override
-// Context: "Extensions" are due payments but the payment type is always extension fee.
+/* Extending an interface with an override */
+/* Context: "Extensions" are due payments but the payment type is always extension fee. */
 export interface Extension extends Omit<Duepayment, 'payment_type'> {
   payment_type: 'extension_fee';
 }
@@ -27,10 +27,14 @@ export enum Splits {
 type SplitsStringUnion = `${Splits}`
 
 
-// When types aren't made available to you, you can use `Parameters` to infer them
-// from a function's params.
-// This is saying our login functions options parameter, is the same type as the Auth0 plugin's `getAccessTokenSilently`
-// methods' first parameter.
+// Create a type from an object's values. AppValues will be a union of all the values in the APPS object.
+type AppValues = typeof APPS[keyof typeof APPS];
+
+
+/* When types aren't made available to you, you can use `Parameters` to infer them */
+/* from a function's params. */
+/* This is saying our login functions options parameter, is the same type as the Auth0 plugin's `getAccessTokenSilently` */
+/* methods' first parameter. */
 import { Auth0Plugin } from '@auth0/auth0-vue';
 async function login(options?: Parameters<Auth0Plugin['getAccessTokenSilently']>[0]): Promise<UserState | void> {
 
