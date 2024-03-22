@@ -141,7 +141,7 @@ run_brew_cask() {
     [visual-studio-code]='Visual Studio Code'
     [warp]='Warp'
     [workflowy]='WorkFlowy'
-    [zoom]='zoom.us.app'
+    [zoom]='zoom.us'
   )
 
   # check if app is installed, if not, install it
