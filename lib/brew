@@ -132,6 +132,7 @@ run_brew_cask() {
     [google-drive]='Google Drive'
     [jetbrains-toolbox]='JetBrains Toolbox'
     [kap]='Kap'
+    [loom]='Loom'
     [notion]='Notion'
     [postman]='Postman'
     [slack]='Slack'
