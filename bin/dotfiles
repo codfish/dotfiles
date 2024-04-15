@@ -4,17 +4,19 @@ DOTFILES="${HOME}/.dotfiles"
 DOTFILES_REPO=${DOTFILES_REPO:-codfish/dotfiles}
 DOTFILES_TARBALL_PATH="https://github.com/codfish/dotfiles/tarball/main"
 ZSH="$HOME/.dotfiles/oh-my-zsh"
+ZSH_CUSTOM="$HOME/.dotfiles/oh-my-zsh-custom"
 BREW_PREFIX=$(brew --prefix)
 
 cd ${DOTFILES}
 
-source ./lib/help
-source ./lib/utils
 source ./lib/brew
+source ./lib/composer
+source ./lib/help
+source ./lib/list_apps
 source ./lib/node
 source ./lib/pip
-source ./lib/composer
-source ./lib/list_apps
+source ./lib/utils
+source ./lib/zsh
 
 # Help text
 if [[ "$1" == "-h" || "$1" == "--help" ]]; then
@@ -79,6 +81,9 @@ if [[ $no_packages ]]; then
   printf "Skipped package installations.\n"
 else
   printf "Updating packages...\n"
+
+  # Install & configure zsh plugins
+  install_zsh_plugins
 
   # Install Homebrew formulae
   run_brew

@@ -70,6 +70,7 @@ plugins=(
   git
   history-substring-search
   nvm
+  zsh-autosuggestions
 )
 
 # Plugin configuration

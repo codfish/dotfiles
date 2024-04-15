@@ -1,0 +1,15 @@
+#!/usr/bin/env zsh
+
+
+install_zsh_plugins() {
+  e_header "Installing zsh plugins..."
+
+  # Install zsh-syntax-highlighting
+  if [[ ! -d "$ZSH_CUSTOM/plugins/zsh-autosuggestions" ]]; then
+    git clone https://github.com/zsh-users/zsh-autosuggestions "$ZSH_CUSTOM/plugins/zsh-autosuggestions"
+  else
+    e_warning "zsh-autosuggestions already installed."
+  fi
+
+  [[ $? ]] && e_success "Done"
+}
