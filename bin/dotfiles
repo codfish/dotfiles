@@ -91,9 +91,6 @@ else
   # Install composer
   install_composer
 
-  # Initialize nvm
-  init_nvm
-
   # Install latest node version
   install_latest_node
 

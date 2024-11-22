@@ -16,7 +16,7 @@ below can be opted-out of.
   - [`.gitconfig`](dotfiles/gitconfig)
   - [`.gitignore`](dotfiles/gitignore)
   - [`.zshrc`](dotfiles/zshrc)
-- Installs Homebrew, nvm & latest version of node, composer & latest version of php
+- Installs Homebrew, volta & latest version of node, composer & latest version of php
 - Installs selection of brew formulae & node packages
 - Runs `brew update`, `brew upgrade` and `brew cleanup`
 - Sets custom [macOS defaults](bin/macosdefaults)
@@ -98,7 +98,6 @@ These dotfiles essentially wrap [Oh My Zsh](https://ohmyz.sh/). When you install
 - git
 - iterm2
 - history-substring-search
-- nvm
 - z
 
 ## Homebrew formulae

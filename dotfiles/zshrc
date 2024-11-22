@@ -69,19 +69,19 @@ ZSH_CUSTOM="$HOME/.dotfiles/oh-my-zsh-custom"
 plugins=(
   git
   history-substring-search
-  nvm
+  # nvm
   zsh-autosuggestions
 )
 
 # Plugin configuration
 
 # Apple chip workaround for nvm plugin in order to find brew nvm in new location
-if [[ `uname -m` == 'arm64' ]]; then
-  NVM_HOMEBREW="/opt/homebrew/opt/nvm"
-fi
+# if [[ `uname -m` == 'arm64' ]]; then
+#   NVM_HOMEBREW="/opt/homebrew/opt/nvm"
+# fi
 
 # look for .nvmrc files to autoload the correct node version (nvm plugin)
-export NVM_AUTOLOAD=1
+# export NVM_AUTOLOAD=1
 
 # untracked local rc file to update values before loading oh-my-zsh
 # i.e. if you need to set any variables that affect plugin execution, you have
