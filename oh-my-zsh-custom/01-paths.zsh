@@ -1,5 +1,8 @@
 # Directories to be prepended to PATH
 declare -a dirs_to_prepend=(
+  # Volta - https://github.com/volta-cli/volta
+  "$HOME/.volta/bin"
+
   # Homebrew bin paths on M1 macs
   "/opt/homebrew/bin"
   "/opt/homebrew/opt"

@@ -1,35 +1,21 @@
 #!/usr/bin/env zsh
 
-# Load nvm function for the script
-# https://unix.stackexchange.com/questions/184508/nvm-command-not-available-in-bash-script
-init_nvm() {
-  if $(brew list nvm > /dev/null); then
-    source "$(brew --prefix nvm)/nvm.sh"
-  fi
-}
-
 # Use nvm to install latest node version, and install latest npm version too
 install_latest_node() {
-  if ! type 'nvm' &> /dev/null; then
-    init_nvm
+  if ! type 'volta' &> /dev/null; then
+    brew install volta
   fi
 
   # Check for nvm
-  if type 'nvm' &> /dev/null; then
+  if type 'volta' &> /dev/null; then
     e_header "Installing latest Node.js version..."
 
-    # https://github.com/nvm-sh/nvm#migrating-global-packages-while-installing
-    if type 'node' &> /dev/null; then
-      nvm install --lts --reinstall-packages-from=default --latest-npm
-    else
-      nvm install --lts --latest-npm
-    fi
-    nvm alias default node
+    volta install node
 
     [[ $? ]] && e_success "Done"
   else
     printf "\n"
-    e_error "Error: nvm not found."
+    e_error "Error: volta not found."
     printf "Aborting...\n"
     exit
   fi
@@ -38,10 +24,6 @@ install_latest_node() {
 # `npx` is great for most things, but some things I prefer to have in the global
 # scope so I can run them directly without thinking twice.
 install_npm_packages() {
-  if ! type 'npm' &> /dev/null; then
-    init_nvm
-  fi
-
   # Check for npm
   if type 'npm' &> /dev/null; then
     e_header "Installing Node.js packages..."
