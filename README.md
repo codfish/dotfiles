@@ -19,8 +19,8 @@ below can be opted-out of.
 - Installs Homebrew, volta & latest version of node, composer & latest version of php
 - Installs selection of brew formulae & node packages
 - Runs `brew update`, `brew upgrade` and `brew cleanup`
-- Sets custom [macOS defaults](bin/macosdefaults)
-- Installs Applications via `brew cask`
+- Optionally set custom [macOS defaults](bin/macosdefaults) with `--configure-macos` flag
+- Optionally install Applications via `brew cask` with `--install-casks` flag
 
 ## Installation
 
