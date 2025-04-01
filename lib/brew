@@ -94,7 +94,6 @@ run_brew() {
     'rbenv'
     'rsync'
     'tmux'
-    'volta'
     'watchman'
     'wget'
   )

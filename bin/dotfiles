@@ -91,6 +91,9 @@ else
   # Install composer
   install_composer
 
+  # Install volta
+  install_volta
+
   # Install latest node version
   install_latest_node
 
