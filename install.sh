@@ -65,15 +65,17 @@ if ! is_git_repo; then
   git reset --hard FETCH_HEAD
 fi
 
-# store DOTFILES_REPO env var in custom zsh script for syncing later
-echo "export DOTFILES_REPO=${DOTFILES_REPO}" > $ZSH_CUSTOM/00-dotfiles.zsh
+# store DOTFILES_REPO env var in custom zsh script for syncing later if not already present
+if ! grep -q "^export DOTFILES_REPO=" "$ZSH_CUSTOM/00-dotfiles.zsh" 2>/dev/null; then
+  echo "export DOTFILES_REPO=${DOTFILES_REPO}" > $ZSH_CUSTOM/00-dotfiles.zsh
+fi
 
 # If missing, download and extract the ohmyzsh repository
 if [[ ! -d ${ZSH} ]]; then
   ZSH="$ZSH" RUNZSH=no sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi
 
-# run the dotfiles for the first time
-zsh bin/dotfiles --with-apps
+# run the dotfiles for the first time, passing any flags you pass to the script
+zsh bin/dotfiles $@
 
 zsh -l

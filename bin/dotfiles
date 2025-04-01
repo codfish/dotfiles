@@ -30,8 +30,8 @@ do
   case $opt in
     --no-packages) no_packages=true ;;
     --no-sync) no_sync=true ;;
-    --no-macos) no_macos=true ;;
-    --with-apps) with_apps=true ;;
+    --configure-macos) configure_macos=true ;;
+    --install-casks) install_casks=true ;;
     -*|--*) e_warning "Warning: invalid option $opt" ;;
   esac
 done
@@ -91,6 +91,9 @@ else
   # Install composer
   install_composer
 
+  # Install volta
+  install_volta
+
   # Install latest node version
   install_latest_node
 
@@ -102,9 +105,7 @@ else
 fi
 
 # Ask before potentially overwriting macOS defaults
-if [[ $no_macos ]]; then
-  printf "Skipped macOS settings update.\n"
-else
+if [[ $configure_macos ]]; then
   seek_confirmation "Warning: This step may modify your macOS system defaults."
 
   if is_confirmed; then
@@ -113,10 +114,12 @@ else
   else
     printf "Skipped macOS settings update.\n"
   fi
+else
+  printf "Skipped macOS settings update.\n"
 fi
 
 # Conditionally install macOS applications using brew cask
-if [[ $with_apps ]]; then
+if [[ $install_casks ]]; then
   # Ask before installing apps
   seek_confirmation "Warning: This step will attempt to install macOS GUI applications."
 
