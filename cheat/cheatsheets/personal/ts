@@ -2,6 +2,18 @@
 syntax: typescript
 tags: [ typescript, javascript, ts, development ]
 ---
+/* Create a union type from the values of a js object */
+const TRANSACTION_STATUS = {
+  CANCEL: 0,
+  PENDING: 1,
+  APPROVED: 2,
+  // ...
+} as const;
+
+type status = (typeof TRANSACTION_STATUS)[keyof typeof TRANSACTION_STATUS]
+// => typeof status = 0 | 1 | 2 | ...
+
+
 /* Extending an interface with an override */
 /* Context: "Extensions" are due payments but the payment type is always extension fee. */
 export interface Extension extends Omit<Duepayment, 'payment_type'> {
@@ -9,11 +21,11 @@ export interface Extension extends Omit<Duepayment, 'payment_type'> {
 }
 
 
-// Use ReturnType<typeof f> to grab the return type of another reference.
+/* Use ReturnType<typeof f> to grab the return type of another reference. */
 async handleRedirectCallback(): ReturnType<typeof auth0.handleRedirectCallback>
 
 
-// Enum with string values
+/* Enum with string values */
 export enum Splits {
   Funding_On_T = 'liquidity_scale_pod__funding_on_t',
   Reverse_Factoring_Opt_In = 'payments_xp_pod__reverse_factoring_opt_in',
@@ -23,12 +35,8 @@ export enum Splits {
 }
 
 
-// Convert an enum to a string union
+/* Convert an enum to a string union */
 type SplitsStringUnion = `${Splits}`
-
-
-// Create a type from an object's values. AppValues will be a union of all the values in the APPS object.
-type AppValues = typeof APPS[keyof typeof APPS];
 
 
 /* When types aren't made available to you, you can use `Parameters` to infer them */
@@ -39,13 +47,13 @@ import { Auth0Plugin } from '@auth0/auth0-vue';
 async function login(options?: Parameters<Auth0Plugin['getAccessTokenSilently']>[0]): Promise<UserState | void> {
 
 
-// Specify an object type, but with a specific property set
+/* Specify an object type, but with a specific property set */
 getAccessTokenSilently(
   options: GetTokenSilentlyOptions & { detailedResponse: true }
 ): Promise<GetTokenSilentlyVerboseResponse>;
 
 
-// Use the numeric keys of an object as a type, and allow numbers or strings
+/* Use the numeric keys of an object as a type, and allow numbers or strings */
 type ErrorCodes = 401 | 403 | 404 | 500;
 const errors: Record<ErrorCodes, { title: string; description: string }> = {
   401: {
