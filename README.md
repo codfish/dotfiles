@@ -29,7 +29,13 @@ Tools](https://developer.apple.com/downloads) and may overwrite existing
 dotfiles in your HOME and `.vim` directories.
 
 ```sh
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/codfish/dotfiles/main/install.sh)"
+curl https://raw.githubusercontent.com/codfish/dotfiles/main/install.sh | bash
+```
+
+If you're provisioning a totally new machine and want to configure your macOS settings to match my preferences [defined here](bin/macosdefaults) and auto install the macOS apps via `brew cask` defined in [this file](lib/brew), you can pass the following flags:
+
+```sh
+curl https://raw.githubusercontent.com/codfish/dotfiles/main/install.sh | bash -sS -- --configure-macos --install-casks
 ```
 
 If you wish to fork this project and maintain your own dotfiles, fork it and
