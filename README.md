@@ -35,14 +35,14 @@ curl https://raw.githubusercontent.com/codfish/dotfiles/main/install.sh | bash
 If you're provisioning a totally new machine and want to configure your macOS settings to match my preferences [defined here](bin/macosdefaults) and auto install the macOS apps via `brew cask` defined in [this file](lib/brew), you can pass the following flags:
 
 ```sh
-curl https://raw.githubusercontent.com/codfish/dotfiles/main/install.sh | bash -sS -- --configure-macos --install-casks
+curl https://raw.githubusercontent.com/codfish/dotfiles/main/install.sh | bash -s -- --configure-macos --install-casks
 ```
 
 If you wish to fork this project and maintain your own dotfiles, fork it and
 run the following:
 
 ```sh
-DOTFILES_REPO=yourhandle/dotfiles /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/yourhandle/dotfiles/main/install.sh)"
+DOTFILES_REPO=yourhandle/dotfiles curl https://raw.githubusercontent.com/codfish/dotfiles/main/install.sh | bash
 ```
 
 ## Usage
