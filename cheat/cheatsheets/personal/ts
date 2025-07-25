@@ -2,16 +2,32 @@
 syntax: typescript
 tags: [ typescript, javascript, ts, development ]
 ---
+
 /* Create a union type from the values of a js object */
-const TRANSACTION_STATUS = {
+/* Really good video on this: https://www.youtube.com/watch?v=6M9aZzm-kEc */
+const statuses = {
   CANCEL: 0,
   PENDING: 1,
   APPROVED: 2,
   // ...
 } as const;
 
-type status = (typeof TRANSACTION_STATUS)[keyof typeof TRANSACTION_STATUS]
-// => typeof status = 0 | 1 | 2 | ...
+/*  IMPORTANT: The `as const` is required to make the object's values readonly. */
+/*  Without it, the values would be mutable and infered as `number` instead of specific values like `0`, `1`, `2`, etc. */
+/*  Objects.freeze() will do this as well, but with some caveats: */
+/*     - it's not a deep freeze */
+/*     - it's not a type-safe way to make the values readonly */
+/*     - it happens at runtime, not at compile time */
+
+// create a union type from the keys of the object
+type StatusKeys = keyof typeof statuses; // => 'CANCEL' | 'PENDING' | 'APPROVED' | ...
+// create a union type from the values of the object by indexing the typed object with the keys
+type Status = typeof statuses[StatusKeys]; // => type Status = { readonly CANCEL: 0, readonly PENDING: 1, readonly APPROVED: 2, ... }
+
+// Now we can use the value union type to pass in any of the values of the object
+function changeStatus(status: Status) {}
+// => changeStatus(0 | 1 | 2 | statuses.CANCEL | statuses.PENDING | statuses.APPROVED | ...)
+
 
 
 /* Extending an interface with an override */
@@ -21,8 +37,10 @@ export interface Extension extends Omit<Duepayment, 'payment_type'> {
 }
 
 
+
 /* Use ReturnType<typeof f> to grab the return type of another reference. */
 async handleRedirectCallback(): ReturnType<typeof auth0.handleRedirectCallback>
+
 
 
 /* Enum with string values */
@@ -35,8 +53,10 @@ export enum Splits {
 }
 
 
+
 /* Convert an enum to a string union */
 type SplitsStringUnion = `${Splits}`
+
 
 
 /* When types aren't made available to you, you can use `Parameters` to infer them */
@@ -47,10 +67,12 @@ import { Auth0Plugin } from '@auth0/auth0-vue';
 async function login(options?: Parameters<Auth0Plugin['getAccessTokenSilently']>[0]): Promise<UserState | void> {
 
 
+
 /* Specify an object type, but with a specific property set */
 getAccessTokenSilently(
   options: GetTokenSilentlyOptions & { detailedResponse: true }
 ): Promise<GetTokenSilentlyVerboseResponse>;
+
 
 
 /* Use the numeric keys of an object as a type, and allow numbers or strings */
@@ -79,4 +101,38 @@ export interface HttpErrorProps {
    * The error code.
    */
   errorCode: keyof typeof errors | `${keyof typeof errors}`;
+}
+
+
+
+/* Functions with multiple signatures. */
+
+/*    const generateInvoice = (overrides) => ({ id: uuid(), balance: 15799, classification: "Adult Use", ...overrides}); */
+/*    const generateInvoices = createFixtureGenerator(generateInvoice); */
+/*    generateInvoices()                    // => Single invoice object */
+/*    generateInvoices(1)                   // => Single invoice object */
+/*    generateInvoices(1, { foo: 'bar' })   // => Single invoice object, override `foo` to equal `'bar'` */
+/*    generateInvoices({ foo: 'bar' })      // => Single invoice object, override `foo` to equal `'bar'` */
+/*    generateInvoices(10)                  // => Array of 10 invoice objects */
+/*    generateInvoices(10, { foo: 'bar' })  // => Array of 10 invoice objects, override `foo` to equal `'bar'` in each */
+export default function createFixtureGenerator<T>(fixtureFn: (overrides?: Partial<T>, index?: number) => T) {
+  function _generator(): T;
+  function _generator<TNum extends 1>(num: TNum, overrides?: Partial<T>): T;
+  function _generator(num: Partial<T>): T;
+  function _generator<TNum extends number>(num: TNum, overrides?: Partial<T>): T[];
+  function _generator(num: number | Partial<T> = 1, overrides = {}) {
+    // if the first param is not a number, it must be the overrides
+    if (typeof num !== 'number') {
+      return fixtureFn(num);
+    } else if (num === 1) {
+      // If num is 1, then we don't want to return an array, so just generate one with any potential overrides
+      return fixtureFn(overrides);
+    } else {
+      // Otherwise, let's generate however many requested data objects
+      // eslint-disable-next-line prefer-spread
+      return Array.apply(null, Array(num)).map((_el, index) => fixtureFn(overrides, index));
+    }
+  }
+
+  return _generator;
 }
