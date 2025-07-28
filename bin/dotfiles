@@ -63,6 +63,7 @@ mirrorfiles() {
   link "dotfiles/curlrc"          ".curlrc"
   link "dotfiles/gitattributes"   ".gitattributes"
   link "dotfiles/gitignore"       ".gitignore"
+  link "dotfiles/ripgreprc"       ".ripgreprc"
 
   e_success "Dotfiles update complete!"
 }
