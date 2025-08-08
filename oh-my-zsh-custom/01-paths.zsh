@@ -19,6 +19,9 @@ declare -a dirs_to_prepend=(
 
   # postgres libpq
   "/usr/local/opt/libpq/bin"
+
+  # Home bin
+  "$HOME/.local/bin"
 )
 
 # Prepend directories to PATH
