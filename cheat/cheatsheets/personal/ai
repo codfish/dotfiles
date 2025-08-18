@@ -1,0 +1,22 @@
+---
+syntax: markdown
+tags: [ ai, claude, claude-code, cursor, ai-assistant, ai-memory, agent ]
+---
+
+## Claude Code Memory Management
+
+Based on the Claude Code documentation, Claude Code does not automatically update CLAUDE.md files when you provide useful context or ask to remember something. However, there are several manual methods available:
+
+- Start any prompt with # to quickly add context to your CLAUDE.md file
+- Example: # Remember that we use cod-scripts for all linting and testing
+
+**Memory Commands:**
+- Use /memory to directly edit memory files
+- Use /init to bootstrap or refresh a CLAUDE.md file
+
+**Current Limitations:**
+- No automatic detection or updating of project context
+- Updates require explicit user action via # or /memory commands
+- Claude cannot proactively modify CLAUDE.md based on conversation context
+
+**Best Practice:** When you discover important project information during our conversations, use the # shortcut to quickly add it to your CLAUDE.md file for future reference.

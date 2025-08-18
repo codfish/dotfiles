@@ -1,0 +1,19 @@
+---
+syntax: css
+tags: [ css, tailwind, tailwindcss, utilities, development ]
+---
+
+/* Utility to add a margin-right to an element to compensate for the scrollbar being hidden. */
+/* Should only apply to desktop devices, so we're using media queries to target them. */
+@layer utilities {
+  @media (hover: hover) and (pointer: fine) {
+    .mr-scrollbar-hidden {
+      margin-right: 0.75rem;
+    }
+  }
+}
+
+/* An even better way to do this is to use the `@custom-variant` directive. */
+@custom-variant desktop-only (@media (hover: hover) and (pointer: fine));
+
+/* Then in markup, you can use it like this: <div class="desktop-only:mr-3"> */
