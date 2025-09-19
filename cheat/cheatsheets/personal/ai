@@ -3,6 +3,24 @@ syntax: markdown
 tags: [ ai, claude, claude-code, cursor, ai-assistant, ai-memory, agent ]
 ---
 
+## Phrasing to remember
+
+plan first and check with me
+come up with a few options for implementing the feature, then check with me
+be brutally honest
+add debug logs
+don't worry about <x> errors
+using the docs from <x>, implement <y>
+ask me any questions to help you
+use <snippet> as a reference
+use <file> as a reference
+use <command> as a reference
+use <tool> as a reference
+use <api> as a reference
+use <database> as a reference
+use <server> as a reference
+
+
 ## Claude Code Memory Management
 
 Based on the Claude Code documentation, Claude Code does not automatically update CLAUDE.md files when you provide useful context or ask to remember something. However, there are several manual methods available:
