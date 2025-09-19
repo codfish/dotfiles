@@ -54,3 +54,14 @@ export BREW_PREFIX=$(brew --prefix)
 # Set the config path for the cheat cli
 # https://github.com/cheat/cheat/blob/d34177729d3369da9d74756f8cf3a762bd96604c/INSTALLING.md#confyml
 export CHEAT_CONFIG_PATH="~/.dotfiles/cheat/conf.yml"
+
+# needed this for docker to work on m2
+export DOCKER_DEFAULT_PLATFORM=linux/amd64
+
+# android
+export ANDROID_HOME=$HOME/Library/Android/sdk
+
+# ruby
+export LDFLAGS="-L/opt/homebrew/opt/ruby/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/ruby/include"
+export PKG_CONFIG_PATH="/opt/homebrew/opt/ruby/lib/pkgconfig"

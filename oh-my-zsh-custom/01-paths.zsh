@@ -22,6 +22,12 @@ declare -a dirs_to_prepend=(
 
   # Home bin
   "$HOME/.local/bin"
+
+  # Ruby
+  "/opt/homebrew/opt/ruby/bin"
+
+  # ios
+  "$HOME/.fastlane/bin"
 )
 
 # Prepend directories to PATH
@@ -40,6 +46,11 @@ declare -a dirs_to_append=(
   "$HOME/.dotfiles/bin"
   "$(brew --prefix)/opt/coreutils/libexec/gnubin" # Add brew-installed GNU core utilities bin
   "$HOME/.composer/vendor/bin"
+  "/Applications/Docker.app/Contents/Resources/bin"
+
+  # android
+  "/Library/Android/sdk/emulator"
+  "/Library/Android/sdk/platform-tools"
 )
 
 # Append directories to PATH
