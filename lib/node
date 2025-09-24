@@ -33,7 +33,7 @@ install_npm_packages() {
     e_header "Installing Node.js packages..."
 
     # Install packages globally
-    npm install -g vercel renamer@3 npm-check contentful-cli
+    npm install -g vercel renamer@3 npm-check contentful-cli @google/gemini-cli @anthropic-ai/claude-code
 
     [[ $? ]] && e_success "Done"
   else
