@@ -3,27 +3,13 @@
 run_list_apps() {
 
 cat <<EOT
-macOS dotfiles - Chris O'Donnell - http://codfish.io/
+macOS dotfiles - Chris O'Donnell - https://www.codfish.dev
 
 Optional software to install
 
-  Alfred - https://www.alfredapp.com/
-  AppCleaner - https://freemacsoft.net/appcleaner/
   Dash - https://kapeli.com/dash
-  Docker - https://docs.docker.com/desktop/mac/install/
-  Notion - https://notion.so
-  Firefox - https://www.mozilla.org/en-US/firefox/new/
-  Google Chrome - https://www.google.com/chrome/browser/desktop/index.html
-  Google Drive - https://www.google.com/drive/download/
-  iTerm2 - https://www.iterm2.com/downloads.html
-  Pocket - https://getpocket.com/mac/?a=mac
-  Postico - https://eggerapps.at/postico/
-  Postman - https://www.postman.com/
-  Slack - https://slack.com/downloads/mac
-  Spotify - https://www.spotify.com/us/download/mac/
-  Todoist - https://todoist.com/mac
+  iTerm2 - https://www.iterm2.com/downloads.html  Postico - https://eggerapps.at/postico/
   Virtualbox - https://www.virtualbox.org/wiki/Downloads
-  Visual Studio Code - https://code.visualstudio.com/docs/?dv=osx
   VLC - http://www.videolan.org/vlc/download-macosx.html
 EOT
 

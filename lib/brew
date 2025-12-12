@@ -123,10 +123,12 @@ run_brew_cask() {
 
   # mapping of [<cask-name>]='<Applications-directory-name>'
   declare -A desired_apps=(
+    [1password]='1Password'
     [alfred]='Alfred 5'
     [appcleaner]='AppCleaner'
     [beardedspice]='BeardedSpice'
     [brave-browser]='Brave Browser'
+    [cursor]='Cursor'
     [docker]='Docker'
     [dropbox]='Dropbox'
     [figma]='Figma'
@@ -137,6 +139,7 @@ run_brew_cask() {
     [kap]='Kap'
     [loom]='Loom'
     [notion]='Notion'
+    [postico]='Postico'
     [postman]='Postman'
     [slack]='Slack'
     [spotify]='Spotify'
