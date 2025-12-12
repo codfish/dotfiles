@@ -1,7 +1,43 @@
 #!/usr/bin/env zsh
 
-install_termcolor() {
-  e_header "Installing termcolor..."
+# Test whether a pipx package is already installed
+# $1 - package name
+pipx_package_exists() {
+  if pipx list | grep -E "^\s+$1\s+" &>/dev/null; then
+    printf "%s already installed.\n" "$1"
+    return 0
+  fi
 
-  pip3 install termcolor
+  e_warning "Missing package: $1"
+  return 1
+}
+
+# Install Python CLI applications using pipx
+# pipx installs each package in its own isolated virtual environment
+install_pipx_packages() {
+  # Check for pipx
+  if ! type 'pipx' &> /dev/null; then
+    printf "\n"
+    e_error "Error: pipx not found."
+    printf "Please ensure pipx is installed via Homebrew first.\n"
+    printf "Aborting...\n"
+    exit
+  fi
+
+  e_header "Installing Python CLI applications..."
+
+  # Array of desired packages
+  # These should be CLI tools/applications, not libraries
+  # Libraries should be installed per-project using virtual environments
+  local -a desired_packages=(
+    'termcolor'
+  )
+
+  for package in ${desired_packages[@]}; do
+    if ! pipx_package_exists $package; then
+      pipx install $package
+    fi
+  done
+
+  [[ $? ]] && e_success "Done"
 }

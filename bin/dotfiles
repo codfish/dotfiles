@@ -101,8 +101,8 @@ else
   # Install common npm packages
   install_npm_packages
 
-  # install pip packages
-  install_termcolor
+  # Install Python CLI applications via pipx
+  install_pipx_packages
 fi
 
 # Ask before potentially overwriting macOS defaults

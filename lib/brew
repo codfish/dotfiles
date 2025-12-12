@@ -89,6 +89,7 @@ run_brew() {
     'nvm'
     'oven-sh/bun/bun'
     'php'
+    'pipx'
     'pure'
     'python'
     'pyenv'
