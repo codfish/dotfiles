@@ -3,11 +3,24 @@
 # Set custom macOS defaults
 # See: github.com/mathiasbynens/dotfiles
 
+source ./lib/utils
+
 # Ask for the administrator password upfront
+e_header "Changing macOS defaults may require your password for some operations..."
 sudo -v
 
 # Keep-alive: update existing `sudo` time stamp until `.macos` has finished
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
+# Kill affected applications before making changes.
+# This is necessary to ensure that:
+#   1) the changes take effect immediately and
+#   2) changes aren't blocked by applications that are running.
+for app in "Activity Monitor" "Calendar" "Contacts" "cfprefsd" \
+  "Dashboard" "NotificationCenter" "Dock" "Finder" "Mail" "Safari" "SystemUIServer" \
+  "iTerm" "iTunes"; do
+  killall "${app}" > /dev/null 2>&1
+done
 
 # General UI/UX
 # ----------------------------------------------------------------------
@@ -73,7 +86,8 @@ defaults write com.apple.dock mru-spaces -bool false
 sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName
 
 # Restart automatically if the computer freezes
-systemsetup -setrestartfreeze on
+# Note: May fail on modern macOS due to SIP restrictions
+sudo systemsetup -setrestartfreeze on 2>/dev/null || true
 
 # Check for software updates daily, not just once per week
 defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
@@ -93,6 +107,22 @@ defaults write com.apple.CrashReporter DialogType -string "none"
 
 # Trackpad, mouse, keyboard, Bluetooth accessories, and input
 # -----------------------------------------------------------
+
+# Disable Spotlight keyboard shortcut (⌘Space)
+# SymbolicHotKeys IDs:
+# - 64: Show Spotlight search
+symbolic_hotkeys_plist="${HOME}/Library/Preferences/com.apple.symbolichotkeys.plist"
+disable_symbolic_hotkey() {
+  local hotkey_id="$1"
+
+  # Try to set if it already exists; otherwise create the minimal structure.
+  /usr/libexec/PlistBuddy -c "Set :AppleSymbolicHotKeys:${hotkey_id}:enabled false" "${symbolic_hotkeys_plist}" 2>/dev/null || true
+  /usr/libexec/PlistBuddy -c "Add :AppleSymbolicHotKeys:${hotkey_id} dict" "${symbolic_hotkeys_plist}" 2>/dev/null || true
+  /usr/libexec/PlistBuddy -c "Add :AppleSymbolicHotKeys:${hotkey_id}:enabled bool false" "${symbolic_hotkeys_plist}" 2>/dev/null || \
+    /usr/libexec/PlistBuddy -c "Set :AppleSymbolicHotKeys:${hotkey_id}:enabled false" "${symbolic_hotkeys_plist}" 2>/dev/null || true
+}
+disable_symbolic_hotkey 64
+killall SystemUIServer >/dev/null 2>&1 || true
 
 # Disable press-and-hold for keys in favor of key repeat
 defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
@@ -135,10 +165,11 @@ defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 
 # Use scroll gesture with the Ctrl (^) modifier key to zoom
-defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool true
-defaults write com.apple.universalaccess HIDScrollZoomModifierMask -int 262144
+# Note: These may fail without Full Disk Access for Terminal in System Settings → Privacy & Security
+defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool true 2>/dev/null || true
+defaults write com.apple.universalaccess HIDScrollZoomModifierMask -int 262144 2>/dev/null || true
 # Follow the keyboard focus while zoomed in
-defaults write com.apple.universalaccess closeViewZoomFollowsFocus -bool true
+defaults write com.apple.universalaccess closeViewZoomFollowsFocus -bool true 2>/dev/null || true
 
 # Set language and text formats
 # Note: if you’re in the US, replace `EUR` with `USD`, `Centimeters` with
@@ -149,7 +180,8 @@ defaults write NSGlobalDomain AppleMeasurementUnits -string "Inches"
 defaults write NSGlobalDomain AppleMetricUnits -bool false
 
 # Set the timezone; see `systemsetup -listtimezones` for other values
-systemsetup -settimezone "America/New_York" > /dev/null
+# Note: May fail on modern macOS due to SIP restrictions
+sudo systemsetup -settimezone "America/New_York" >/dev/null 2>&1 || true
 
 
 # Screen
@@ -195,8 +227,11 @@ defaults write com.apple.finder ShowHardDrivesOnDesktop -bool true
 defaults write com.apple.finder ShowMountedServersOnDesktop -bool true
 defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
 
-# Finder: hide hidden files by default
+# Finder: show hidden files by default
 defaults write com.apple.finder AppleShowAllFiles -bool true
+
+# Finder: keep folders on top when sorting by name
+defaults write com.apple.finder _FXSortFoldersFirst -bool true
 
 # Finder: show all filename extensions
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true
@@ -206,6 +241,9 @@ defaults write com.apple.finder ShowStatusBar -bool true
 
 # Finder: show path bar
 defaults write com.apple.finder ShowPathbar -bool true
+
+# Finder: hide tags in sidebar
+defaults write com.apple.finder ShowRecentTags -bool false
 
 # Finder: allow text selection in Quick Look
 defaults write com.apple.finder QLEnableTextSelection -bool true
@@ -252,6 +290,10 @@ defaults write com.apple.finder OpenWindowForNewRemovableDisk -bool true
 /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:iconSize 44" ~/Library/Preferences/com.apple.finder.plist
 /usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:iconSize 44" ~/Library/Preferences/com.apple.finder.plist
 /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:iconSize 44" ~/Library/Preferences/com.apple.finder.plist
+
+# Sort desktop items by name (required for folders-on-top to work on desktop)
+/usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:arrangeBy name" ~/Library/Preferences/com.apple.finder.plist 2>/dev/null || \
+/usr/libexec/PlistBuddy -c "Add :DesktopViewSettings:IconViewSettings:arrangeBy string name" ~/Library/Preferences/com.apple.finder.plist 2>/dev/null
 
 # Use list view in all Finder windows by default
 # Four-letter codes for the other view modes: `icnv`, `clmv`, `Flwv`
@@ -310,7 +352,7 @@ defaults write com.apple.dock showhidden -bool true
 defaults write com.apple.dock launchanim -bool false
 
 # use the scale effect for window minimizing
-defaults write com.apple.dock mineffect scale
+defaults write com.apple.dock mineffect -string scale
 
 # Don't minimize windows into their application’s icon
 defaults write com.apple.dock minimize-to-application -bool false
@@ -363,37 +405,37 @@ defaults write com.apple.dock wvous-br-modifier -int 0
 # Safari & WebKit
 # ----------------------------------------------------------------------
 
-# Set Safari’s home page to `about:blank` for faster loading
-defaults write com.apple.Safari HomePage -string "about:blank"
+# Set Safari's home page to `about:blank` for faster loading
+defaults write com.apple.Safari HomePage -string "about:blank" 2>/dev/null || true
 
-# Prevent Safari from opening ‘safe’ files automatically after downloading
-defaults write com.apple.Safari AutoOpenSafeDownloads -bool false
+# Prevent Safari from opening 'safe' files automatically after downloading
+defaults write com.apple.Safari AutoOpenSafeDownloads -bool false 2>/dev/null || true
 
 # Allow hitting the Backspace key to go to the previous page in history
-defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2BackspaceKeyNavigationEnabled -bool true
+defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2BackspaceKeyNavigationEnabled -bool true 2>/dev/null || true
 
-# Hide Safari’s bookmarks bar by default
-defaults write com.apple.Safari ShowFavoritesBar -bool false
+# Hide Safari's bookmarks bar by default
+defaults write com.apple.Safari ShowFavoritesBar -bool false 2>/dev/null || true
 
-# Hide Safari’s sidebar in Top Sites
-defaults write com.apple.Safari ShowSidebarInTopSites -bool false
+# Hide Safari's sidebar in Top Sites
+defaults write com.apple.Safari ShowSidebarInTopSites -bool false 2>/dev/null || true
 
-# Disable Safari’s thumbnail cache for History and Top Sites
-defaults write com.apple.Safari DebugSnapshotsUpdatePolicy -int 2
+# Disable Safari's thumbnail cache for History and Top Sites
+defaults write com.apple.Safari DebugSnapshotsUpdatePolicy -int 2 2>/dev/null || true
 
-# Enable Safari’s debug menu
-defaults write com.apple.Safari IncludeInternalDebugMenu -bool true
+# Enable Safari's debug menu
+defaults write com.apple.Safari IncludeInternalDebugMenu -bool true 2>/dev/null || true
 
-# Make Safari’s search banners default to Contains instead of Starts With
-defaults write com.apple.Safari FindOnPageMatchesWordStartsOnly -bool false
+# Make Safari's search banners default to Contains instead of Starts With
+defaults write com.apple.Safari FindOnPageMatchesWordStartsOnly -bool false 2>/dev/null || true
 
-# Remove useless icons from Safari’s bookmarks bar
-defaults write com.apple.Safari ProxiesInBookmarksBar "()"
+# Remove useless icons from Safari's bookmarks bar
+defaults write com.apple.Safari ProxiesInBookmarksBar "()" 2>/dev/null || true
 
 # Enable the Develop menu and the Web Inspector in Safari
-defaults write com.apple.Safari IncludeDevelopMenu -bool true
-defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
-defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled -bool true
+defaults write com.apple.Safari IncludeDevelopMenu -bool true 2>/dev/null || true
+defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true 2>/dev/null || true
+defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled -bool true 2>/dev/null || true
 
 # Add a context menu item for showing the Web Inspector in web views
 defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
@@ -409,7 +451,9 @@ defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 
 # Disks: disable local Time Machine backups
-hash tmutil &> /dev/null && tmutil disablelocal
+# Note: 'tmutil disablelocal' was removed in macOS 10.13+ (High Sierra)
+# Local snapshots are now managed automatically by APFS
+# hash tmutil &> /dev/null && sudo tmutil disablelocal
 
 # Disks: disable disk image verification
 # defaults write com.apple.frameworks.diskimages skip-verify -bool true
@@ -417,7 +461,7 @@ hash tmutil &> /dev/null && tmutil disablelocal
 # defaults write com.apple.frameworks.diskimages skip-verify-remote -bool true
 
 # Enable FileVault
-fdesetup enable 2> /dev/null
+sudo fdesetup enable 2> /dev/null
 
 
 # iTunes
@@ -444,14 +488,4 @@ defaults write com.apple.terminal StringEncodings -array 4
 # Don’t display the annoying prompt when quitting iTerm
 defaults write com.googlecode.iterm2 PromptOnQuit -bool false
 
-
-# Kill affected applications
-# ----------------------------------------------------------------------
-
-for app in "Activity Monitor" "Calendar" "Contacts" "cfprefsd" \
-  "Dashboard" "NotificationCenter" "Dock" "Finder" "Mail" "Safari" "SystemUIServer" \
-  "iTerm" "iTunes"; do
-  killall "${app}" > /dev/null 2>&1
-done
-
-echo "Done. Note that some of these changes require a logout/restart to take effect."
+e_success "macOS settings updated! Note that some of these changes require a logout/restart to take effect."
