@@ -8,11 +8,11 @@ macOS dotfiles - Chris O'Donnell - http://codfish.io/
 Usage: $(basename "$0") [options]
 
 Options:
-    -h, --help      Print this help text
-    --no-packages   Suppress package updates
-    --no-sync       Suppress pulling from the remote repository
-    --no-macos      Suppress applying custom macOS system preferences
-    --with-apps     Install optional macOS GUI Applications    
+    -h, --help         Print this help text
+    --no-packages      Skip package updates
+    --no-sync          Skip pulling from the remote repository
+    --install-casks    Install optional macOS GUI Applications
+    --configure-macos  Configure macOS system preferences
 
 Documentation can be found at https://github.com/codfish/dotfiles/
 
