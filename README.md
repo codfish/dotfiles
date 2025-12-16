@@ -24,26 +24,66 @@ below can be opted-out of.
 
 ## Installation
 
-The installation step requires the [XCode Command Line
-Tools](https://developer.apple.com/downloads) and may overwrite existing
-dotfiles in your HOME and `.vim` directories.
+This install is intended for macOS and requires the [Xcode Command Line Tools](https://developer.apple.com/downloads).
+It may overwrite existing dotfiles in `$HOME` (and potentially `.vim`-related files), so skim `install.sh` first if you have an existing setup.
 
 ```sh
 curl https://raw.githubusercontent.com/codfish/dotfiles/main/install.sh | bash
 ```
 
-If you're provisioning a totally new machine and want to configure your macOS settings to match my preferences [defined here](bin/macosdefaults) and auto install the macOS apps via `brew cask` defined in [this file](lib/brew), you can pass the following flags:
+> [!IMPORTANT]
+>
+> If you're provisioning a new machine, you can also apply my macOS defaults (see [`bin/macosdefaults`](./bin/macosdefaults)) and install the optional GUI apps (see [`lib/brew`](./bin/brew)):
+>
+>   ```sh
+>   curl https://raw.githubusercontent.com/codfish/dotfiles/main/install.sh | bash -s -- --configure-macos --install-casks
+>   ```
 
-```sh
-curl https://raw.githubusercontent.com/codfish/dotfiles/main/install.sh | bash -s -- --configure-macos --install-casks
-```
+### Forks
 
-If you wish to fork this project and maintain your own dotfiles, fork it and
-run the following:
+If you fork this repo and want the installer to pull from your fork:
 
 ```sh
 DOTFILES_REPO=yourhandle/dotfiles curl https://raw.githubusercontent.com/codfish/dotfiles/main/install.sh | bash
 ```
+
+Or just update the default value of `DOTFILES_REPO` in your fork and install from your repo.
+
+### First Time Setup
+
+After running the installation script on a new machine, there are several manual steps to complete the setup. These are personal preferences and may differ for your setup.
+
+1. **1Password / SSH**
+   - Login to 1Password
+   - Update 1Password settings & enable SSH key management (for git authentication)
+   - Create development directory & test 1Password SSH agent is working
+      ```sh
+      mkdir ~/Sites
+      git clone git@github.com:codfish/semantic-release-action.git ~/Sites/semantic-release-action
+      ```
+2. **Cloud sync + shell config**
+   - Login to Dropbox
+   - Once Dropbox syncs, symlink your private zsh configuration:
+     ```sh
+     ln -s ~/Dropbox/configfiles/zshrc ~/.zshrc.before
+     exec zsh
+     ```
+   - Login to Google Drive
+1. **Open Alfred**
+   - Activate Powerpack license
+   - Update settings sync to point to Dropbox
+1. **Setup Code Editors**
+   - Sign into VS Code and enable Settings Sync
+   - In Cursor, import settings & extensions from VS Code
+1. **Todoist**
+   - Sign into Todoist
+   - Update Desktop settings to change keyboard shortcuts as needed
+1. **AI CLI logins**
+   ```sh
+   claude login
+   codex
+   gemini
+   ```
 
 ## Usage
 
