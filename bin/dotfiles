@@ -36,15 +36,6 @@ do
   esac
 done
 
-# Conditionally sync with the remote repository
-if [[ $no_sync ]]; then
-  printf "Skipped dotfiles sync.\n"
-else
-  e_header "Syncing dotfiles..."
-  # Pull down the latest changes
-  git pull --rebase origin main
-fi
-
 link() {
   # Force create/replace the symlink.
   ln -fs "${DOTFILES}/${1}" "${HOME}/${2}"
@@ -68,13 +59,21 @@ mirrorfiles() {
   e_success "Dotfiles update complete!"
 }
 
-# Ask before potentially overwriting files
-seek_confirmation "Warning: This step may overwrite your existing dotfiles."
-
-if is_confirmed; then
-  mirrorfiles
+# Conditionally sync with the remote repository
+if [[ $no_sync ]]; then
+  printf "Skipped dotfiles sync.\n"
 else
-  printf "Aborting...\n"
+  # Ask before potentially overwriting files
+  seek_confirmation "Warning: This step may overwrite your existing dotfiles."
+
+  if is_confirmed; then
+    e_header "Syncing dotfiles..."
+    # Pull down the latest changes
+    git pull --rebase origin main
+    mirrorfiles
+  else
+    printf "Aborting...\n"
+  fi
 fi
 
 # Install and update packages
