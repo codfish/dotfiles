@@ -35,6 +35,10 @@ fi
 cd ${DOTFILES}
 source ./lib/utils
 
+# Validate sudo credentials upfront
+e_header "This script may require sudo privileges for some operations..."
+sudo -v
+
 # Check for Homebrew
 if ! type 'brew' &> /dev/null; then
   e_header "Installing Homebrew..."
