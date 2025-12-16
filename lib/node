@@ -43,6 +43,8 @@ install_npm_packages() {
       @anthropic-ai/claude-code \
       @openai/codex \
       turbo \
+      corepack \
+      pnpm \
       nx
 
     [[ $? ]] && e_success "Done"
