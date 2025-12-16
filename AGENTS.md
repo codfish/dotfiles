@@ -35,5 +35,5 @@
 
 ## Security & Configuration Tips
 - Do not commit secrets or machine-specific credentials; prefer `~/.zshrc.before`/`after` for private data and `git config --global` for author info.
-- When adjusting Homebrew, cask lists, or defaults, confirm they are safe for a broad macOS audience and guard machine-specific logic with checks (e.g., `is_m1`).
+- When adjusting Homebrew, cask lists, or defaults, confirm they are safe for a broad macOS audience and guard machine-specific logic with checks (e.g., `is_apple_silicon`).
 - Be explicit about networked actions; note when a script downloads tarballs or taps new formulae so reviewers can assess risk.
