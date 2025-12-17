@@ -59,9 +59,12 @@ export CHEAT_CONFIG_PATH="~/.dotfiles/cheat/conf.yml"
 export DOCKER_DEFAULT_PLATFORM=linux/amd64
 
 # android
-export ANDROID_HOME=$HOME/Library/Android/sdk
+export ANDROID_HOME="$HOME/Library/Android/sdk"
 
 # ruby
 export LDFLAGS="-L/opt/homebrew/opt/ruby/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/ruby/include"
 export PKG_CONFIG_PATH="/opt/homebrew/opt/ruby/lib/pkgconfig"
+
+# volta
+export VOLTA_HOME="$HOME/.volta"

@@ -94,6 +94,9 @@ else
   # Install volta
   install_volta
 
+  # Reset the shell to ensure volta is available
+  source ~/.zshrc
+
   # Install latest node version
   install_latest_node
 
