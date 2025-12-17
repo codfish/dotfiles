@@ -120,12 +120,12 @@ Options:
         <td>Skip pulling from the remote repository</td>
     </tr>
     <tr>
-        <td><code>--no-macos</code></td>
-        <td>Skip macOS settings update</td>
+        <td><code>--configure-macos</code></td>
+        <td>Configure macOS settings programatically</td>
     </tr>
     <tr>
-        <td><code>--with-apps</code></td>
-        <td>Opt-in to install mac apps via brew cask (won't install/update if it's already present)</td>
+        <td><code>--install-casks</code></td>
+        <td>Install mac apps via brew cask (won't install/update if it's already present)</td>
     </tr>
 </table>
 
