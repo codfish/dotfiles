@@ -85,16 +85,16 @@ else
   # Install & configure zsh plugins
   install_zsh_plugins
 
-  # Install Homebrew formulae
-  run_brew
-
   # Install composer
   install_composer
+
+  # Install Homebrew formulae
+  run_brew
 
   # Install volta
   install_volta
 
-  # Reset the shell to ensure volta is available
+  # Reset the shell to ensure volta/fnm is available
   source ~/.zshrc
 
   # Install latest node version

@@ -11,7 +11,6 @@ install_volta() {
 
 # Use nvm to install latest node version, and install latest npm version too
 install_latest_node() {
-  # Check for nvm
   if type 'volta' &> /dev/null; then
     e_header "Installing latest Node.js version..."
 
@@ -21,6 +20,23 @@ install_latest_node() {
   else
     printf "\n"
     e_error "Error: volta not found."
+    printf "Aborting...\n"
+    exit
+  fi
+
+  # Volta is marked as unmaintained, so also support fnm. If we remove volta in the future, we
+  # can just use fnm instead.
+  if type 'fnm' &> /dev/null; then
+    e_header "Installing latest Node.js version..."
+
+    fnm install --lts
+    fnm default lts/latest
+    fnm use lts/latest
+
+    [[ $? ]] && e_success "Done"
+  else
+    printf "\n"
+    e_error "Error: fnm not found."
     printf "Aborting...\n"
     exit
   fi
@@ -45,6 +61,8 @@ install_npm_packages() {
       corepack \
       pnpm \
       nx
+
+    corepack enable
 
     [[ $? ]] && e_success "Done"
   else

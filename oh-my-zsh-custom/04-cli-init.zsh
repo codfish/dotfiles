@@ -11,4 +11,9 @@ case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
-# pnpm end
+
+# fnm
+FNM_PATH="$(brew --prefix)/opt/fnm/bin"
+if [ -d "$FNM_PATH" ] && ! type 'volta' &> /dev/null; then
+  eval "`fnm env --use-on-cd --shell zsh`"
+fi
