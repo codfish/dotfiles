@@ -68,3 +68,6 @@ export PKG_CONFIG_PATH="/opt/homebrew/opt/ruby/lib/pkgconfig"
 
 # volta
 export VOLTA_HOME="$HOME/.volta"
+
+# https://superuser.com/questions/365847/where-should-the-xdg-config-home-variable-be-defined
+export XDG_CONFIG_HOME="$DOTFILES/.config"

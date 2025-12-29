@@ -5,3 +5,7 @@ oh-my-zsh
 oh-my-zsh-custom/00-dotfiles.zsh
 oh-my-zsh-custom/plugins/*
 cheat/cheatsheets/community
+
+# Sharing configs ($XDG_CONFIG_HOME)
+.config
+!.config/ghostty

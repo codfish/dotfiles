@@ -134,6 +134,7 @@ run_brew_cask() {
     [dropbox]='Dropbox'
     [figma]='Figma'
     [firefox]='Firefox'
+    [ghostty]='Ghostty'
     [google-chrome]='Google Chrome'
     [google-drive]='Google Drive'
     [jetbrains-toolbox]='JetBrains Toolbox'

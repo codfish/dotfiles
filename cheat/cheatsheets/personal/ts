@@ -3,6 +3,10 @@ syntax: typescript
 tags: [ typescript, javascript, ts, development ]
 ---
 
+/* `-b` is necessary to typecheck a project with multiple composite tsconfig files */
+tsc -b
+
+
 /* Create a union type from the values of a js object */
 /* Really good video on this: https://www.youtube.com/watch?v=6M9aZzm-kEc */
 const statuses = {
