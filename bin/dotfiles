@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-DOTFILES="${HOME}/.dotfiles"
+export DOTFILES="${HOME}/.dotfiles"
 DOTFILES_REPO=${DOTFILES_REPO:-codfish/dotfiles}
 DOTFILES_TARBALL_PATH="https://github.com/codfish/dotfiles/tarball/main"
 ZSH="$HOME/.dotfiles/oh-my-zsh"
