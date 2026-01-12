@@ -13,7 +13,4 @@ case ":$PATH:" in
 esac
 
 # fnm
-FNM_PATH="$(brew --prefix)/opt/fnm/bin"
-if [ -d "$FNM_PATH" ] && ! type 'volta' &> /dev/null; then
-  eval "`fnm env --use-on-cd --shell zsh`"
-fi
+eval "$(fnm env --use-on-cd --shell zsh)"
