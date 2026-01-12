@@ -13,4 +13,6 @@ case ":$PATH:" in
 esac
 
 # fnm
-eval "$(fnm env --use-on-cd --shell zsh)"
+if type 'fnm' &> /dev/null; then
+  eval "$(fnm env --use-on-cd --shell zsh)"
+fi

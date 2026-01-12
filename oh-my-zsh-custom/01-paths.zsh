@@ -4,9 +4,6 @@ declare -a dirs_to_prepend=(
   "/opt/homebrew/bin"
   "/opt/homebrew/opt"
 
-  # Volta - https://github.com/volta-cli/volta
-  "$HOME/.volta/bin"
-
   # Ensure that this bin always takes precedence over `/usr/bin`
   "/usr/local/bin"
 

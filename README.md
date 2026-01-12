@@ -16,7 +16,7 @@ below can be opted-out of.
   - [`.gitconfig`](dotfiles/gitconfig)
   - [`.gitignore`](dotfiles/gitignore)
   - [`.zshrc`](dotfiles/zshrc)
-- Installs Homebrew, volta & latest version of node, composer & latest version of php
+- Installs Homebrew, fnm & latest version of node, composer & latest version of php
 - Installs selection of brew formulae & node packages
 - Runs `brew update`, `brew upgrade` and `brew cleanup`
 - Optionally set custom [macOS defaults](bin/macosdefaults) with `--configure-macos` flag

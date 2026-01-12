@@ -91,10 +91,7 @@ else
   # Install Homebrew formulae
   run_brew
 
-  # Install volta
-  install_volta
-
-  # Reset the shell to ensure volta/fnm is available
+  # Reset the shell to ensure fnm is available
   source ~/.zshrc
 
   # Install latest node version

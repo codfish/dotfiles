@@ -7,5 +7,5 @@ oh-my-zsh-custom/plugins/*
 cheat/cheatsheets/community
 
 # Sharing configs ($XDG_CONFIG_HOME)
-.config
+.config/*
 !.config/ghostty

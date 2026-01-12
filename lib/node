@@ -1,31 +1,7 @@
 #!/usr/bin/env zsh
 
-# Install volta
-install_volta() {
-  if ! type 'volta' &> /dev/null; then
-    e_header "Installing Volta..."
-    curl https://get.volta.sh | bash -s -- --skip-setup
-    e_success "Done"
-  fi
-}
-
-# Use nvm to install latest node version, and install latest npm version too
+# Use fnm to install latest node version, and install latest npm version too
 install_latest_node() {
-  if type 'volta' &> /dev/null; then
-    e_header "Installing latest Node.js version..."
-
-    volta install node
-
-    [[ $? ]] && e_success "Done"
-  else
-    printf "\n"
-    e_error "Error: volta not found."
-    printf "Aborting...\n"
-    exit
-  fi
-
-  # Volta is marked as unmaintained, so also support fnm. If we remove volta in the future, we
-  # can just use fnm instead.
   if type 'fnm' &> /dev/null; then
     e_header "Installing latest Node.js version..."
 
