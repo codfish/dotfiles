@@ -1,0 +1,17 @@
+#!/usr/bin/env zsh
+
+install_claude_cli() {
+  if type 'claude' &> /dev/null; then
+    e_success "Claude CLI already installed."
+    return 0
+  fi
+
+  e_header "Installing Claude CLI..."
+
+  if curl -fsSL https://claude.ai/install.sh | bash; then
+    e_success "Done"
+  else
+    e_error "Error: Claude CLI install failed."
+    return 1
+  fi
+}

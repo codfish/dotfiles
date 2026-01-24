@@ -31,7 +31,6 @@ install_npm_packages() {
       npm-check \
       contentful-cli \
       @google/gemini-cli \
-      @anthropic-ai/claude-code \
       @openai/codex \
       turbo \
       corepack \

@@ -10,6 +10,7 @@ BREW_PREFIX=$(brew --prefix)
 cd ${DOTFILES}
 
 source ./lib/brew
+source ./lib/claude
 source ./lib/composer
 source ./lib/help
 source ./lib/list_apps
@@ -99,6 +100,9 @@ else
 
   # Install common npm packages
   install_npm_packages
+
+  # Install Claude CLI (native installer)
+  install_claude_cli
 
   # Install Python CLI applications via pipx
   install_pipx_packages
