@@ -92,13 +92,9 @@ else
   # Install Homebrew formulae
   run_brew
 
-  # Reset the shell to ensure fnm is available
-  source ~/.zshrc
-
-  # Install latest node version
+  # Install latest node version and global npm packages
+  ensure_fnm_env
   install_latest_node
-
-  # Install common npm packages
   install_npm_packages
 
   # Install Claude CLI (native installer)
@@ -106,6 +102,8 @@ else
 
   # Install Python CLI applications via pipx
   install_pipx_packages
+
+  e_success "Packages installed successfully."
 fi
 
 # Ask before potentially overwriting macOS defaults
@@ -137,3 +135,7 @@ if [[ $install_casks ]]; then
 else
   printf "Skipped macOS app installations.\n"
 fi
+
+printf "\n"
+e_success "All done! Run this to refresh your shell:"
+printf "\n\t$(tput setaf 6)source ~/.zshrc$(tput sgr0)\n\n"

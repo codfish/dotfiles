@@ -1,6 +1,23 @@
 #!/usr/bin/env zsh
 
-# Use fnm to install latest node version, and install latest npm version too
+# Make sure fnm bin is discoverable in the current process
+ensure_fnm_env() {
+  if ! type 'fnm' &> /dev/null; then
+    local brew_prefix
+    brew_prefix="$(brew --prefix)"
+    if [[ -x "${brew_prefix}/bin/fnm" && ":$PATH:" != *":${brew_prefix}/bin:"* ]]; then
+      export PATH="${brew_prefix}/bin:${PATH}"
+    fi
+  fi
+
+  if type 'fnm' &> /dev/null; then
+    # Initialize fnm for this non-interactive shell so Node shims are available.
+    eval "$(fnm env --use-on-cd)"
+    hash -r
+  fi
+}
+
+# Use fnm to install latest node version
 install_latest_node() {
   if type 'fnm' &> /dev/null; then
     e_header "Installing latest Node.js version..."
@@ -24,6 +41,9 @@ install_npm_packages() {
   # Check for npm
   if type 'npm' &> /dev/null; then
     e_header "Installing Node.js packages..."
+
+    # Ensure globals land in a shared prefix so they're available across Node versions
+    npm config set prefix "$HOME/.local"
 
     # Install packages globally
     npm install -g vercel \

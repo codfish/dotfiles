@@ -76,6 +76,7 @@ run_brew() {
     'cheat'
     'coreutils' # GNU core utilities (those that come with macOS are outdated)
     'deno'
+    'fnm'
     'git'
     'gh'
     'go'
