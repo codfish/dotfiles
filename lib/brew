@@ -129,6 +129,7 @@ run_brew_cask() {
     [appcleaner]='AppCleaner'
     [beardedspice]='BeardedSpice'
     [brave-browser]='Brave Browser'
+    [chatgpt]='ChatGPT'
     [cursor]='Cursor'
     [docker]='Docker'
     [dropbox]='Dropbox'
