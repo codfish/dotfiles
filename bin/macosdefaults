@@ -476,9 +476,6 @@ defaults write com.apple.iTunes disablePingSidebar -bool true
 # iTunes: disable all the other Ping stuff
 defaults write com.apple.iTunes disablePing -bool true
 
-# Stop iTunes from launching when using the keyboard media keys
-launchctl unload -w /System/Library/LaunchAgents/com.apple.rcd.plist 2> /dev/null
-
 # Misc
 # ----------------------------------------------------------------------
 
