@@ -128,7 +128,6 @@ run_brew_cask() {
     [1password]='1Password'
     [alfred]='Alfred 5'
     [appcleaner]='AppCleaner'
-    [beardedspice]='BeardedSpice'
     [brave-browser]='Brave Browser'
     [chatgpt]='ChatGPT'
     [cursor]='Cursor'
