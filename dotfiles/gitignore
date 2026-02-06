@@ -3,8 +3,8 @@
 .DS_Store
 Thumbs.db
 sftp-config.json
-.idea
-.vscode
+.idea/*
+.vscode/*
 *.sublime-project
 *.sublime-workspace
 
