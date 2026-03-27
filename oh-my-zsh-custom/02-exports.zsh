@@ -68,3 +68,6 @@ export PKG_CONFIG_PATH="/opt/homebrew/opt/ruby/lib/pkgconfig"
 
 # https://superuser.com/questions/365847/where-should-the-xdg-config-home-variable-be-defined
 export XDG_CONFIG_HOME="$DOTFILES/.config"
+
+# https://github.com/rtk-ai/rtk#privacy--telemetry
+RTK_TELEMETRY_DISABLED=1
