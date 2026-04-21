@@ -64,3 +64,4 @@ fpath+=("$(brew --prefix)/share/zsh/site-functions")
 unset dirs_to_prepend dirs_to_append
 
 export PATH
+fpath=($ZSH_CUSTOM/completions $fpath)

@@ -16,3 +16,7 @@ esac
 if type 'fnm' &> /dev/null; then
   eval "$(fnm env --use-on-cd --shell zsh)"
 fi
+
+# completions
+autoload -U compinit && compinit
+zstyle ':completion:*' menu select
