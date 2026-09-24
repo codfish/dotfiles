@@ -70,4 +70,7 @@ export PKG_CONFIG_PATH="/opt/homebrew/opt/ruby/lib/pkgconfig"
 export XDG_CONFIG_HOME="$DOTFILES/.config"
 
 # https://github.com/rtk-ai/rtk#privacy--telemetry
-RTK_TELEMETRY_DISABLED=1
+export RTK_TELEMETRY_DISABLED=1
+
+# https://github.com/fern-api/fern/pull/4239
+export FERN_DISABLE_TELEMETRY=true
